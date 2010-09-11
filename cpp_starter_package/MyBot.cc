@@ -93,7 +93,7 @@ void DoTurn(const PlanetWars& pw) {
     		return;
   		}
   	  	const Planet& p = my_planets[i];
-		bool i_have_more_planets = (my_planets.size() > (enemy_planets.size()));
+		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
     	if (i_have_more_planets && (their_weakest_planet_id > 0)){
 			int p_ships = p.NumShips();
        		const Planet& their_weakest_Planet = pw.GetPlanet(their_weakest_planet_id);

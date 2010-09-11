@@ -1,12 +1,12 @@
 CC=g++
 
-all: MyBot FirstBot SecondBot
+all: MyBot first_bot second_bot
 
 clean:
-	rm -rf *.o MyBot FirstBot SecondBot
+	rm -rf *.o MyBot first_bot second_bot
 
 MyBot: MyBot.o PlanetWars.o
 
-FirstBot: first_bot.o PlanetWars.o
+first_bot: first_bot.o PlanetWars.o
 
-SecondBot: second_bot.o PlanetWars.o
+second_bot: second_bot.o PlanetWars.o

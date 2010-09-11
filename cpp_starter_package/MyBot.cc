@@ -87,6 +87,7 @@ void DoTurn(const PlanetWars& pw) {
 
   	bool attack_them = false;
 	bool go_prospecting = true;
+	int their_planets_size = enemy_planets.size();
   	// loop through my planets and issue commands to attack either the enemy or an unclaimed rock. 
   	for (int i = 0; i < my_planets.size(); ++i) {
 	  	if (pw.MyFleets().size() >= max_fleet_size ) {
@@ -94,7 +95,15 @@ void DoTurn(const PlanetWars& pw) {
   		}
   	  	const Planet& p = my_planets[i];
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
+		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
     	if (i_have_more_planets && (their_weakest_planet_id > 0)){
+			if(i_have_twice_as_many_planets){
+				int ships_to_send = p.NumShips() / their_planets_size;
+				for(int j = 0; j < enemy_planets.size(); ++j){
+					pw.IssueOrder(p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send);
+				}
+				return;
+			}
 			int p_ships = p.NumShips();
        		const Planet& their_weakest_Planet = pw.GetPlanet(their_weakest_planet_id);
         	// need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.
@@ -125,7 +134,7 @@ void DoTurn(const PlanetWars& pw) {
       	// also need to make it so that if the current planet is a target it doesn't send it's ships away.
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
-			if(go_prospecting == true){
+			if(go_prospecting == false){
 				if (dest > 0){
 	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() - 1 );
 	      		}

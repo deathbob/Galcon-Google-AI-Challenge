@@ -105,10 +105,10 @@ void DoTurn(const PlanetWars& pw) {
 				}
 				return;
 			}
-			int p_ships = p.NumShips();
-       		const Planet& their_weakest_Planet = pw.GetPlanet(their_weakest_planet_id);
+
         	// need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.
         	// If this planet has a shit ton of ships, do several things.
+			int p_ships = p.NumShips();
 			int ships = their_weakest_ships * 2;
         	if (p_ships > ships){
           		p_ships = p_ships - ships;
@@ -136,17 +136,26 @@ void DoTurn(const PlanetWars& pw) {
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
 			if(go_prospecting == false){
-				if (dest > 0){
-	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() / 2 );
+				// if (dest > 0){
+				// 	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() / 2 );
+				// 	      		}
+				if (their_weakest_planet_id > 0){
+	        		pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() / 2 );
 	      		}
 			}else{
 				if(neutral_hgr_planet_id > 0){
-					if (p.NumShips() - 1 > neutral_hgr_ship_count){
+					if (p.NumShips() - 2 > neutral_hgr_ship_count){
 						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, neutral_hgr_ship_count + 1);
 					}else{
-						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, p.NumShips() / 2);						
+//						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, p.NumShips() / 2);
+						if(their_weakest_planet_id > 0){
+							pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
+						}
 					}
 				}
+				// if(their_weakest_planet_id > 0){
+				// 	pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
+				// }
 			}
 			go_prospecting = !go_prospecting;							
   		}

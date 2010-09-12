@@ -1,12 +1,18 @@
 #! /usr/bin/ruby
 bots = Dir.entries(Dir.pwd + "/example_bots").collect{|x| x if x.match(/Bot.jar/)}.compact
 
-bots.each do |bot|
-  puts bot
-  1.upto(100) do |x|
-    puts "On map#{x}\n"
-    `java -jar tools/PlayGame.jar maps/map1.txt 1000 1000 log.txt "./MyBot" "java -jar example_bots/#{bot}" &> poop.out`
-    puts %x{cat poop.out | grep Player}
+puts "You are Player 1"
+
+1.upto(100) do |x|
+  bots.each do |bot|
+    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./MyBot" "java -jar example_bots/#{bot}" &> poop.out`
+#    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./first_bot" "java -jar example_bots/#{bot}" &> poop.out`
+#    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./second_bot" "java -jar example_bots/#{bot}" &> poop.out`    
+    result = %x{cat poop.out | grep Player}
+    
+    unless result.match(/Player 1/)
+      puts "#{bot} Beat Your Ass On map#{x}\n"  
+    end
   end
 end
 

@@ -19,6 +19,9 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
 
   	int max_fleet_size = my_planets.size() + 1 ;
+	  	if (pw.MyFleets().size() >= max_fleet_size ) {
+    		return;
+  		}
 
   	// Find planet enemy is aiming at.
   	std::vector<Fleet> enemy_fleets = pw.EnemyFleets();
@@ -90,9 +93,7 @@ void DoTurn(const PlanetWars& pw) {
 	int their_planets_size = enemy_planets.size();
   	// loop through my planets and issue commands to attack either the enemy or an unclaimed rock. 
   	for (int i = 0; i < my_planets.size(); ++i) {
-	  	if (pw.MyFleets().size() >= max_fleet_size ) {
-    		return;
-  		}
+
   	  	const Planet& p = my_planets[i];
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
 		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
@@ -136,11 +137,15 @@ void DoTurn(const PlanetWars& pw) {
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
 			if(go_prospecting == false){
 				if (dest > 0){
-	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() - 1 );
+	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() / 2 );
 	      		}
 			}else{
 				if(neutral_hgr_planet_id > 0){
-					pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, p.NumShips() - 1);					
+					if (p.NumShips() - 1 > neutral_hgr_ship_count){
+						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, neutral_hgr_ship_count + 1);
+					}else{
+						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, p.NumShips() / 2);						
+					}
 				}
 			}
 			go_prospecting = !go_prospecting;							

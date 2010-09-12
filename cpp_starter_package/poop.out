@@ -3,3 +3,7 @@ Turn 2
 Turn 3
 Turn 4
 Turn 5
+Turn 6
+WARNING: player 1 crashed.
+Exception in thread "main" java.lang.NullPointerException
+	at Engine.main(Engine.java:139)

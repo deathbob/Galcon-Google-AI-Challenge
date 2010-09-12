@@ -2,6 +2,7 @@
 #include "PlanetWars.h"
 #include <time.h>
 
+
 // The DoTurn function is where your code goes. The PlanetWars object contains
 // the state of the game, including information about all planets and fleets
 // that currently exist. Inside this function, you issue orders using the
@@ -44,6 +45,20 @@ void DoTurn(const PlanetWars& pw) {
   	//       		my_hgr_ship_count = p.NumShips();
   	//     	}
   	// }
+
+  	// (2) Find my strongest planet.
+  	int my_strongest_planet_id = -1;
+  	double strongest_score = -999999.0;
+  	int my_strongest_ships = 0;
+  	for (int i = 0; i < my_planets.size(); ++i) {
+  	    	const Planet& p = my_planets[i];
+  	    	double score = (double)p.NumShips();
+  	    	if (score > strongest_score) {
+  	      		strongest_score = score;
+  	      		my_strongest_planet_id = p.PlanetID();
+  	      		my_strongest_ships = p.NumShips();
+  	    	}
+  	}
   
   	// Find neutral planet with highest growth factor
   	int neutral_hgr = 0;  
@@ -60,19 +75,26 @@ void DoTurn(const PlanetWars& pw) {
     	}
   	}
 
-  	// (2) Find my strongest planet.
-  	int my_strongest_planet_id = -1;
-  	double strongest_score = -999999.0;
-  	int my_strongest_ships = 0;
-  	for (int i = 0; i < my_planets.size(); ++i) {
-    	const Planet& p = my_planets[i];
-    	double score = (double)p.NumShips();
-    	if (score > strongest_score) {
-      		strongest_score = score;
-      		my_strongest_planet_id = p.PlanetID();
-      		my_strongest_ships = p.NumShips();
-    	}
-  	}
+
+
+  	// Find most desirable planet 
+	// aka planet with with highest growth factor and shortest distance
+	//   	int desire = 0;  
+	//   	int desire_planet_id = -1;
+	//   	int desire_ship_count = 0;
+	// double desire_score = -9999.0;
+	//   	for(int i = 0; i < not_my_planets.size(); ++i){
+	//     	const Planet& p = not_my_planets[i];
+	//     	int gr = p.GrowthRate();
+	// 	int dist = pw.Distance(my_strongest_planet_id, p.PlanetID());
+	// 	double score = gr / dist;
+	//     	if(score > desire_score){
+	// 		desire_score = score;
+	//       		desire_planet_id = p.PlanetID();
+	//       		desire_ship_count = p.NumShips();
+	//     	}
+	//   	}
+
   
   	// (3) Find the weakest enemy planet.
   	int their_weakest_planet_id = -1;
@@ -136,29 +158,75 @@ void DoTurn(const PlanetWars& pw) {
       	// also need to make it so that if the current planet is a target it doesn't send it's ships away.
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
-			if(go_prospecting == false){
-				// if (dest > 0){
-				// 	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() / 2 );
-				// 	      		}
-				if (their_weakest_planet_id > 0){
-	        		pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() / 2 );
-	      		}
-			}else{
-				if(neutral_hgr_planet_id > 0){
-					if (p.NumShips() - 2 > neutral_hgr_ship_count){
-						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, neutral_hgr_ship_count + 1);
-					}else{
-//						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, p.NumShips() / 2);
-						if(their_weakest_planet_id > 0){
-							pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
-						}
-					}
-				}
-				// if(their_weakest_planet_id > 0){
-				// 	pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
-				// }
+		double desire = -99999.0;
+		int desire_planet_id = -1;
+		for(int k = 0; k < not_my_planets.size(); ++k){
+			const Planet& cow = not_my_planets[k];
+			// watch out, if they're not all doubles some thing is going wrong
+			double dist = pw.Distance(p.PlanetID(), cow.PlanetID());
+			double grow = cow.GrowthRate();
+			double pop = cow.NumShips();
+			double score = grow / (pop / 2.0) ;
+
+			if (score > desire){
+				desire = score;
+				desire_planet_id = cow.PlanetID();
 			}
-			go_prospecting = !go_prospecting;							
+		}
+		
+			// 		  	int desire = 0;  
+			// 		  	int desire_planet_id = -1;
+			// 		  	int desire_ship_count = 0;
+			// double desire_score = 0.0;
+			// 		  	for(int i = 0; i < not_my_planets.size(); ++i){
+			// 		    	const Planet& dizzy = not_my_planets[i];
+			// 		    	int gr = dizzy.GrowthRate();
+			// 	int dist = pw.Distance(p.PlanetID(), dizzy.PlanetID());
+			// 	double score = gr / dist;
+			// 		    	if(score > desire_score){
+			// 		desire_score = score;
+			// 		      		desire_planet_id = dizzy.PlanetID();
+			// 		      		desire_ship_count = dizzy.NumShips();
+			// 		    	}
+			// 		  	}
+			
+			if(desire_planet_id > 0){
+				pw.IssueOrder(p.PlanetID(), desire_planet_id, p.NumShips() - 2);
+			}
+
+		
+		
+		// 
+		// pw.IssueOrder(p.PlanetID(), planet_to_attack, p.NumShips() / 2);
+		// 
+			// if(desire_planet_id > 0){
+			// 	pw.IssueOrder(p.PlanetID(), desire_planet_id, p.NumShips() - 1);
+			// }
+
+
+// 			if(go_prospecting == false){
+// 				// if (dest > 0){
+// 				// 	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() / 2 );
+// 				// 	      		}
+// 				if (their_weakest_planet_id > 0){
+// 	        		pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() / 2 );
+// 	      		}
+// 			}else{
+// 				if(neutral_hgr_planet_id > 0){
+// 					if (p.NumShips() - 2 > neutral_hgr_ship_count){
+// 						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, neutral_hgr_ship_count + 1);
+// 					}else{
+// //						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, p.NumShips() / 2);
+// 						if(their_weakest_planet_id > 0){
+// 							pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
+// 						}
+// 					}
+// 				}
+// 				// if(their_weakest_planet_id > 0){
+// 				// 	pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
+// 				// }
+// 			}
+// 			go_prospecting = !go_prospecting;							
   		}
   	}  
 }

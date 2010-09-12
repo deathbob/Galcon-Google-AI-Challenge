@@ -19,7 +19,7 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> not_my_planets =  pw.NotMyPlanets();
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
 
-  	int max_fleet_size = my_planets.size() + 1 ;
+  	int max_fleet_size = my_planets.size() * 2 ;
 	  	if (pw.MyFleets().size() >= max_fleet_size ) {
     		return;
   		}
@@ -115,17 +115,36 @@ void DoTurn(const PlanetWars& pw) {
 	int their_planets_size = enemy_planets.size();
   	// loop through my planets and issue commands to attack either the enemy or an unclaimed rock. 
   	for (int i = 0; i < my_planets.size(); ++i) {
+  	  	const Planet& p = my_planets[i];	
+		// Determine if I have incoming
+		// Don't leave if there are enemy ships pointed at me.
+		bool incoming = false;
+		for(int m = 0; m < enemy_fleets.size(); ++m){
+			const Fleet& pig = enemy_fleets[m];
+			int frak = pig.DestinationPlanet();
+			if (frak == p.PlanetID()){
+				incoming = true;
+				break;
+			}
 
-  	  	const Planet& p = my_planets[i];
+		}
+	
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
 		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
+
     	if (i_have_more_planets && (their_weakest_planet_id > 0)){
 			if(i_have_twice_as_many_planets){
 				int ships_to_send = p.NumShips() / their_planets_size;
+//				int ships_to_send = p.NumShips() / 2;
 				for(int j = 0; j < enemy_planets.size(); ++j){
-					pw.IssueOrder(p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send);
+					if (incoming == false){
+						pw.IssueOrder(p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send);
+					}else{
+						// prospect
+					}
+					
+					
 				}
-//				return;
 			}
 			else if (their_weakest_planet_id > 0){
 	        	// need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.
@@ -151,47 +170,50 @@ void DoTurn(const PlanetWars& pw) {
 	        	}
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
-	          		pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1 );
+					if(incoming == false){
+	          			pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1 );
+					}
 	        	}
 			}
       	}
       	// also need to make it so that if the current planet is a target it doesn't send it's ships away.
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
-		double desire = -99999.0;
-		int desire_planet_id = -1;
-		for(int k = 0; k < not_my_planets.size(); ++k){
-			const Planet& cow = not_my_planets[k];
-			// watch out, if they're not all doubles some thing is going wrong
-			double dist = pw.Distance(p.PlanetID(), cow.PlanetID());
-			double grow = cow.GrowthRate();
-			double pop = cow.NumShips();
-			double score = grow / (pop / 2.0) ;
+			double desire = -99999.0;
+			int desire_planet_id = -1;
+			for(int k = 0; k < not_my_planets.size(); ++k){
+				const Planet& cow = not_my_planets[k];
+				// watch out, if they're not all doubles some thing is going wrong
+				double dist = pw.Distance(p.PlanetID(), cow.PlanetID());
+				double grow = cow.GrowthRate();
+				double pop = cow.NumShips();
+//				double score = grow / (pop / 2.0) ;
+				double score = grow / dist ;
+				
+				// Does taking the population into account help?
+				// Seems to make things worse :(
+//				score = score - (pop);
 
-			if (score > desire){
-				desire = score;
-				desire_planet_id = cow.PlanetID();
+				if (score > desire){
+					desire = score;
+					desire_planet_id = cow.PlanetID();
+				}
 			}
-		}
-		
-			// 		  	int desire = 0;  
-			// 		  	int desire_planet_id = -1;
-			// 		  	int desire_ship_count = 0;
-			// double desire_score = 0.0;
-			// 		  	for(int i = 0; i < not_my_planets.size(); ++i){
-			// 		    	const Planet& dizzy = not_my_planets[i];
-			// 		    	int gr = dizzy.GrowthRate();
-			// 	int dist = pw.Distance(p.PlanetID(), dizzy.PlanetID());
-			// 	double score = gr / dist;
-			// 		    	if(score > desire_score){
-			// 		desire_score = score;
-			// 		      		desire_planet_id = dizzy.PlanetID();
-			// 		      		desire_ship_count = dizzy.NumShips();
-			// 		    	}
-			// 		  	}
-			
+
+
 			if(desire_planet_id > 0){
-				pw.IssueOrder(p.PlanetID(), desire_planet_id, p.NumShips() - 2);
+				int ships_to_send = p.NumShips();
+				if(ships_to_send > 2){
+					ships_to_send = ships_to_send - 2;
+				}
+				else{
+					ships_to_send = ships_to_send - 1;
+				}
+				if (incoming == false){
+					pw.IssueOrder(p.PlanetID(), desire_planet_id, ships_to_send);
+				}else{
+					pw.IssueOrder(p.PlanetID(), desire_planet_id, ships_to_send);
+				}
 			}
 
 		

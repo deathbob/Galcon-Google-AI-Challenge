@@ -8,7 +8,6 @@
 // that currently exist. Inside this function, you issue orders using the
 // pw.IssueOrder() function. For example, to send 10 ships from planet 3 to
 // planet 8, you would say pw.IssueOrder(3, 8, 10).
-int enemy_origin = -1;
 //
 // There is already a basic strategy in place here. You can use it as a
 // starting point, or you can throw it out entirely and replace it with your
@@ -20,12 +19,7 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> not_my_planets =  pw.NotMyPlanets();
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
 
-	// set origin
-	if (enemy_planets.size() == 1){
-		enemy_origin = enemy_planets[0].PlanetID();
-	}
-
-  	int max_fleet_size = my_planets.size() * 3 ;
+  	int max_fleet_size = my_planets.size() * 2 ;
 	  	if (pw.MyFleets().size() >= max_fleet_size ) {
     		return;
   		}
@@ -57,20 +51,21 @@ void DoTurn(const PlanetWars& pw) {
   	double strongest_score = -999999.0;
   	int my_strongest_ships = 0;
   	for (int i = 0; i < my_planets.size(); ++i) {
-    	const Planet& p = my_planets[i];
-    	double score = (double)p.NumShips();
-    	if (score > strongest_score) {
-      		strongest_score = score;
-      		my_strongest_planet_id = p.PlanetID();
-      		my_strongest_ships = p.NumShips();
-    	}
+  	    	const Planet& p = my_planets[i];
+  	    	double score = (double)p.NumShips();
+  	    	if (score > strongest_score) {
+  	      		strongest_score = score;
+  	      		my_strongest_planet_id = p.PlanetID();
+  	      		my_strongest_ships = p.NumShips();
+  	    	}
   	}
   
   	// Find neutral planet with highest growth factor
   	int neutral_hgr = 0;  
   	int neutral_hgr_planet_id = -1;
   	int neutral_hgr_ship_count = 0;
-    	for(int i = 0; i < neutral_planets.size(); ++i){
+  
+  	for(int i = 0; i < neutral_planets.size(); ++i){
     	const Planet& p = neutral_planets[i];
     	int gr = p.GrowthRate();
     	if(gr > neutral_hgr){
@@ -80,126 +75,103 @@ void DoTurn(const PlanetWars& pw) {
     	}
   	}
 
+
+
+  	// Find most desirable planet 
+	// aka planet with with highest growth factor and shortest distance
+	//   	int desire = 0;  
+	//   	int desire_planet_id = -1;
+	//   	int desire_ship_count = 0;
+	// double desire_score = -9999.0;
+	//   	for(int i = 0; i < not_my_planets.size(); ++i){
+	//     	const Planet& p = not_my_planets[i];
+	//     	int gr = p.GrowthRate();
+	// 	int dist = pw.Distance(my_strongest_planet_id, p.PlanetID());
+	// 	double score = gr / dist;
+	//     	if(score > desire_score){
+	// 		desire_score = score;
+	//       		desire_planet_id = p.PlanetID();
+	//       		desire_ship_count = p.NumShips();
+	//     	}
+	//   	}
+
   
   	// (3) Find the weakest enemy planet.
   	int their_weakest_planet_id = -1;
-	int their_second_weakest_id = -1;
   	int their_weakest_ships = 0;
-	int their_second_weakest_ships = 0;
   	double weakest_score = -999999.0;
   	for (int i = 0; i < enemy_planets.size(); ++i) {
     	const Planet& p = enemy_planets[i];
     	double score = 1.0 / (1 + p.NumShips());
     	if (score > weakest_score) {
       		weakest_score = score;
-			their_second_weakest_id = their_weakest_planet_id;
       		their_weakest_planet_id = p.PlanetID();
-			their_second_weakest_ships = their_weakest_ships;
       		their_weakest_ships = p.NumShips();
     	}
   	}
 
-
+  	bool attack_them = false;
+	bool go_prospecting = true;
 	int their_planets_size = enemy_planets.size();
-	if (their_planets_size < 1){
-		their_planets_size = 1;
-	}
-	
-	
-	////////////////////////////////////////////////////
   	// loop through my planets and issue commands to attack either the enemy or an unclaimed rock. 
-	////////////////////////////////////////////////////
   	for (int i = 0; i < my_planets.size(); ++i) {
-  	  	const Planet& curr_p = my_planets[i];	
+  	  	const Planet& p = my_planets[i];	
 		// Determine if I have incoming
 		// Don't leave if there are enemy ships pointed at me.
 		bool incoming = false;
-		int incoming_ships = 0;
 		for(int m = 0; m < enemy_fleets.size(); ++m){
 			const Fleet& pig = enemy_fleets[m];
 			int frak = pig.DestinationPlanet();
-			if (frak == curr_p.PlanetID()){
+			if (frak == p.PlanetID()){
 				incoming = true;
-				incoming_ships = pig.NumShips();
 				break;
 			}
+
 		}
-		
-		double desire = -99999.0;
-		int desire_planet_id = -1;
-		int desire_ship_count = 0;
-		for(int k = 0; k < not_my_planets.size(); ++k){
-			const Planet& cow = not_my_planets[k];
-			// watch out, if they're not all doubles some thing is going wrong
-			double dist = pw.Distance(curr_p.PlanetID(), cow.PlanetID());
-			double grow = cow.GrowthRate();
-			double pop = cow.NumShips();
-			double score = grow / dist ;
-			// Does taking the population into account help? // Seems to make things worse :(
-			// score = score - (pop);
-			if (score > desire){
-				desire = score;
-				desire_planet_id = cow.PlanetID();
-				desire_ship_count = cow.NumShips();
-			}
-		}
-		
-		
 	
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
 		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
 
     	if (i_have_more_planets && (their_weakest_planet_id > 0)){
 			if(i_have_twice_as_many_planets){
-				int ships_to_send = curr_p.NumShips() / their_planets_size;
+				int ships_to_send = p.NumShips() / their_planets_size;
+//				int ships_to_send = p.NumShips() / 2;
 				for(int j = 0; j < enemy_planets.size(); ++j){
 					if (incoming == false){
-						pw.IssueOrder(curr_p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send);
+						pw.IssueOrder(p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send);
 					}else{
-						if(ships_to_send > incoming_ships){
-							pw.IssueOrder(curr_p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send - incoming_ships);
-						}
+						// prospect
 					}
+					
+					
 				}
 			}
-// need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.			
-			else {
-				// If this planet has a shit ton of ships, do several things.
-				int p_ships = curr_p.NumShips();
+			else if (their_weakest_planet_id > 0){
+	        	// need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.
+	        	// If this planet has a shit ton of ships, do several things.
+				int p_ships = p.NumShips();
 				int ships = their_weakest_ships * 2;
 	        	if (p_ships > ships){
 	          		p_ships = p_ships - ships;
 	          		// attack their weakest with twice the strength of their weakest
-	       			pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, ships );
-
-					if(desire_planet_id > 0){
-						if (p_ships > desire_ship_count + 1){
-							p_ships = p_ships - desire_ship_count;
-							pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, desire_ship_count + 1);
+	       			pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, ships );
+	          		// attack the destination of their current fleet with the rest.
+					if(neutral_hgr_planet_id > 0){
+						if (p_ships > neutral_hgr_ship_count + 1){
+							p_ships = p_ships - neutral_hgr_ship_count;
+							pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, neutral_hgr_ship_count + 1);
 						}
 					}
-					if(their_second_weakest_id > 0){
-						if(p_ships > their_second_weakest_ships + 1){
-							p_ships = p_ships - their_second_weakest_ships;
-							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, their_second_weakest_ships + 1);
-						}
-					}
-					
-	          		// attack the destination of their current fleet with the rest.					
 	          		if (dest > 0){
 						if(p_ships > 2){
-	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships  / 2 );
+	            			pw.IssueOrder(p.PlanetID(), dest, p_ships - 1 );
 						}
 	          		}
 	        	}
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
 					if(incoming == false){
-						pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2 );
-					}else{
-						if(curr_p.NumShips() > incoming_ships){
-							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - incoming_ships );
-						}
+	          			pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1 );
 					}
 	        	}
 			}
@@ -207,18 +179,76 @@ void DoTurn(const PlanetWars& pw) {
       	// also need to make it so that if the current planet is a target it doesn't send it's ships away.
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
-			if(desire_planet_id > 0){
-				if (incoming == false){
-					pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1);
-				}else{
-					if (curr_p.NumShips() > incoming_ships){
-//						pw.IssueOrder(curr_p.PlanetID(), enemy_origin, curr_p.NumShips() - incoming_ships);
-						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);						
-					}
+			double desire = -99999.0;
+			int desire_planet_id = -1;
+			for(int k = 0; k < not_my_planets.size(); ++k){
+				const Planet& cow = not_my_planets[k];
+				// watch out, if they're not all doubles some thing is going wrong
+				double dist = pw.Distance(p.PlanetID(), cow.PlanetID());
+				double grow = cow.GrowthRate();
+				double pop = cow.NumShips();
+//				double score = grow / (pop / 2.0) ;
+				double score = grow / dist ;
+				
+				// Does taking the population into account help?
+				// Seems to make things worse :(
+//				score = score - (pop);
+
+				if (score > desire){
+					desire = score;
+					desire_planet_id = cow.PlanetID();
 				}
 			}
 
 
+			if(desire_planet_id > 0){
+				int ships_to_send = p.NumShips();
+				if(ships_to_send > 2){
+					ships_to_send = ships_to_send - 2;
+				}
+				else{
+					ships_to_send = ships_to_send - 1;
+				}
+				if (incoming == false){
+					pw.IssueOrder(p.PlanetID(), desire_planet_id, ships_to_send);
+				}else{
+					pw.IssueOrder(p.PlanetID(), desire_planet_id, ships_to_send);
+				}
+			}
+
+		
+		
+		// 
+		// pw.IssueOrder(p.PlanetID(), planet_to_attack, p.NumShips() / 2);
+		// 
+			// if(desire_planet_id > 0){
+			// 	pw.IssueOrder(p.PlanetID(), desire_planet_id, p.NumShips() - 1);
+			// }
+
+
+// 			if(go_prospecting == false){
+// 				// if (dest > 0){
+// 				// 	        		pw.IssueOrder(p.PlanetID(), dest, p.NumShips() / 2 );
+// 				// 	      		}
+// 				if (their_weakest_planet_id > 0){
+// 	        		pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() / 2 );
+// 	      		}
+// 			}else{
+// 				if(neutral_hgr_planet_id > 0){
+// 					if (p.NumShips() - 2 > neutral_hgr_ship_count){
+// 						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, neutral_hgr_ship_count + 1);
+// 					}else{
+// //						pw.IssueOrder(p.PlanetID(), neutral_hgr_planet_id, p.NumShips() / 2);
+// 						if(their_weakest_planet_id > 0){
+// 							pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
+// 						}
+// 					}
+// 				}
+// 				// if(their_weakest_planet_id > 0){
+// 				// 	pw.IssueOrder(p.PlanetID(), their_weakest_planet_id, p.NumShips() - 1);
+// 				// }
+// 			}
+// 			go_prospecting = !go_prospecting;							
   		}
   	}  
 }

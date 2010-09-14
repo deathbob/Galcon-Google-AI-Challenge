@@ -120,8 +120,7 @@ void DoTurn(const PlanetWars& pw) {
 			int frak = pig.DestinationPlanet();
 			if (frak == curr_p.PlanetID()){
 				incoming = true;
-				incoming_ships = pig.NumShips();
-				break;
+				incoming_ships += pig.NumShips();
 			}
 		}
 		
@@ -133,8 +132,8 @@ void DoTurn(const PlanetWars& pw) {
 			// watch out, if they're not all doubles some thing is going wrong
 			double dist = pw.Distance(curr_p.PlanetID(), cow.PlanetID());
 			double grow = cow.GrowthRate();
-			double pop = cow.NumShips();
 			double score = grow / dist ;
+//			double pop = cow.NumShips();			
 			// Does taking the population into account help? // Seems to make things worse :(
 			// score = score - (pop);
 			if (score > desire){
@@ -188,7 +187,7 @@ void DoTurn(const PlanetWars& pw) {
 	          		// attack the destination of their current fleet with the rest.					
 	          		if (dest > 0){
 						if(p_ships > 2){
-	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships  / 2 );
+	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships - 1 );
 						}
 	          		}
 	        	}
@@ -212,11 +211,15 @@ void DoTurn(const PlanetWars& pw) {
 					pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1);
 				}else{
 					if (curr_p.NumShips() > incoming_ships){
-//						pw.IssueOrder(curr_p.PlanetID(), enemy_origin, curr_p.NumShips() - incoming_ships);
 						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);						
 					}
 				}
+			}else{
+				if (curr_p.NumShips() > incoming_ships){
+					pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);	
+				}
 			}
+			
 
 
   		}

@@ -21,31 +21,34 @@ bots = Dir.entries(Dir.pwd + "/example_bots").collect{|x| x if x.match(/Bot.jar/
 
 
 
-# # play my bot against example bots as player 2
-puts "You are Player 2"
-1.upto(100) do |x|
-  bots.each do |bot|
-    # Just noticed it makes a difference where you start on maps, so run it with my bot starting first or second both
-    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/#{bot}" "./MyBot" &> poop.out`    
-#    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/#{bot}" "./second_bot" &> poop.out`        
-    result = %x{cat poop.out | grep Player}
-    
-    unless result.match(/Player 2/)
-      puts "#{bot} Beat Your Ass On map#{x}\n"  
-    end
-  end
-end
-
-
-# # play my bots against eachother
-# bot = 'first_bot'
+# # # play my bot against example bots as player 2
+# puts "You are Player 2"
 # 1.upto(100) do |x|
-#     `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./MyBot" "./#{bot}" &> poop.out`
+#   bots.each do |bot|
+#     # Just noticed it makes a difference where you start on maps, so run it with my bot starting first or second both
+#     `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/#{bot}" "./MyBot" &> poop.out`    
+# #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/#{bot}" "./second_bot" &> poop.out`        
 #     result = %x{cat poop.out | grep Player}
-#     unless result.match(/Player 1/)
+#     
+#     unless result.match(/Player 2/)
 #       puts "#{bot} Beat Your Ass On map#{x}\n"  
 #     end
+#   end
 # end
+
+
+# play my bots against eachother
+bots = %w{MyBot seventh_bot}
+1.upto(100) do |x|
+#    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./MyBot" "./#{bot}" &> poop.out`
+    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./#{bots[0]}" "./#{bots[1]}" &> poop.out`    
+    result = %x{cat poop.out | grep Player}
+    if result.match(/Player 1/)
+      puts "#{bots[0]} Beat #{bots[1]}'s Ass On map#{x}\n"
+    else
+      puts "#{bots[1]} Beat #{bots[0]}'s Ass On map#{x}\n"
+    end
+end
 
 
 # copied from website

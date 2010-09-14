@@ -21,8 +21,13 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
 
 	// set origin
+	bool first_turn_strat = false;
 	if (enemy_planets.size() == 1){
 		enemy_origin = enemy_planets[0].PlanetID();
+		first_turn_strat = true;
+		// need to spread to more planets on the first turn
+		// also need to try to spread to planets that are far away from their origin,
+		// because those planets, especially if they have a high growth rate, will be easier to defend and a good source of troops
 	}
 
   	int max_fleet_size = my_planets.size() * 3 ;
@@ -128,6 +133,8 @@ void DoTurn(const PlanetWars& pw) {
 		double desire = -99999.0;
 		int desire_planet_id = -1;
 		int desire_ship_count = 0;
+		int second_desire_planet_id = -1;
+		int second_desire_ship_count = 0;
 		for(int k = 0; k < not_my_planets.size(); ++k){
 			const Planet& cow = not_my_planets[k];
 			// watch out, if they're not all doubles some thing is going wrong
@@ -139,7 +146,9 @@ void DoTurn(const PlanetWars& pw) {
 			// score = score - (pop);
 			if (score > desire){
 				desire = score;
+				second_desire_planet_id = desire_planet_id;
 				desire_planet_id = cow.PlanetID();
+				second_desire_ship_count = desire_ship_count;
 				desire_ship_count = cow.NumShips();
 			}
 		}
@@ -195,7 +204,14 @@ void DoTurn(const PlanetWars& pw) {
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
 					if(incoming == false){
-						pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2 );
+						if ((curr_p.NumShips() > 2) && (their_second_weakest_id > 0)){
+							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2 );
+							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, curr_p.NumShips() / 2 );
+						}else{
+							if(curr_p.NumShips() > 0){
+								pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - 1 );
+							}
+						}
 					}else{
 						if(curr_p.NumShips() > incoming_ships){
 							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - incoming_ships );
@@ -213,7 +229,8 @@ void DoTurn(const PlanetWars& pw) {
 				}else{
 					if (curr_p.NumShips() > incoming_ships){
 //						pw.IssueOrder(curr_p.PlanetID(), enemy_origin, curr_p.NumShips() - incoming_ships);
-						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);						
+						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);
+//						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1);
 					}
 				}
 			}

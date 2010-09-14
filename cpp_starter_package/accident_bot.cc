@@ -120,7 +120,8 @@ void DoTurn(const PlanetWars& pw) {
 			int frak = pig.DestinationPlanet();
 			if (frak == curr_p.PlanetID()){
 				incoming = true;
-				incoming_ships += pig.NumShips();
+				incoming_ships = pig.NumShips();
+				break;
 			}
 		}
 		
@@ -132,8 +133,8 @@ void DoTurn(const PlanetWars& pw) {
 			// watch out, if they're not all doubles some thing is going wrong
 			double dist = pw.Distance(curr_p.PlanetID(), cow.PlanetID());
 			double grow = cow.GrowthRate();
+			double pop = cow.NumShips();
 			double score = grow / dist ;
-//			double pop = cow.NumShips();			
 			// Does taking the population into account help? // Seems to make things worse :(
 			// score = score - (pop);
 			if (score > desire){
@@ -160,16 +161,15 @@ void DoTurn(const PlanetWars& pw) {
 						}
 					}
 				}
-			}
-// need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.			
-			else {
+			}else {// i have more but not twice as many
+				// need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.							
 				// If this planet has a shit ton of ships, do several things.
 				int p_ships = curr_p.NumShips();
 				int ships = their_weakest_ships * 2;
 	        	if (p_ships > ships){
 	          		p_ships = p_ships - ships;
 	          		// attack their weakest with twice the strength of their weakest
-	       			pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, ships );
+					pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, ships );
 
 					if(desire_planet_id > 0){
 						if (p_ships > desire_ship_count + 1){
@@ -187,17 +187,33 @@ void DoTurn(const PlanetWars& pw) {
 	          		// attack the destination of their current fleet with the rest.					
 	          		if (dest > 0){
 						if(p_ships > 2){
-	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships - 1 );
+	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships / 2 );
 						}
 	          		}
 	        	}
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
 					if(incoming == false){
-						pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2 );
+						if ((curr_p.NumShips() > 2) && (their_second_weakest_id > 0)){
+							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2 );
+							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, curr_p.NumShips() / 2 );
+						}else{
+							if(curr_p.NumShips() > 0){
+								pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - 1 );
+							}
+						}
+						
 					}else{
 						if(curr_p.NumShips() > incoming_ships){
-							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - incoming_ships );
+							// their weakest is a fine choice
+//							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - incoming_ships );
+							// their origin has proven less effective
+//							pw.IssueOrder(curr_p.PlanetID(), enemy_origin, curr_p.NumShips() - incoming_ships);
+							// trying desire now 
+							// preliminary research suggests it is even more effective than their_weakest.
+							if(desire_planet_id > 0){
+								pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);						
+							}
 						}
 					}
 	        	}
@@ -211,15 +227,11 @@ void DoTurn(const PlanetWars& pw) {
 					pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1);
 				}else{
 					if (curr_p.NumShips() > incoming_ships){
+//						pw.IssueOrder(curr_p.PlanetID(), enemy_origin, curr_p.NumShips() - incoming_ships);
 						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);						
 					}
 				}
-			}else{
-				if (curr_p.NumShips() > incoming_ships){
-					pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);	
-				}
 			}
-			
 
 
   		}

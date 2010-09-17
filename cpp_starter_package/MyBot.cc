@@ -96,8 +96,7 @@ void DoTurn(const PlanetWars& pw) {
 	  	for (int i = 0; i < enemy_planets.size(); ++i) {
 	    	const Planet& p = enemy_planets[i];
 			double dist = pw.Distance(curr_p.PlanetID(), p.PlanetID());	
-	    	double score = 1.0 / (1 + p.NumShips());
-			score += 1.0 / dist;
+	    	double score = 1.0 / ((dist * dist) + p.NumShips());  // This is the best formula so far for finding planet weakness
 	    	if (score > weakest_score) {
 	      		weakest_score = score;
 				their_second_weakest_id = their_weakest_planet_id;
@@ -106,9 +105,6 @@ void DoTurn(const PlanetWars& pw) {
 	      		their_weakest_ships = p.NumShips();
 	    	}
 	  	}
-		
-		
-		
 		
 		double desire = -999999.0;
 		int desire_planet_id = -1;
@@ -123,11 +119,8 @@ void DoTurn(const PlanetWars& pw) {
 			double grow = cow.GrowthRate();
 			double pop = cow.NumShips();
 //			double score = (grow ) / (dist ) ; // this is the default
-//			double score = (grow ) / (dist * dist) ;
-//			double score = pop / (dist) ;			
-//			double score = (grow + grow) / (dist + pop) ;			
-			double score = (grow * grow) / (dist * pop) ; // this is also pretty good, need to check them against eachother.
-//			double score = 1.0 / ((dist * dist + 1) + pop) ;
+//			double score = (grow * grow) / (dist * pop) ; // this is also pretty good, need to check them against eachother.			
+			double score = 1.0 / ((dist * dist ) + pop) ; // This is the best one so far.
 			if (dist < closest_dist){
 				closest_planet = cow.PlanetID();
 				closest_dist = dist;

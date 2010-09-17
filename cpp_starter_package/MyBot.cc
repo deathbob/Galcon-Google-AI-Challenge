@@ -209,28 +209,15 @@ void DoTurn(const PlanetWars& pw) {
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
 			if((curr_p.NumShips() > 2)){
 				if (incoming == false){
-					if(desire_planet_id > -1){
+					if (desire_planet_id > -1){
 						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1 );	
 					}
-					// if(second_desire_planet_id > -1){
-					// 	pw.IssueOrder(curr_p.PlanetID(), second_desire_planet_id, curr_p.NumShips() / 2);
-					// }else if (their_weakest_planet_id > -1){
-					// 	pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2);
-					// }
 				}else{
 					if(closest_planet > -1){
-						// I think this is better, but haven't tested it widely yet.
-						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() / 2);  
-						// first impression is this below is worse.
-//						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() );						
+						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() / 2);  // This is better, 70 out of 100 vs 62
 					}
-					// if (curr_p.NumShips() > incoming_ships){
-					// 	pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);
-					// }
 				}
 			}
-
-
   		}
   	}  
 }

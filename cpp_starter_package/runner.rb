@@ -60,6 +60,7 @@ end
 
 # play one of my bots against another
 # java -jar tools/PlayGame.jar maps/map4.txt 1000 1000 log.txt "./first_bot" "./MyBot" | java -jar tools/ShowGame.jar
+# java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MyBot" "./eighth_bot" | java -jar tools/ShowGame.jar
 
 # play my bot vs prospector bot
 # java -jar tools/PlayGame.jar maps/map2.txt 1000 1000 log.txt "java -jar example_bots/ProspectorBot.jar" "./MyBot" | java -jar tools/ShowGame.jar

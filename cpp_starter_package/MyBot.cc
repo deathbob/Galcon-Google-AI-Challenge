@@ -120,8 +120,8 @@ void DoTurn(const PlanetWars& pw) {
 			double pop = cow.NumShips();
 //			double score = (grow ) / (dist ) ; // this is the default
 //			double score = (grow * grow) / (dist * pop) ; // this is also pretty good, need to check them against eachother.			
-			double score = 1.0 / ((dist * dist ) + pop) ; // This is the best one so far.
-//			double score = grow / ((dist * dist ) + pop) ; // not as good
+//			double score = 1.0 / ((dist * dist ) + pop) ; // This is the best one so far.
+			double score = grow / ((dist * dist ) + pop) ; // not as good
 			if (dist < closest_dist){
 				closest_planet = cow.PlanetID();
 				closest_dist = dist;
@@ -158,6 +158,9 @@ void DoTurn(const PlanetWars& pw) {
 // need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.			
 			else {
 				// If this planet has a shit ton of ships, do several things.
+				if ((incoming == true) && (incoming_ships > curr_p.NumShips())){
+					continue;
+				}
 				int p_ships = curr_p.NumShips();
 				int ships = their_weakest_ships * 2;
 	        	if (p_ships > ships){

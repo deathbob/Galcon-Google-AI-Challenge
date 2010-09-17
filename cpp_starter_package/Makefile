@@ -1,9 +1,9 @@
 CC=g++
 
-all: MyBot first_bot second_bot third_bot seventh_bot accident_bot
+all: MyBot first_bot second_bot third_bot seventh_bot eighth_bot 
 
 clean:
-	rm -rf *.o MyBot first_bot second_bot third_bot seventh_bot accident_bot
+	rm -rf *.o MyBot first_bot second_bot third_bot seventh_bot accident_bot eighth_bot
 
 MyBot: MyBot.o PlanetWars.o
 
@@ -15,4 +15,4 @@ third_bot: third_bot.o PlanetWars.o
 
 seventh_bot: seventh_bot.o PlanetWars.o
 
-accident_bot: accident_bot.o PlanetWars.o
+eighth_bot: eighth_bot.o PlanetWars.o

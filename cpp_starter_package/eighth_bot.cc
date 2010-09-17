@@ -9,8 +9,6 @@
 // pw.IssueOrder() function. For example, to send 10 ships from planet 3 to
 // planet 8, you would say pw.IssueOrder(3, 8, 10).
 int enemy_origin = -1;
-int turn = 0;
-int game_stage = -1;
 //
 // There is already a basic strategy in place here. You can use it as a
 // starting point, or you can throw it out entirely and replace it with your
@@ -22,35 +20,20 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> not_my_planets =  pw.NotMyPlanets();
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
 
-	turn += 1;
-	if (turn < 10){
-		game_stage = 0 ;// early
-	}
-	// if ((turn > 10) && (turn < 100)){
-	// 	game_stage = 1
-	// }
-	// if (turn > 100){
-	// 	game_stage = 2
-	// }
-	
-	// if (turn % 2 == 0){
-	// 	return;
-	// }
-	
-
 	// set origin
+	bool first_turn_strat = false;
 	if (enemy_planets.size() == 1){
 		enemy_origin = enemy_planets[0].PlanetID();
+		first_turn_strat = true;
 		// need to spread to more planets on the first turn
 		// also need to try to spread to planets that are far away from their origin,
 		// because those planets, especially if they have a high growth rate, will be easier to defend and a good source of troops
 	}
 
-//  	int max_fleet_size = my_planets.size() * 4 ;
-	int max_fleet_size = 100;
-  	if (pw.MyFleets().size() >= max_fleet_size ) {
-   		return;
-	}
+  	int max_fleet_size = my_planets.size() * 3 ;
+	  	if (pw.MyFleets().size() >= max_fleet_size ) {
+    		return;
+  		}
 
   	// Find planet enemy is aiming at.
   	std::vector<Fleet> enemy_fleets = pw.EnemyFleets();
@@ -59,8 +42,67 @@ void DoTurn(const PlanetWars& pw) {
     	const Fleet& f = enemy_fleets[i];
     	dest = f.DestinationPlanet();
   	}
-  
+        
+  	// // Find planet that I own with highest growth factor
+  	// int hgr = 0;
+  	// int my_hgr_planet_id = -1;
+  	// int my_hgr_ship_count = 0;
+  	// for (int i = 0; i < my_planets.size(); ++i) {
+  	//     	const Planet& p = my_planets[i];
+  	//     	int gr = p.GrowthRate();
+  	//     	if (gr > hgr) {
+  	//       		hgr = gr;
+  	//       		my_hgr_planet_id = p.PlanetID();
+  	//       		my_hgr_ship_count = p.NumShips();
+  	//     	}
+  	// }
 
+  	// (2) Find my strongest planet.
+  	int my_strongest_planet_id = -1;
+  	double strongest_score = -999999.0;
+  	int my_strongest_ships = 0;
+  	for (int i = 0; i < my_planets.size(); ++i) {
+    	const Planet& p = my_planets[i];
+    	double score = (double)p.NumShips();
+    	if (score > strongest_score) {
+      		strongest_score = score;
+      		my_strongest_planet_id = p.PlanetID();
+      		my_strongest_ships = p.NumShips();
+    	}
+  	}
+  
+  	// Find neutral planet with highest growth factor
+  	int neutral_hgr = 0;  
+  	int neutral_hgr_planet_id = -1;
+  	int neutral_hgr_ship_count = 0;
+    	for(int i = 0; i < neutral_planets.size(); ++i){
+    	const Planet& p = neutral_planets[i];
+    	int gr = p.GrowthRate();
+    	if(gr > neutral_hgr){
+      		neutral_hgr = gr;
+      		neutral_hgr_planet_id = p.PlanetID();
+      		neutral_hgr_ship_count = p.NumShips();
+    	}
+  	}
+
+  
+  	// (3) Find the weakest enemy planet.
+  	int their_weakest_planet_id = -1;
+	int their_second_weakest_id = -1;
+  	int their_weakest_ships = 0;
+	int their_second_weakest_ships = 0;
+  	double weakest_score = -999999.0;
+  	for (int i = 0; i < enemy_planets.size(); ++i) {
+    	const Planet& p = enemy_planets[i];
+    	double score = 1.0 / (1 + p.NumShips());
+    	if (score > weakest_score) {
+      		weakest_score = score;
+			their_second_weakest_id = their_weakest_planet_id;
+      		their_weakest_planet_id = p.PlanetID();
+			their_second_weakest_ships = their_weakest_ships;
+      		their_weakest_ships = p.NumShips();
+    	}
+  	}
 
 
 	int their_planets_size = enemy_planets.size();
@@ -83,64 +125,31 @@ void DoTurn(const PlanetWars& pw) {
 			int frak = pig.DestinationPlanet();
 			if (frak == curr_p.PlanetID()){
 				incoming = true;
-				incoming_ships += pig.NumShips();
+				incoming_ships = pig.NumShips();
+				break;
 			}
 		}
 		
-		// Find the weakest enemy planet.
-	  	int their_weakest_planet_id = -1;
-		int their_second_weakest_id = -1;
-	  	int their_weakest_ships = 0;
-		int their_second_weakest_ships = 0;
-	  	double weakest_score = -999999.0;
-	  	for (int i = 0; i < enemy_planets.size(); ++i) {
-	    	const Planet& p = enemy_planets[i];
-			double dist = pw.Distance(curr_p.PlanetID(), p.PlanetID());	
-	    	double score = 1.0 / (1 + p.NumShips());
-			score += 1.0 / dist;
-	    	if (score > weakest_score) {
-	      		weakest_score = score;
-				their_second_weakest_id = their_weakest_planet_id;
-	      		their_weakest_planet_id = p.PlanetID();
-				their_second_weakest_ships = their_weakest_ships;
-	      		their_weakest_ships = p.NumShips();
-	    	}
-	  	}
-		
-		
-		
-		
-		double desire = -999999.0;
+		double desire = -99999.0;
 		int desire_planet_id = -1;
 		int desire_ship_count = 0;
-		int second_desire_planet_id = enemy_origin;
+		int second_desire_planet_id = -1;
 		int second_desire_ship_count = 0;
-		int closest_planet = -1;
-		int closest_dist = 1000;
 		for(int k = 0; k < not_my_planets.size(); ++k){
 			const Planet& cow = not_my_planets[k];
+			// watch out, if they're not all doubles some thing is going wrong
 			double dist = pw.Distance(curr_p.PlanetID(), cow.PlanetID());
 			double grow = cow.GrowthRate();
 			double pop = cow.NumShips();
-//			double score = (grow ) / (dist ) ; // this is the default
-//			double score = (grow ) / (dist * dist) ;
-//			double score = pop / (dist) ;			
-//			double score = (grow + grow) / (dist + pop) ;			
-			double score = (grow * grow) / (dist * pop) ; // this is also pretty good, need to check them against eachother.
-//			double score = 1.0 / ((dist * dist + 1) + pop) ;
-			if (dist < closest_dist){
-				closest_planet = cow.PlanetID();
-				closest_dist = dist;
-			}
+			double score = grow / dist ;
+			// Does taking the population into account help? // Seems to make things worse :(
+			// score = score - (pop);
 			if (score > desire){
 				desire = score;
 				second_desire_planet_id = desire_planet_id;
 				desire_planet_id = cow.PlanetID();
 				second_desire_ship_count = desire_ship_count;
 				desire_ship_count = cow.NumShips();
-			}
-			if (second_desire_planet_id == -1){
-				second_desire_planet_id = desire_planet_id;
 			}
 		}
 		
@@ -149,7 +158,7 @@ void DoTurn(const PlanetWars& pw) {
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
 		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
 
-    	if (i_have_more_planets && (their_weakest_planet_id > -1)){
+    	if (i_have_more_planets && (their_weakest_planet_id > 0)){
 			if(i_have_twice_as_many_planets){
 				int ships_to_send = curr_p.NumShips() / their_planets_size;
 				for(int j = 0; j < enemy_planets.size(); ++j){
@@ -172,13 +181,13 @@ void DoTurn(const PlanetWars& pw) {
 	          		// attack their weakest with twice the strength of their weakest
 	       			pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, ships );
 
-					if(desire_planet_id > -1){
+					if(desire_planet_id > 0){
 						if (p_ships > desire_ship_count + 1){
 							p_ships = p_ships - desire_ship_count;
 							pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, desire_ship_count + 1);
 						}
 					}
-					if(their_second_weakest_id > -1){
+					if(their_second_weakest_id > 0){
 						if(p_ships > their_second_weakest_ships + 1){
 							p_ships = p_ships - their_second_weakest_ships;
 							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, their_second_weakest_ships + 1);
@@ -186,7 +195,7 @@ void DoTurn(const PlanetWars& pw) {
 					}
 					
 	          		// attack the destination of their current fleet with the rest.					
-	          		if (dest > -1){
+	          		if (dest > 0){
 						if(p_ships > 2){
 	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships  / 2 );
 						}
@@ -195,11 +204,11 @@ void DoTurn(const PlanetWars& pw) {
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
 					if(incoming == false){
-						if ((curr_p.NumShips() > 2) && (their_second_weakest_id > -1)){
+						if ((curr_p.NumShips() > 2) && (their_second_weakest_id > 0)){
 							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2 );
 							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, curr_p.NumShips() / 2 );
 						}else{
-							if(curr_p.NumShips() > -1){
+							if(curr_p.NumShips() > 0){
 								pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - 1 );
 							}
 						}
@@ -214,23 +223,15 @@ void DoTurn(const PlanetWars& pw) {
       	// also need to make it so that if the current planet is a target it doesn't send it's ships away.
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
-			if((curr_p.NumShips() > 2)){
+			if(desire_planet_id > 0){
 				if (incoming == false){
-					if(desire_planet_id > -1){
-						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() / 2 );						
-					}
-					if(second_desire_planet_id > -1){
-						pw.IssueOrder(curr_p.PlanetID(), second_desire_planet_id, curr_p.NumShips() / 2);
-					}else if (their_weakest_planet_id > -1){
-						pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2);
-					}
+					pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1);
 				}else{
-					if(closest_planet > -1){
-						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips());
+					if (curr_p.NumShips() > incoming_ships){
+//						pw.IssueOrder(curr_p.PlanetID(), enemy_origin, curr_p.NumShips() - incoming_ships);
+						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);
+//						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1);
 					}
-					// if (curr_p.NumShips() > incoming_ships){
-					// 	pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);
-					// }
 				}
 			}
 

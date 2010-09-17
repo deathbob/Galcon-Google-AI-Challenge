@@ -1,610 +1,100 @@
-seventh_bot Beat MyBot's Ass On map10
-seventh_bot Beat MyBot's Ass On map11
-seventh_bot Beat MyBot's Ass On map18
-seventh_bot Beat MyBot's Ass On map21
-seventh_bot Beat MyBot's Ass On map26
-seventh_bot Beat MyBot's Ass On map27
-seventh_bot Beat MyBot's Ass On map28
-seventh_bot Beat MyBot's Ass On map34
-seventh_bot Beat MyBot's Ass On map37
-seventh_bot Beat MyBot's Ass On map4
-seventh_bot Beat MyBot's Ass On map44
-seventh_bot Beat MyBot's Ass On map5
-seventh_bot Beat MyBot's Ass On map53
-seventh_bot Beat MyBot's Ass On map58
-seventh_bot Beat MyBot's Ass On map59
-seventh_bot Beat MyBot's Ass On map62
-seventh_bot Beat MyBot's Ass On map70
-seventh_bot Beat MyBot's Ass On map75
-seventh_bot Beat MyBot's Ass On map84
-seventh_bot Beat MyBot's Ass On map86
-seventh_bot Beat MyBot's Ass On map87
-seventh_bot Beat MyBot's Ass On map93
-seventh_bot Beat MyBot's Ass On map94
-
-
-
-
-
-
-
-seventh_bot Beat MyBot's Ass On map10
-seventh_bot Beat MyBot's Ass On map100
-seventh_bot Beat MyBot's Ass On map11
-seventh_bot Beat MyBot's Ass On map18
-seventh_bot Beat MyBot's Ass On map21
-seventh_bot Beat MyBot's Ass On map26
-seventh_bot Beat MyBot's Ass On map27
-seventh_bot Beat MyBot's Ass On map28
-seventh_bot Beat MyBot's Ass On map34
-seventh_bot Beat MyBot's Ass On map37
-seventh_bot Beat MyBot's Ass On map4
-seventh_bot Beat MyBot's Ass On map44
-seventh_bot Beat MyBot's Ass On map47
-seventh_bot Beat MyBot's Ass On map5
-seventh_bot Beat MyBot's Ass On map53
-seventh_bot Beat MyBot's Ass On map55
-seventh_bot Beat MyBot's Ass On map58
-seventh_bot Beat MyBot's Ass On map62
-seventh_bot Beat MyBot's Ass On map70
-seventh_bot Beat MyBot's Ass On map84
-seventh_bot Beat MyBot's Ass On map86
-seventh_bot Beat MyBot's Ass On map87
-seventh_bot Beat MyBot's Ass On map91
-seventh_bot Beat MyBot's Ass On map94
-
-
-
-
-
-
-seventh_bot Beat MyBot's Ass On map10
-seventh_bot Beat MyBot's Ass On map100
-seventh_bot Beat MyBot's Ass On map11
-seventh_bot Beat MyBot's Ass On map15
-seventh_bot Beat MyBot's Ass On map16
-seventh_bot Beat MyBot's Ass On map21
-seventh_bot Beat MyBot's Ass On map26
-seventh_bot Beat MyBot's Ass On map27
-seventh_bot Beat MyBot's Ass On map39
-seventh_bot Beat MyBot's Ass On map4
-seventh_bot Beat MyBot's Ass On map42
-seventh_bot Beat MyBot's Ass On map44
-seventh_bot Beat MyBot's Ass On map5
-seventh_bot Beat MyBot's Ass On map50
-seventh_bot Beat MyBot's Ass On map53
-seventh_bot Beat MyBot's Ass On map54
-seventh_bot Beat MyBot's Ass On map62
-seventh_bot Beat MyBot's Ass On map77
-seventh_bot Beat MyBot's Ass On map84
-seventh_bot Beat MyBot's Ass On map86
-seventh_bot Beat MyBot's Ass On map87
-
-
-
-
-
-
-
-
-
-seventh_bot Beat MyBot's Ass On map10
-seventh_bot Beat MyBot's Ass On map100
-seventh_bot Beat MyBot's Ass On map11
-seventh_bot Beat MyBot's Ass On map16
-seventh_bot Beat MyBot's Ass On map21
-seventh_bot Beat MyBot's Ass On map22
-seventh_bot Beat MyBot's Ass On map26
-seventh_bot Beat MyBot's Ass On map27
-seventh_bot Beat MyBot's Ass On map4
-seventh_bot Beat MyBot's Ass On map42
-seventh_bot Beat MyBot's Ass On map44
-seventh_bot Beat MyBot's Ass On map5
-seventh_bot Beat MyBot's Ass On map50
-seventh_bot Beat MyBot's Ass On map53
-seventh_bot Beat MyBot's Ass On map62
-seventh_bot Beat MyBot's Ass On map77
-seventh_bot Beat MyBot's Ass On map84
-seventh_bot Beat MyBot's Ass On map86
-seventh_bot Beat MyBot's Ass On map87
-
-
-
-
-
-
-
-
-
-
-MyBot (git reset)
-RageBot.jar Beat Your Ass On map2
-DualBot.jar Beat Your Ass On map7
-RageBot.jar Beat Your Ass On map7
-DualBot.jar Beat Your Ass On map12
-RageBot.jar Beat Your Ass On map13
-DualBot.jar Beat Your Ass On map15
-RageBot.jar Beat Your Ass On map15
-RageBot.jar Beat Your Ass On map16
-DualBot.jar Beat Your Ass On map17
-DualBot.jar Beat Your Ass On map20
-ProspectorBot.jar Beat Your Ass On map22
-DualBot.jar Beat Your Ass On map23
-ProspectorBot.jar Beat Your Ass On map23
-RageBot.jar Beat Your Ass On map23
-DualBot.jar Beat Your Ass On map26
-DualBot.jar Beat Your Ass On map27
-RageBot.jar Beat Your Ass On map27
-RageBot.jar Beat Your Ass On map29
-RageBot.jar Beat Your Ass On map31
-BullyBot.jar Beat Your Ass On map34
-DualBot.jar Beat Your Ass On map34
-ProspectorBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map34
-RandomBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map35
-RageBot.jar Beat Your Ass On map36
-RageBot.jar Beat Your Ass On map38
-RageBot.jar Beat Your Ass On map39
-DualBot.jar Beat Your Ass On map40
-RageBot.jar Beat Your Ass On map40
-BullyBot.jar Beat Your Ass On map44
-DualBot.jar Beat Your Ass On map44
-ProspectorBot.jar Beat Your Ass On map44
-RageBot.jar Beat Your Ass On map44
-RandomBot.jar Beat Your Ass On map44
-
-
-
-
-MyBot, with else for else if more planets
-RageBot.jar Beat Your Ass On map2
-DualBot.jar Beat Your Ass On map7
-RageBot.jar Beat Your Ass On map7
-DualBot.jar Beat Your Ass On map11
-DualBot.jar Beat Your Ass On map13
-RageBot.jar Beat Your Ass On map13
-DualBot.jar Beat Your Ass On map15
-RageBot.jar Beat Your Ass On map15
-RageBot.jar Beat Your Ass On map16
-DualBot.jar Beat Your Ass On map19
-DualBot.jar Beat Your Ass On map20
-DualBot.jar Beat Your Ass On map21
-ProspectorBot.jar Beat Your Ass On map22
-RageBot.jar Beat Your Ass On map23
-DualBot.jar Beat Your Ass On map26
-DualBot.jar Beat Your Ass On map27
-RageBot.jar Beat Your Ass On map27
-DualBot.jar Beat Your Ass On map29
-RageBot.jar Beat Your Ass On map29
-RageBot.jar Beat Your Ass On map31
-DualBot.jar Beat Your Ass On map33
-BullyBot.jar Beat Your Ass On map34
-DualBot.jar Beat Your Ass On map34
-ProspectorBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map35
-DualBot.jar Beat Your Ass On map36
-RageBot.jar Beat Your Ass On map36
-RageBot.jar Beat Your Ass On map38
-DualBot.jar Beat Your Ass On map39
-RageBot.jar Beat Your Ass On map39
-RageBot.jar Beat Your Ass On map40
-DualBot.jar Beat Your Ass On map43
-BullyBot.jar Beat Your Ass On map44
-DualBot.jar Beat Your Ass On map44
-ProspectorBot.jar Beat Your Ass On map44
-RageBot.jar Beat Your Ass On map44
-RandomBot.jar Beat Your Ass On map44
-
-
-
-
-
-
-DualBot.jar Beat Your Ass On map11
-DualBot.jar Beat Your Ass On map20
-RageBot.jar Beat Your Ass On map20
-DualBot.jar Beat Your Ass On map23
-RageBot.jar Beat Your Ass On map23
-DualBot.jar Beat Your Ass On map26
-BullyBot.jar Beat Your Ass On map27
-DualBot.jar Beat Your Ass On map27
-RageBot.jar Beat Your Ass On map27
-DualBot.jar Beat Your Ass On map28
-DualBot.jar Beat Your Ass On map29
-RageBot.jar Beat Your Ass On map29
-RageBot.jar Beat Your Ass On map31
-DualBot.jar Beat Your Ass On map32
-RageBot.jar Beat Your Ass On map33
-BullyBot.jar Beat Your Ass On map34
-DualBot.jar Beat Your Ass On map34
-ProspectorBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map34
-RandomBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map35
-RageBot.jar Beat Your Ass On map36
-RageBot.jar Beat Your Ass On map38
-RageBot.jar Beat Your Ass On map39
-DualBot.jar Beat Your Ass On map40
-BullyBot.jar Beat Your Ass On map44
-DualBot.jar Beat Your Ass On map44
-ProspectorBot.jar Beat Your Ass On map44
-RageBot.jar Beat Your Ass On map44
-RandomBot.jar Beat Your Ass On map44
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-RageBot.jar Beat Your Ass On map5
-DualBot.jar Beat Your Ass On map11
-RageBot.jar Beat Your Ass On map13
-DualBot.jar Beat Your Ass On map15
-RageBot.jar Beat Your Ass On map16
-DualBot.jar Beat Your Ass On map20
-RageBot.jar Beat Your Ass On map20
-DualBot.jar Beat Your Ass On map23
-RageBot.jar Beat Your Ass On map23
-DualBot.jar Beat Your Ass On map26
-BullyBot.jar Beat Your Ass On map27
-DualBot.jar Beat Your Ass On map27
-RageBot.jar Beat Your Ass On map27
-DualBot.jar Beat Your Ass On map28
-DualBot.jar Beat Your Ass On map29
-RageBot.jar Beat Your Ass On map29
-RageBot.jar Beat Your Ass On map31
-DualBot.jar Beat Your Ass On map32
-RageBot.jar Beat Your Ass On map33
-BullyBot.jar Beat Your Ass On map34
-DualBot.jar Beat Your Ass On map34
-ProspectorBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map34
-RageBot.jar Beat Your Ass On map35
-RageBot.jar Beat Your Ass On map36
-RageBot.jar Beat Your Ass On map38
-RageBot.jar Beat Your Ass On map39
-DualBot.jar Beat Your Ass On map40
-RageBot.jar Beat Your Ass On map40
-BullyBot.jar Beat Your Ass On map44
-DualBot.jar Beat Your Ass On map44
-ProspectorBot.jar Beat Your Ass On map44
-RageBot.jar Beat Your Ass On map44
-RandomBot.jar Beat Your Ass On map44
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-MyBot Beat eighth_bot's Ass On map1
-MyBot Beat eighth_bot's Ass On map12
-MyBot Beat eighth_bot's Ass On map13
-MyBot Beat eighth_bot's Ass On map15
-MyBot Beat eighth_bot's Ass On map19
-MyBot Beat eighth_bot's Ass On map2
-MyBot Beat eighth_bot's Ass On map20
-MyBot Beat eighth_bot's Ass On map22
-MyBot Beat eighth_bot's Ass On map23
-MyBot Beat eighth_bot's Ass On map27
-MyBot Beat eighth_bot's Ass On map28
-MyBot Beat eighth_bot's Ass On map29
-MyBot Beat eighth_bot's Ass On map3
-MyBot Beat eighth_bot's Ass On map33
-MyBot Beat eighth_bot's Ass On map35
-MyBot Beat eighth_bot's Ass On map39
-MyBot Beat eighth_bot's Ass On map41
-MyBot Beat eighth_bot's Ass On map43
-MyBot Beat eighth_bot's Ass On map44
-MyBot Beat eighth_bot's Ass On map45
-MyBot Beat eighth_bot's Ass On map46
-MyBot Beat eighth_bot's Ass On map47
-MyBot Beat eighth_bot's Ass On map48
-MyBot Beat eighth_bot's Ass On map50
-MyBot Beat eighth_bot's Ass On map52
-MyBot Beat eighth_bot's Ass On map54
-MyBot Beat eighth_bot's Ass On map55
-MyBot Beat eighth_bot's Ass On map57
-MyBot Beat eighth_bot's Ass On map60
-MyBot Beat eighth_bot's Ass On map61
-MyBot Beat eighth_bot's Ass On map62
-MyBot Beat eighth_bot's Ass On map65
-MyBot Beat eighth_bot's Ass On map66
-MyBot Beat eighth_bot's Ass On map68
-MyBot Beat eighth_bot's Ass On map7
-MyBot Beat eighth_bot's Ass On map70
-MyBot Beat eighth_bot's Ass On map72
-MyBot Beat eighth_bot's Ass On map73
-MyBot Beat eighth_bot's Ass On map75
-MyBot Beat eighth_bot's Ass On map76
-MyBot Beat eighth_bot's Ass On map77
-MyBot Beat eighth_bot's Ass On map80
-MyBot Beat eighth_bot's Ass On map81
-MyBot Beat eighth_bot's Ass On map82
-MyBot Beat eighth_bot's Ass On map83
-MyBot Beat eighth_bot's Ass On map85
-MyBot Beat eighth_bot's Ass On map87
-MyBot Beat eighth_bot's Ass On map88
-MyBot Beat eighth_bot's Ass On map89
-MyBot Beat eighth_bot's Ass On map91
-MyBot Beat eighth_bot's Ass On map92
-MyBot Beat eighth_bot's Ass On map93
-MyBot Beat eighth_bot's Ass On map94
-MyBot Beat eighth_bot's Ass On map95
-MyBot Beat eighth_bot's Ass On map97
-eighth_bot Beat MyBot's Ass On map10
-eighth_bot Beat MyBot's Ass On map11
-eighth_bot Beat MyBot's Ass On map14
-eighth_bot Beat MyBot's Ass On map16
-eighth_bot Beat MyBot's Ass On map17
-eighth_bot Beat MyBot's Ass On map18
-eighth_bot Beat MyBot's Ass On map21
-eighth_bot Beat MyBot's Ass On map24
-eighth_bot Beat MyBot's Ass On map25
-eighth_bot Beat MyBot's Ass On map26
-eighth_bot Beat MyBot's Ass On map30
-eighth_bot Beat MyBot's Ass On map31
-eighth_bot Beat MyBot's Ass On map32
-eighth_bot Beat MyBot's Ass On map34
-eighth_bot Beat MyBot's Ass On map36
-eighth_bot Beat MyBot's Ass On map37
-eighth_bot Beat MyBot's Ass On map38
-eighth_bot Beat MyBot's Ass On map4
-eighth_bot Beat MyBot's Ass On map40
-eighth_bot Beat MyBot's Ass On map42
-eighth_bot Beat MyBot's Ass On map49
-eighth_bot Beat MyBot's Ass On map5
-eighth_bot Beat MyBot's Ass On map51
-eighth_bot Beat MyBot's Ass On map53
-eighth_bot Beat MyBot's Ass On map56
-eighth_bot Beat MyBot's Ass On map58
-eighth_bot Beat MyBot's Ass On map59
-eighth_bot Beat MyBot's Ass On map6
-eighth_bot Beat MyBot's Ass On map63
-eighth_bot Beat MyBot's Ass On map64
-eighth_bot Beat MyBot's Ass On map67
-eighth_bot Beat MyBot's Ass On map69
-eighth_bot Beat MyBot's Ass On map71
-eighth_bot Beat MyBot's Ass On map74
-eighth_bot Beat MyBot's Ass On map78
-eighth_bot Beat MyBot's Ass On map79
-eighth_bot Beat MyBot's Ass On map8
-eighth_bot Beat MyBot's Ass On map84
-eighth_bot Beat MyBot's Ass On map86
-eighth_bot Beat MyBot's Ass On map9
-eighth_bot Beat MyBot's Ass On map90
-eighth_bot Beat MyBot's Ass On map96
-
-
-
-MyBot Beat eighth_bot's Ass On map1
-MyBot Beat eighth_bot's Ass On map100
-MyBot Beat eighth_bot's Ass On map12
-MyBot Beat eighth_bot's Ass On map13
-MyBot Beat eighth_bot's Ass On map15
-MyBot Beat eighth_bot's Ass On map19
-MyBot Beat eighth_bot's Ass On map2
-MyBot Beat eighth_bot's Ass On map20
-MyBot Beat eighth_bot's Ass On map22
-MyBot Beat eighth_bot's Ass On map23
-MyBot Beat eighth_bot's Ass On map27
-MyBot Beat eighth_bot's Ass On map28
-MyBot Beat eighth_bot's Ass On map29
-MyBot Beat eighth_bot's Ass On map3
-MyBot Beat eighth_bot's Ass On map33
-MyBot Beat eighth_bot's Ass On map35
-MyBot Beat eighth_bot's Ass On map39
-MyBot Beat eighth_bot's Ass On map41
-MyBot Beat eighth_bot's Ass On map43
-MyBot Beat eighth_bot's Ass On map44
-MyBot Beat eighth_bot's Ass On map45
-MyBot Beat eighth_bot's Ass On map46
-MyBot Beat eighth_bot's Ass On map47
-MyBot Beat eighth_bot's Ass On map48
-MyBot Beat eighth_bot's Ass On map50
-MyBot Beat eighth_bot's Ass On map52
-MyBot Beat eighth_bot's Ass On map54
-MyBot Beat eighth_bot's Ass On map55
-MyBot Beat eighth_bot's Ass On map57
-MyBot Beat eighth_bot's Ass On map60
-MyBot Beat eighth_bot's Ass On map61
-MyBot Beat eighth_bot's Ass On map62
-MyBot Beat eighth_bot's Ass On map65
-MyBot Beat eighth_bot's Ass On map66
-MyBot Beat eighth_bot's Ass On map68
-MyBot Beat eighth_bot's Ass On map7
-MyBot Beat eighth_bot's Ass On map70
-MyBot Beat eighth_bot's Ass On map72
-MyBot Beat eighth_bot's Ass On map73
-MyBot Beat eighth_bot's Ass On map75
-MyBot Beat eighth_bot's Ass On map76
-MyBot Beat eighth_bot's Ass On map77
-MyBot Beat eighth_bot's Ass On map80
-MyBot Beat eighth_bot's Ass On map81
-MyBot Beat eighth_bot's Ass On map82
-MyBot Beat eighth_bot's Ass On map83
-MyBot Beat eighth_bot's Ass On map85
-MyBot Beat eighth_bot's Ass On map87
-MyBot Beat eighth_bot's Ass On map88
-MyBot Beat eighth_bot's Ass On map89
-MyBot Beat eighth_bot's Ass On map91
-MyBot Beat eighth_bot's Ass On map92
-MyBot Beat eighth_bot's Ass On map93
-MyBot Beat eighth_bot's Ass On map94
-MyBot Beat eighth_bot's Ass On map95
-MyBot Beat eighth_bot's Ass On map97
-MyBot Beat eighth_bot's Ass On map98
-MyBot Beat eighth_bot's Ass On map99
-eighth_bot Beat MyBot's Ass On map10
-eighth_bot Beat MyBot's Ass On map11
-eighth_bot Beat MyBot's Ass On map14
-eighth_bot Beat MyBot's Ass On map16
-eighth_bot Beat MyBot's Ass On map17
-eighth_bot Beat MyBot's Ass On map18
-eighth_bot Beat MyBot's Ass On map21
-eighth_bot Beat MyBot's Ass On map24
-eighth_bot Beat MyBot's Ass On map25
-eighth_bot Beat MyBot's Ass On map26
-eighth_bot Beat MyBot's Ass On map30
-eighth_bot Beat MyBot's Ass On map31
-eighth_bot Beat MyBot's Ass On map32
-eighth_bot Beat MyBot's Ass On map34
-eighth_bot Beat MyBot's Ass On map36
-eighth_bot Beat MyBot's Ass On map37
-eighth_bot Beat MyBot's Ass On map38
-eighth_bot Beat MyBot's Ass On map4
-eighth_bot Beat MyBot's Ass On map40
-eighth_bot Beat MyBot's Ass On map42
-eighth_bot Beat MyBot's Ass On map49
-eighth_bot Beat MyBot's Ass On map5
-eighth_bot Beat MyBot's Ass On map51
-eighth_bot Beat MyBot's Ass On map53
-eighth_bot Beat MyBot's Ass On map56
-eighth_bot Beat MyBot's Ass On map58
-eighth_bot Beat MyBot's Ass On map59
-eighth_bot Beat MyBot's Ass On map6
-eighth_bot Beat MyBot's Ass On map63
-eighth_bot Beat MyBot's Ass On map64
-eighth_bot Beat MyBot's Ass On map67
-eighth_bot Beat MyBot's Ass On map69
-eighth_bot Beat MyBot's Ass On map71
-eighth_bot Beat MyBot's Ass On map74
-eighth_bot Beat MyBot's Ass On map78
-eighth_bot Beat MyBot's Ass On map79
-eighth_bot Beat MyBot's Ass On map8
-eighth_bot Beat MyBot's Ass On map84
-eighth_bot Beat MyBot's Ass On map86
-eighth_bot Beat MyBot's Ass On map9
-eighth_bot Beat MyBot's Ass On map90
-eighth_bot Beat MyBot's Ass On map96
-
-
-
-
-
-
-
-
-
-
-MyBot Beat eighth_bot's Ass On map11
-MyBot Beat eighth_bot's Ass On map14
-MyBot Beat eighth_bot's Ass On map15
-MyBot Beat eighth_bot's Ass On map16
-MyBot Beat eighth_bot's Ass On map19
-MyBot Beat eighth_bot's Ass On map2
-MyBot Beat eighth_bot's Ass On map20
-MyBot Beat eighth_bot's Ass On map22
-MyBot Beat eighth_bot's Ass On map23
-MyBot Beat eighth_bot's Ass On map24
-MyBot Beat eighth_bot's Ass On map25
-MyBot Beat eighth_bot's Ass On map28
-MyBot Beat eighth_bot's Ass On map30
-MyBot Beat eighth_bot's Ass On map32
-MyBot Beat eighth_bot's Ass On map35
-MyBot Beat eighth_bot's Ass On map37
-MyBot Beat eighth_bot's Ass On map4
-MyBot Beat eighth_bot's Ass On map40
-MyBot Beat eighth_bot's Ass On map42
-MyBot Beat eighth_bot's Ass On map44
-MyBot Beat eighth_bot's Ass On map46
-MyBot Beat eighth_bot's Ass On map51
-MyBot Beat eighth_bot's Ass On map54
-MyBot Beat eighth_bot's Ass On map58
-MyBot Beat eighth_bot's Ass On map61
-MyBot Beat eighth_bot's Ass On map63
-MyBot Beat eighth_bot's Ass On map68
-MyBot Beat eighth_bot's Ass On map7
-MyBot Beat eighth_bot's Ass On map72
-MyBot Beat eighth_bot's Ass On map74
-MyBot Beat eighth_bot's Ass On map76
-MyBot Beat eighth_bot's Ass On map84
-MyBot Beat eighth_bot's Ass On map85
-MyBot Beat eighth_bot's Ass On map86
-MyBot Beat eighth_bot's Ass On map92
-MyBot Beat eighth_bot's Ass On map95
-MyBot Beat eighth_bot's Ass On map98
-eighth_bot Beat MyBot's Ass On map1
-eighth_bot Beat MyBot's Ass On map10
-eighth_bot Beat MyBot's Ass On map100
-eighth_bot Beat MyBot's Ass On map12
-eighth_bot Beat MyBot's Ass On map13
-eighth_bot Beat MyBot's Ass On map17
-eighth_bot Beat MyBot's Ass On map18
-eighth_bot Beat MyBot's Ass On map21
-eighth_bot Beat MyBot's Ass On map26
-eighth_bot Beat MyBot's Ass On map27
-eighth_bot Beat MyBot's Ass On map29
-eighth_bot Beat MyBot's Ass On map3
-eighth_bot Beat MyBot's Ass On map31
-eighth_bot Beat MyBot's Ass On map33
-eighth_bot Beat MyBot's Ass On map34
-eighth_bot Beat MyBot's Ass On map36
-eighth_bot Beat MyBot's Ass On map38
-eighth_bot Beat MyBot's Ass On map39
-eighth_bot Beat MyBot's Ass On map41
-eighth_bot Beat MyBot's Ass On map43
-eighth_bot Beat MyBot's Ass On map45
-eighth_bot Beat MyBot's Ass On map47
-eighth_bot Beat MyBot's Ass On map48
-eighth_bot Beat MyBot's Ass On map49
-eighth_bot Beat MyBot's Ass On map5
-eighth_bot Beat MyBot's Ass On map50
-eighth_bot Beat MyBot's Ass On map52
-eighth_bot Beat MyBot's Ass On map53
-eighth_bot Beat MyBot's Ass On map55
-eighth_bot Beat MyBot's Ass On map56
-eighth_bot Beat MyBot's Ass On map57
-eighth_bot Beat MyBot's Ass On map59
-eighth_bot Beat MyBot's Ass On map6
-eighth_bot Beat MyBot's Ass On map60
-eighth_bot Beat MyBot's Ass On map62
-eighth_bot Beat MyBot's Ass On map64
-eighth_bot Beat MyBot's Ass On map65
-eighth_bot Beat MyBot's Ass On map66
-eighth_bot Beat MyBot's Ass On map67
-eighth_bot Beat MyBot's Ass On map69
-eighth_bot Beat MyBot's Ass On map70
-eighth_bot Beat MyBot's Ass On map71
-eighth_bot Beat MyBot's Ass On map73
-eighth_bot Beat MyBot's Ass On map75
-eighth_bot Beat MyBot's Ass On map77
-eighth_bot Beat MyBot's Ass On map78
-eighth_bot Beat MyBot's Ass On map79
-eighth_bot Beat MyBot's Ass On map8
-eighth_bot Beat MyBot's Ass On map80
-eighth_bot Beat MyBot's Ass On map81
-eighth_bot Beat MyBot's Ass On map82
-eighth_bot Beat MyBot's Ass On map83
-eighth_bot Beat MyBot's Ass On map87
-eighth_bot Beat MyBot's Ass On map88
-eighth_bot Beat MyBot's Ass On map89
-eighth_bot Beat MyBot's Ass On map9
-eighth_bot Beat MyBot's Ass On map90
-eighth_bot Beat MyBot's Ass On map91
-eighth_bot Beat MyBot's Ass On map93
-eighth_bot Beat MyBot's Ass On map94
-eighth_bot Beat MyBot's Ass On map96
-eighth_bot Beat MyBot's Ass On map97
-eighth_bot Beat MyBot's Ass On map99
+Map 1:  MyBot 0 vs.  eighth_bot 1
+Map 2:  MyBot 1 vs.  eighth_bot 1
+Map 3:  MyBot 2 vs.  eighth_bot 1
+Map 4:  MyBot 3 vs.  eighth_bot 1
+Map 5:  MyBot 3 vs.  eighth_bot 2
+Map 6:  MyBot 4 vs.  eighth_bot 2
+Map 7:  MyBot 5 vs.  eighth_bot 2
+Map 8:  MyBot 6 vs.  eighth_bot 2
+Map 9:  MyBot 6 vs.  eighth_bot 3
+Map 10:  MyBot 7 vs.  eighth_bot 3
+Map 11:  MyBot 8 vs.  eighth_bot 3
+Map 12:  MyBot 9 vs.  eighth_bot 3
+Map 13:  MyBot 9 vs.  eighth_bot 4
+Map 14:  MyBot 9 vs.  eighth_bot 5
+Map 15:  MyBot 10 vs.  eighth_bot 5
+Map 16:  MyBot 11 vs.  eighth_bot 5
+Map 17:  MyBot 12 vs.  eighth_bot 5
+Map 18:  MyBot 12 vs.  eighth_bot 6
+Map 19:  MyBot 13 vs.  eighth_bot 6
+Map 20:  MyBot 14 vs.  eighth_bot 6
+Map 21:  MyBot 15 vs.  eighth_bot 6
+Map 22:  MyBot 16 vs.  eighth_bot 6
+Map 23:  MyBot 16 vs.  eighth_bot 7
+Map 24:  MyBot 17 vs.  eighth_bot 7
+Map 25:  MyBot 17 vs.  eighth_bot 8
+Map 26:  MyBot 17 vs.  eighth_bot 9
+Map 27:  MyBot 18 vs.  eighth_bot 9
+Map 28:  MyBot 19 vs.  eighth_bot 9
+Map 29:  MyBot 20 vs.  eighth_bot 9
+Map 30:  MyBot 20 vs.  eighth_bot 10
+Map 31:  MyBot 20 vs.  eighth_bot 11
+Map 32:  MyBot 20 vs.  eighth_bot 12
+Map 33:  MyBot 21 vs.  eighth_bot 12
+Map 34:  MyBot 22 vs.  eighth_bot 12
+Map 35:  MyBot 23 vs.  eighth_bot 12
+Map 36:  MyBot 24 vs.  eighth_bot 12
+Map 37:  MyBot 25 vs.  eighth_bot 12
+Map 38:  MyBot 25 vs.  eighth_bot 13
+Map 39:  MyBot 26 vs.  eighth_bot 13
+Map 40:  MyBot 27 vs.  eighth_bot 13
+Map 41:  MyBot 28 vs.  eighth_bot 13
+Map 42:  MyBot 29 vs.  eighth_bot 13
+Map 43:  MyBot 30 vs.  eighth_bot 13
+Map 44:  MyBot 31 vs.  eighth_bot 13
+Map 45:  MyBot 31 vs.  eighth_bot 14
+Map 46:  MyBot 31 vs.  eighth_bot 15
+Map 47:  MyBot 32 vs.  eighth_bot 15
+Map 48:  MyBot 32 vs.  eighth_bot 16
+Map 49:  MyBot 32 vs.  eighth_bot 17
+Map 50:  MyBot 32 vs.  eighth_bot 18
+Map 51:  MyBot 33 vs.  eighth_bot 18
+Map 52:  MyBot 34 vs.  eighth_bot 18
+Map 53:  MyBot 35 vs.  eighth_bot 18
+Map 54:  MyBot 35 vs.  eighth_bot 19
+Map 55:  MyBot 36 vs.  eighth_bot 19
+Map 56:  MyBot 36 vs.  eighth_bot 20
+Map 57:  MyBot 36 vs.  eighth_bot 21
+Map 58:  MyBot 37 vs.  eighth_bot 21
+Map 59:  MyBot 38 vs.  eighth_bot 21
+Map 60:  MyBot 39 vs.  eighth_bot 21
+Map 61:  MyBot 40 vs.  eighth_bot 21
+Map 62:  MyBot 41 vs.  eighth_bot 21
+Map 63:  MyBot 42 vs.  eighth_bot 21
+Map 64:  MyBot 43 vs.  eighth_bot 21
+Map 65:  MyBot 43 vs.  eighth_bot 22
+Map 66:  MyBot 44 vs.  eighth_bot 22
+Map 67:  MyBot 45 vs.  eighth_bot 22
+Map 68:  MyBot 46 vs.  eighth_bot 22
+Map 69:  MyBot 46 vs.  eighth_bot 23
+Map 70:  MyBot 47 vs.  eighth_bot 23
+Map 71:  MyBot 48 vs.  eighth_bot 23
+Map 72:  MyBot 49 vs.  eighth_bot 23
+Map 73:  MyBot 50 vs.  eighth_bot 23
+Map 74:  MyBot 50 vs.  eighth_bot 24
+Map 75:  MyBot 51 vs.  eighth_bot 24
+Map 76:  MyBot 52 vs.  eighth_bot 24
+Map 77:  MyBot 53 vs.  eighth_bot 24
+Map 78:  MyBot 53 vs.  eighth_bot 25
+Map 79:  MyBot 54 vs.  eighth_bot 25
+Map 80:  MyBot 55 vs.  eighth_bot 25
+Map 81:  MyBot 55 vs.  eighth_bot 26
+Map 82:  MyBot 56 vs.  eighth_bot 26
+Map 83:  MyBot 56 vs.  eighth_bot 27
+Map 84:  MyBot 57 vs.  eighth_bot 27
+Map 85:  MyBot 57 vs.  eighth_bot 28
+Map 86:  MyBot 58 vs.  eighth_bot 28
+Map 87:  MyBot 59 vs.  eighth_bot 28
+Map 88:  MyBot 60 vs.  eighth_bot 28
+Map 89:  MyBot 60 vs.  eighth_bot 29
+Map 90:  MyBot 60 vs.  eighth_bot 30
+Map 91:  MyBot 60 vs.  eighth_bot 31
+Map 92:  MyBot 61 vs.  eighth_bot 31
+Map 93:  MyBot 61 vs.  eighth_bot 32
+Map 94:  MyBot 61 vs.  eighth_bot 33
+Map 95:  MyBot 62 vs.  eighth_bot 33
+Map 96:  MyBot 62 vs.  eighth_bot 34
+Map 97:  MyBot 62 vs.  eighth_bot 35
+Map 98:  MyBot 63 vs.  eighth_bot 35
+Map 99:  MyBot 64 vs.  eighth_bot 35
+Map 100:  MyBot 64 vs.  eighth_bot 36

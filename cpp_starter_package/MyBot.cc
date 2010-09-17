@@ -23,7 +23,7 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
 
 	turn += 1;
-	if (turn < 10){
+	if (turn < 5){
 		game_stage = 0 ;// early
 	}
 	// if ((turn > 10) && (turn < 100)){
@@ -138,7 +138,6 @@ void DoTurn(const PlanetWars& pw) {
 			}
 		}
 		
-		
 	
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
 		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
@@ -211,16 +210,19 @@ void DoTurn(const PlanetWars& pw) {
 			if((curr_p.NumShips() > 2)){
 				if (incoming == false){
 					if(desire_planet_id > -1){
-						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() / 2 );						
+						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1 );	
 					}
-					if(second_desire_planet_id > -1){
-						pw.IssueOrder(curr_p.PlanetID(), second_desire_planet_id, curr_p.NumShips() / 2);
-					}else if (their_weakest_planet_id > -1){
-						pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2);
-					}
+					// if(second_desire_planet_id > -1){
+					// 	pw.IssueOrder(curr_p.PlanetID(), second_desire_planet_id, curr_p.NumShips() / 2);
+					// }else if (their_weakest_planet_id > -1){
+					// 	pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2);
+					// }
 				}else{
 					if(closest_planet > -1){
-						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips());
+						// I think this is better, but haven't tested it widely yet.
+						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() / 2);  
+						// first impression is this below is worse.
+//						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() );						
 					}
 					// if (curr_p.NumShips() > incoming_ships){
 					// 	pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - incoming_ships);

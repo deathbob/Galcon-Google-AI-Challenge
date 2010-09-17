@@ -121,6 +121,7 @@ void DoTurn(const PlanetWars& pw) {
 //			double score = (grow ) / (dist ) ; // this is the default
 //			double score = (grow * grow) / (dist * pop) ; // this is also pretty good, need to check them against eachother.			
 			double score = 1.0 / ((dist * dist ) + pop) ; // This is the best one so far.
+//			double score = grow / ((dist * dist ) + pop) ; // not as good
 			if (dist < closest_dist){
 				closest_planet = cow.PlanetID();
 				closest_dist = dist;

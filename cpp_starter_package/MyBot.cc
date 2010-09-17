@@ -21,7 +21,7 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> neutral_planets = pw.NeutralPlanets();
   	std::vector<Planet> not_my_planets =  pw.NotMyPlanets();
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
-
+	bool targeted_everybody = false;
 	turn += 1;
 	if (turn < 5){
 		game_stage = 0 ;// early
@@ -96,7 +96,9 @@ void DoTurn(const PlanetWars& pw) {
 	  	for (int i = 0; i < enemy_planets.size(); ++i) {
 	    	const Planet& p = enemy_planets[i];
 			double dist = pw.Distance(curr_p.PlanetID(), p.PlanetID());	
+			double grow = p.GrowthRate();
 	    	double score = 1.0 / ((dist * dist) + p.NumShips());  // This is the best formula so far for finding planet weakness
+//	    	double score = grow / ((dist * dist) + p.NumShips());  // This is the best formula so far for finding planet weakness
 	    	if (score > weakest_score) {
 	      		weakest_score = score;
 				their_second_weakest_id = their_weakest_planet_id;
@@ -119,9 +121,10 @@ void DoTurn(const PlanetWars& pw) {
 			double grow = cow.GrowthRate();
 			double pop = cow.NumShips();
 //			double score = (grow ) / (dist ) ; // this is the default
-//			double score = (grow * grow) / (dist * pop) ; // this is also pretty good, need to check them against eachother.			
-//			double score = 1.0 / ((dist * dist ) + pop) ; // This is the best one so far.
-			double score = grow / ((dist * dist ) + pop) ; // not as good
+//			double score = (grow * grow) / (dist * pop) ; // this is also pretty good, need to check them against each other.
+			double score = grow / ((dist * dist ) + pop) ; // This is the best one so far.
+//			double score = 1.0 / ((dist * dist ) + pop) ; //  Not as good. Second best so far?
+
 			if (dist < closest_dist){
 				closest_planet = cow.PlanetID();
 				closest_dist = dist;
@@ -158,10 +161,20 @@ void DoTurn(const PlanetWars& pw) {
 // need to sort my planets based on how many ships they have so the first planet will send the most ships and then we can switch targets.			
 			else {
 				// If this planet has a shit ton of ships, do several things.
+				// First, if you have incoming, just chill.  Maybe should call for help?
 				if ((incoming == true) && (incoming_ships > curr_p.NumShips())){
 					continue;
 				}
+				// Shoot one ship at all their enemy planets, looks like this could be enough to freeze a bunch of people in their tracks.
 				int p_ships = curr_p.NumShips();
+				if ((p_ships > enemy_planets.size())&& (targeted_everybody == false)){
+					targeted_everybody = true;
+					for(int q = 0; q < enemy_planets.size(); ++q){
+						const Planet& zzz = enemy_planets[q];
+						pw.IssueOrder(curr_p.PlanetID(), zzz.PlanetID(), 1);
+						p_ships = p_ships - 1;
+					}
+				}
 				int ships = their_weakest_ships * 2;
 	        	if (p_ships > ships){
 	          		p_ships = p_ships - ships;
@@ -191,17 +204,17 @@ void DoTurn(const PlanetWars& pw) {
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
 					if(incoming == false){
-						if ((curr_p.NumShips() > 2) && (their_second_weakest_id > -1)){
-							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() / 2 );
-							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, curr_p.NumShips() / 2 );
+						if ((p_ships > 2) && (their_second_weakest_id > -1)){
+							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships / 2 );
+							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, p_ships / 2 );
 						}else{
-							if(curr_p.NumShips() > -1){
-								pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - 1 );
+							if(p_ships > -1){
+								pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - 1 );
 							}
 						}
 					}else{
-						if(curr_p.NumShips() > incoming_ships){
-							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - incoming_ships );
+						if(p_ships > incoming_ships){
+							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - incoming_ships );
 						}
 					}
 	        	}

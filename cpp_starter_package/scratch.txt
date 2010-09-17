@@ -98,3 +98,113 @@ Map 97:  MyBot 67 vs.  eighth_bot 30
 Map 98:  MyBot 68 vs.  eighth_bot 30
 Map 99:  MyBot 69 vs.  eighth_bot 30
 Map 100:  MyBot 70 vs.  eighth_bot 30
+
+
+
+
+
+
+
+
+
+
+Map 1:  MyBot 1 vs.  eighth_bot 0
+Map 2:  MyBot 2 vs.  eighth_bot 0
+Map 3:  MyBot 3 vs.  eighth_bot 0
+Map 4:  MyBot 4 vs.  eighth_bot 0
+Map 5:  MyBot 5 vs.  eighth_bot 0
+Map 6:  MyBot 6 vs.  eighth_bot 0
+Map 7:  MyBot 6 vs.  eighth_bot 1
+Map 8:  MyBot 7 vs.  eighth_bot 1
+Map 9:  MyBot 7 vs.  eighth_bot 2
+Map 10:  MyBot 8 vs.  eighth_bot 2
+Map 11:  MyBot 9 vs.  eighth_bot 2
+Map 12:  MyBot 10 vs.  eighth_bot 2
+Map 13:  MyBot 11 vs.  eighth_bot 2
+Map 14:  MyBot 11 vs.  eighth_bot 3
+Map 15:  MyBot 12 vs.  eighth_bot 3
+Map 16:  MyBot 13 vs.  eighth_bot 3
+Map 17:  MyBot 14 vs.  eighth_bot 3
+Map 18:  MyBot 15 vs.  eighth_bot 3
+Map 19:  MyBot 15 vs.  eighth_bot 4
+Map 20:  MyBot 16 vs.  eighth_bot 4
+Map 21:  MyBot 17 vs.  eighth_bot 4
+Map 22:  MyBot 18 vs.  eighth_bot 4
+Map 23:  MyBot 18 vs.  eighth_bot 5
+Map 24:  MyBot 19 vs.  eighth_bot 5
+Map 25:  MyBot 19 vs.  eighth_bot 6
+Map 26:  MyBot 19 vs.  eighth_bot 7
+Map 27:  MyBot 20 vs.  eighth_bot 7
+Map 28:  MyBot 21 vs.  eighth_bot 7
+Map 29:  MyBot 22 vs.  eighth_bot 7
+Map 30:  MyBot 23 vs.  eighth_bot 7
+Map 31:  MyBot 24 vs.  eighth_bot 7
+Map 32:  MyBot 25 vs.  eighth_bot 7
+Map 33:  MyBot 26 vs.  eighth_bot 7
+Map 34:  MyBot 27 vs.  eighth_bot 7
+Map 35:  MyBot 28 vs.  eighth_bot 7
+Map 36:  MyBot 29 vs.  eighth_bot 7
+Map 37:  MyBot 30 vs.  eighth_bot 7
+Map 38:  MyBot 30 vs.  eighth_bot 8
+Map 39:  MyBot 31 vs.  eighth_bot 8
+Map 40:  MyBot 31 vs.  eighth_bot 9
+Map 41:  MyBot 31 vs.  eighth_bot 10
+Map 42:  MyBot 32 vs.  eighth_bot 10
+Map 43:  MyBot 32 vs.  eighth_bot 11
+Map 44:  MyBot 33 vs.  eighth_bot 11
+Map 45:  MyBot 33 vs.  eighth_bot 12
+Map 46:  MyBot 34 vs.  eighth_bot 12
+Map 47:  MyBot 35 vs.  eighth_bot 12
+Map 48:  MyBot 35 vs.  eighth_bot 13
+Map 49:  MyBot 36 vs.  eighth_bot 13
+Map 50:  MyBot 37 vs.  eighth_bot 13
+Map 51:  MyBot 38 vs.  eighth_bot 13
+Map 52:  MyBot 39 vs.  eighth_bot 13
+Map 53:  MyBot 40 vs.  eighth_bot 13
+Map 54:  MyBot 41 vs.  eighth_bot 13
+Map 55:  MyBot 42 vs.  eighth_bot 13
+Map 56:  MyBot 43 vs.  eighth_bot 13
+Map 57:  MyBot 44 vs.  eighth_bot 13
+Map 58:  MyBot 45 vs.  eighth_bot 13
+Map 59:  MyBot 46 vs.  eighth_bot 13
+Map 60:  MyBot 47 vs.  eighth_bot 13
+Map 61:  MyBot 48 vs.  eighth_bot 13
+Map 62:  MyBot 49 vs.  eighth_bot 13
+Map 63:  MyBot 50 vs.  eighth_bot 13
+Map 64:  MyBot 50 vs.  eighth_bot 14
+Map 65:  MyBot 50 vs.  eighth_bot 15
+Map 66:  MyBot 51 vs.  eighth_bot 15
+Map 67:  MyBot 52 vs.  eighth_bot 15
+Map 68:  MyBot 53 vs.  eighth_bot 15
+Map 69:  MyBot 54 vs.  eighth_bot 15
+Map 70:  MyBot 55 vs.  eighth_bot 15
+Map 71:  MyBot 56 vs.  eighth_bot 15
+Map 72:  MyBot 57 vs.  eighth_bot 15
+Map 73:  MyBot 58 vs.  eighth_bot 15
+Map 74:  MyBot 59 vs.  eighth_bot 15
+Map 75:  MyBot 60 vs.  eighth_bot 15
+Map 76:  MyBot 61 vs.  eighth_bot 15
+Map 77:  MyBot 62 vs.  eighth_bot 15
+Map 78:  MyBot 63 vs.  eighth_bot 15
+Map 79:  MyBot 64 vs.  eighth_bot 15
+Map 80:  MyBot 65 vs.  eighth_bot 15
+Map 81:  MyBot 65 vs.  eighth_bot 16
+Map 82:  MyBot 66 vs.  eighth_bot 16
+Map 83:  MyBot 67 vs.  eighth_bot 16
+Map 84:  MyBot 68 vs.  eighth_bot 16
+Map 85:  MyBot 69 vs.  eighth_bot 16
+Map 86:  MyBot 70 vs.  eighth_bot 16
+Map 87:  MyBot 71 vs.  eighth_bot 16
+Map 88:  MyBot 72 vs.  eighth_bot 16
+Map 89:  MyBot 73 vs.  eighth_bot 16
+Map 90:  MyBot 74 vs.  eighth_bot 16
+Map 91:  MyBot 75 vs.  eighth_bot 16
+Map 92:  MyBot 76 vs.  eighth_bot 16
+Map 93:  MyBot 76 vs.  eighth_bot 17
+Map 94:  MyBot 77 vs.  eighth_bot 17
+Map 95:  MyBot 78 vs.  eighth_bot 17
+Map 96:  MyBot 79 vs.  eighth_bot 17
+Map 97:  MyBot 79 vs.  eighth_bot 18
+Map 98:  MyBot 80 vs.  eighth_bot 18
+Map 99:  MyBot 81 vs.  eighth_bot 18
+Map 100:  MyBot 82 vs.  eighth_bot 18

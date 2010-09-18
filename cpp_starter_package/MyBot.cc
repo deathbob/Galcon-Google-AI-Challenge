@@ -258,11 +258,11 @@ void DoTurn(const PlanetWars& pw) {
 			if((curr_p.NumShips() > 1)){
 				if (incoming == false){
 					if (desire_planet_id > -1){
-						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1 );	
+						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() / 2 );	
 					}
 				}else{
 					if(closest_planet > -1){
-						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() - 1);  // This is better, 70 out of 100 vs 62
+						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() / 2);  // This is better, 70 out of 100 vs 62
 					}
 				}
 			}

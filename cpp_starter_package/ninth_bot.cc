@@ -1,7 +1,6 @@
 #include <iostream>
 #include "PlanetWars.h"
 #include <time.h>
-#include <algorithm>
 
 
 // The DoTurn function is where your code goes. The PlanetWars object contains
@@ -12,11 +11,6 @@
 int enemy_origin = -1;
 int turn = 0;
 int game_stage = -1;
-
-bool num_ships_compare(const Planet& a, const Planet& b){
-	return a.NumShips() < b.NumShips();
-}
-
 //
 // There is already a basic strategy in place here. You can use it as a
 // starting point, or you can throw it out entirely and replace it with your
@@ -74,36 +68,12 @@ void DoTurn(const PlanetWars& pw) {
 		their_planets_size = 1;
 	}
 	
-	int my_growth_rate = 0;
-  	for (int i = 0; i < my_planets.size(); ++i) {
-  	  	const Planet& p = my_planets[i];	
-		my_growth_rate += p.GrowthRate();
-	}
-	
-	
-	
 	
 	////////////////////////////////////////////////////
   	// loop through my planets and issue commands to attack either the enemy or an unclaimed rock. 
 	////////////////////////////////////////////////////
   	for (int i = 0; i < my_planets.size(); ++i) {
   	  	const Planet& curr_p = my_planets[i];	
-
-		if(turn <= 1){ // first turn
-			std::sort(neutral_planets.begin(), neutral_planets.end(), num_ships_compare);
-			std::vector<Planet>::iterator it;
-			int rick = curr_p.NumShips();
-			for(int it = 0; it < neutral_planets.size(); ++it){
-				const Planet& p = neutral_planets[it];
-				int tar = p.NumShips() + 1;
-				if(rick > tar){
-					rick = rick - tar;
-					pw.IssueOrder(curr_p.PlanetID(), p.PlanetID(), tar );
-				}
-			}
-			continue;
-		}
-
 		// Determine if I have incoming
 		// Don't leave if there are enemy ships pointed at me.
 		bool incoming = false;
@@ -123,12 +93,10 @@ void DoTurn(const PlanetWars& pw) {
 	  	int their_weakest_ships = 0;
 		int their_second_weakest_ships = 0;
 	  	double weakest_score = -999999.0;
-		int their_growth_rate = 0;
 	  	for (int i = 0; i < enemy_planets.size(); ++i) {
 	    	const Planet& p = enemy_planets[i];
 			double dist = pw.Distance(curr_p.PlanetID(), p.PlanetID());	
 			double grow = p.GrowthRate();
-			their_growth_rate += grow;
 	    	double score = 1.0 / ((dist * dist) + p.NumShips());  // This is the best formula so far for finding planet weakness
 //	    	double score = grow / ((dist * dist) + p.NumShips());  // This is the best formula so far for finding planet weakness
 	    	if (score > weakest_score) {
@@ -176,8 +144,8 @@ void DoTurn(const PlanetWars& pw) {
 	
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
 		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
-		bool my_growth_rate_is_higher = (my_growth_rate > their_growth_rate);
-    	if (my_growth_rate_is_higher && (their_weakest_planet_id > -1)){
+
+    	if (i_have_more_planets && (their_weakest_planet_id > -1)){
 			if(i_have_twice_as_many_planets){
 				int ships_to_send = curr_p.NumShips() / their_planets_size;
 				for(int j = 0; j < enemy_planets.size(); ++j){
@@ -255,14 +223,14 @@ void DoTurn(const PlanetWars& pw) {
       	// also need to make it so that if the current planet is a target it doesn't send it's ships away.
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
-			if((curr_p.NumShips() > 1)){
+			if((curr_p.NumShips() > 2)){
 				if (incoming == false){
 					if (desire_planet_id > -1){
 						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1 );	
 					}
 				}else{
 					if(closest_planet > -1){
-						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() - 1);  // This is better, 70 out of 100 vs 62
+						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() / 2);  // This is better, 70 out of 100 vs 62
 					}
 				}
 			}

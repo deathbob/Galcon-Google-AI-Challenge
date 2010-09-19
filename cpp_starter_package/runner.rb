@@ -38,7 +38,10 @@ bots = Dir.entries(Dir.pwd + "/example_bots").collect{|x| x if x.match(/Bot.jar/
 
 
 # play my bots against eachother
-bots = %w{MyBot ninth_bot}
+#bots = %w{ ninth_bot MyBot }
+#bots = %w{ MyBot ninth_bot }
+bots = %w{ MyBot tenth_bot }
+#bots = %w{ tenth_bot MyBot }
 tricks = [0,0]
 1.upto(100) do |x|
 #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./MyBot" "./#{bot}" &> poop.out`

@@ -10,35 +10,12 @@
 // pw.IssueOrder() function. For example, to send 10 ships from planet 3 to
 // planet 8, you would say pw.IssueOrder(3, 8, 10).
 int enemy_origin = -1;
-int my_origin = -1;
 int turn = 0;
 int game_stage = -1;
+
 bool num_ships_compare(const Planet& a, const Planet& b){
 	return a.NumShips() < b.NumShips();
 }
-
-
-class PigSort{
-public:
-	PigSort(const PlanetWars& ppw):tom(ppw){}
-	bool operator()(const Planet& a, const Planet& b){
-		double a_dist = tom.Distance(my_origin, a.PlanetID());
-		double b_dist = tom.Distance(my_origin, b.PlanetID());
-
-		double a_score = 1 / (a.NumShips() * a_dist);
-		double b_score = 1 / (b.NumShips() * b_dist);
-		return a_score > b_score;		
-		// double a_score = 1.0 / ((a_dist * a_dist) + a.NumShips());
-		// double b_score = 1.0 / ((b_dist * b_dist) + b.NumShips());
-		// return a_score > b_score;		
-//		double a_score = a.NumShips();
-//		double b_score = b.NumShips();
-//		return a_score < b_score;
-	}
-private:
-	const PlanetWars& tom;
-};
-
 
 //
 // There is already a basic strategy in place here. You can use it as a
@@ -52,19 +29,33 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
 	bool targeted_everybody = false;
 	turn += 1;
+	if (turn < 5){
+		game_stage = 0 ;// early
+	}
+	// if ((turn > 10) && (turn < 100)){
+	// 	game_stage = 1
+	// }
+	// if (turn > 100){
+	// 	game_stage = 2
+	// }
+	
+	// if (turn % 2 == 0){
+	// 	return;
+	// }
+	
 
 	// set origin
-	if (turn <= 1){
-//	if (enemy_planets.size() == 1){
+	if (enemy_planets.size() == 1){
 		enemy_origin = enemy_planets[0].PlanetID();
-		my_origin = my_planets[0].PlanetID();
+		// need to spread to more planets on the first turn
 		// also need to try to spread to planets that are far away from their origin,
 		// because those planets, especially if they have a high growth rate, will be easier to defend and a good source of troops
 	}
 
+//  	int max_fleet_size = my_planets.size() * 4 ;
 	int max_fleet_size = 100;
-	  	if (pw.MyFleets().size() >= max_fleet_size ) {
-	   		return;
+  	if (pw.MyFleets().size() >= max_fleet_size ) {
+   		return;
 	}
 
   	// Find planet enemy is aiming at.
@@ -74,9 +65,12 @@ void DoTurn(const PlanetWars& pw) {
     	const Fleet& f = enemy_fleets[i];
     	dest = f.DestinationPlanet();
   	}
-	
+  
+
+
+
 	int their_planets_size = enemy_planets.size();
-	if(their_planets_size < 1){
+	if (their_planets_size < 1){
 		their_planets_size = 1;
 	}
 	
@@ -86,24 +80,17 @@ void DoTurn(const PlanetWars& pw) {
 		my_growth_rate += p.GrowthRate();
 	}
 	
-
 	
-
+	
+	
 	////////////////////////////////////////////////////
   	// loop through my planets and issue commands to attack either the enemy or an unclaimed rock. 
 	////////////////////////////////////////////////////
   	for (int i = 0; i < my_planets.size(); ++i) {
   	  	const Planet& curr_p = my_planets[i];	
-		
-		// if(turn <= 1){
-		// 	return;
-		// }
-		if(turn <= 1){ // first turn
-			
-			PigSort cow(pw);
-			std::sort(neutral_planets.begin(), neutral_planets.end(), cow);	
-		//	std::sort(neutral_planets.begin(), neutral_planets.end(), num_ships_compare);
 
+		if(turn <= 1){ // first turn
+			std::sort(neutral_planets.begin(), neutral_planets.end(), num_ships_compare);
 			std::vector<Planet>::iterator it;
 			int rick = curr_p.NumShips();
 			for(int it = 0; it < neutral_planets.size(); ++it){
@@ -143,7 +130,7 @@ void DoTurn(const PlanetWars& pw) {
 			double grow = p.GrowthRate();
 			their_growth_rate += grow;
 	    	double score = 1.0 / ((dist * dist) + p.NumShips());  // This is the best formula so far for finding planet weakness
-//	    	double score = grow / ((dist * dist) + p.NumShips());  // Not quite as good as 1.0 / ...
+//	    	double score = grow / ((dist * dist) + p.NumShips());  // This is the best formula so far for finding planet weakness
 	    	if (score > weakest_score) {
 	      		weakest_score = score;
 				their_second_weakest_id = their_weakest_planet_id;
@@ -185,8 +172,6 @@ void DoTurn(const PlanetWars& pw) {
 				second_desire_planet_id = desire_planet_id;
 			}
 		}
-		
-
 		
 	
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
@@ -284,6 +269,8 @@ void DoTurn(const PlanetWars& pw) {
   		}
   	}  
 }
+
+
 
 
 

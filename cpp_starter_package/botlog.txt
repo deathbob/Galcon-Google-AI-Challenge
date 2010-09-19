@@ -1,0 +1,520 @@
+turn 1 dist to their origin22
+turn 1 total planets size 23
+turn 1 dist to their origin22
+turn 1 total planets size 23
+turn 1 dist to their origin23
+turn 1 total planets size 23
+turn 1 dist to their origin18
+turn 1 total planets size 23
+turn 1 dist to their origin17
+turn 1 total planets size 23
+turn 1 dist to their origin20
+turn 1 total planets size 23
+turn 1 dist to their origin22
+turn 1 total planets size 23
+turn 1 dist to their origin14
+turn 1 total planets size 23
+turn 1 dist to their origin22
+turn 1 total planets size 23
+turn 1 dist to their origin21
+turn 1 total planets size 23
+turn 1 dist to their origin22
+turn 1 total planets size 23
+turn 1 dist to their origin20
+turn 1 total planets size 23
+turn 1 dist to their origin20
+turn 1 total planets size 23
+turn 1 dist to their origin19
+turn 1 total planets size 23
+turn 1 dist to their origin13
+turn 1 total planets size 23
+turn 1 dist to their origin21
+turn 1 total planets size 23
+turn 1 dist to their origin22
+turn 1 total planets size 23
+turn 1 dist to their origin30
+turn 1 total planets size 23
+turn 1 dist to their origin30
+turn 1 total planets size 23
+turn 1 dist to their origin12
+turn 1 total planets size 23
+turn 1 dist to their origin20
+turn 1 total planets size 23
+turn 1 dist to their origin5
+turn 1 total planets size 23
+turn 1 dist to their origin15
+turn 1 total planets size 23
+turn 1 dist to their origin24
+turn 1 total planets size 23
+turn 1 dist to their origin29
+turn 1 total planets size 23
+turn 1 dist to their origin6
+turn 1 total planets size 23
+turn 1 dist to their origin11
+turn 1 total planets size 23
+turn 1 dist to their origin26
+turn 1 total planets size 23
+turn 1 dist to their origin15
+turn 1 total planets size 23
+turn 1 dist to their origin5
+turn 1 total planets size 23
+turn 1 dist to their origin25
+turn 1 total planets size 23
+turn 1 dist to their origin22
+turn 1 total planets size 23
+turn 1 dist to their origin11
+turn 1 total planets size 23
+turn 1 dist to their origin18
+turn 1 total planets size 23
+turn 1 dist to their origin11
+turn 1 total planets size 23
+turn 1 dist to their origin20
+turn 1 total planets size 23
+turn 1 dist to their origin23
+turn 1 total planets size 23
+turn 1 dist to their origin24
+turn 1 total planets size 23
+turn 1 dist to their origin12
+turn 1 total planets size 23
+turn 1 dist to their origin13
+turn 1 total planets size 23
+turn 1 dist to their origin19
+turn 1 total planets size 23
+turn 1 dist to their origin23
+turn 1 total planets size 23
+turn 1 dist to their origin23
+turn 1 total planets size 23
+turn 1 target start
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 1 target0
+turn 2 target start
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target17
+turn 2 target17
+turn 2 target0
+turn 2 target0
+turn 2 target7
+turn 2 target7
+turn 2 target14
+turn 2 target14
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target0
+turn 2 target9
+turn 2 target9
+turn 3 target start
+turn 3 target0
+turn 3 target0
+turn 3 target0
+turn 3 target17
+turn 3 target17
+turn 3 target0
+turn 3 target0
+turn 3 target7
+turn 3 target7
+turn 3 target14
+turn 3 target14
+turn 3 target0
+turn 3 target0
+turn 3 target0
+turn 3 target0
+turn 3 target0
+turn 3 target5
+turn 3 target0
+turn 3 target0
+turn 3 target0
+turn 3 target0
+turn 3 target9
+turn 3 target9
+turn 4 target start
+turn 4 target0
+turn 4 target0
+turn 4 target0
+turn 4 target17
+turn 4 target17
+turn 4 target0
+turn 4 target0
+turn 4 target7
+turn 4 target7
+turn 4 target14
+turn 4 target14
+turn 4 target0
+turn 4 target0
+turn 4 target0
+turn 4 target0
+turn 4 target0
+turn 4 target10
+turn 4 target0
+turn 4 target0
+turn 4 target0
+turn 4 target0
+turn 4 target9
+turn 4 target9
+turn 5 target start
+turn 5 target0
+turn 5 target0
+turn 5 target0
+turn 5 target17
+turn 5 target17
+turn 5 target0
+turn 5 target0
+turn 5 target7
+turn 5 target7
+turn 5 target14
+turn 5 target14
+turn 5 target0
+turn 5 target0
+turn 5 target0
+turn 5 target0
+turn 5 target0
+turn 5 target15
+turn 5 target0
+turn 5 target0
+turn 5 target0
+turn 5 target0
+turn 5 target9
+turn 5 target9
+turn 6 target start
+turn 6 target0
+turn 6 target0
+turn 6 target0
+turn 6 target17
+turn 6 target17
+turn 6 target0
+turn 6 target0
+turn 6 target7
+turn 6 target7
+turn 6 target14
+turn 6 target14
+turn 6 target0
+turn 6 target0
+turn 6 target0
+turn 6 target0
+turn 6 target0
+turn 6 target15
+turn 6 target0
+turn 6 target0
+turn 6 target0
+turn 6 target0
+turn 6 target9
+turn 6 target9
+turn 7 target start
+turn 7 target0
+turn 7 target0
+turn 7 target0
+turn 7 target17
+turn 7 target17
+turn 7 target0
+turn 7 target0
+turn 7 target7
+turn 7 target7
+turn 7 target14
+turn 7 target14
+turn 7 target0
+turn 7 target0
+turn 7 target0
+turn 7 target0
+turn 7 target0
+turn 7 target15
+turn 7 target0
+turn 7 target0
+turn 7 target0
+turn 7 target0
+turn 7 target9
+turn 7 target0
+turn 8 target start
+turn 8 target0
+turn 8 target0
+turn 8 target0
+turn 8 target17
+turn 8 target17
+turn 8 target0
+turn 8 target0
+turn 8 target7
+turn 8 target7
+turn 8 target14
+turn 8 target14
+turn 8 target0
+turn 8 target0
+turn 8 target0
+turn 8 target0
+turn 8 target0
+turn 8 target15
+turn 8 target0
+turn 8 target0
+turn 8 target0
+turn 8 target0
+turn 8 target9
+turn 8 target0
+turn 9 target start
+turn 9 target0
+turn 9 target0
+turn 9 target0
+turn 9 target17
+turn 9 target17
+turn 9 target0
+turn 9 target0
+turn 9 target7
+turn 9 target7
+turn 9 target14
+turn 9 target14
+turn 9 target0
+turn 9 target0
+turn 9 target0
+turn 9 target0
+turn 9 target0
+turn 9 target15
+turn 9 target2
+turn 9 target0
+turn 9 target0
+turn 9 target0
+turn 9 target9
+turn 9 target0
+turn 10 target start
+turn 10 target0
+turn 10 target0
+turn 10 target0
+turn 10 target17
+turn 10 target17
+turn 10 target0
+turn 10 target0
+turn 10 target7
+turn 10 target7
+turn 10 target14
+turn 10 target0
+turn 10 target0
+turn 10 target0
+turn 10 target0
+turn 10 target0
+turn 10 target0
+turn 10 target15
+turn 10 target4
+turn 10 target0
+turn 10 target0
+turn 10 target0
+turn 10 target9
+turn 10 target0
+turn 25 target start
+turn 25 target0
+turn 25 target3
+turn 25 target0
+turn 25 target0
+turn 25 target0
+turn 25 target0
+turn 25 target0
+turn 25 target0
+turn 25 target0
+turn 25 target24
+turn 25 target81
+turn 25 target0
+turn 25 target4
+turn 25 target1
+turn 25 target0
+turn 25 target1
+turn 25 target0
+turn 25 target39
+turn 25 target0
+turn 25 target0
+turn 25 target0
+turn 25 target10
+turn 25 target0
+turn 28 target start
+turn 28 target0
+turn 28 target13
+turn 28 target0
+turn 28 target0
+turn 28 target0
+turn 28 target0
+turn 28 target0
+turn 28 target0
+turn 28 target0
+turn 28 target42
+turn 28 target118
+turn 28 target0
+turn 28 target10
+turn 28 target4
+turn 28 target0
+turn 28 target4
+turn 28 target0
+turn 28 target5
+turn 28 target0
+turn 28 target0
+turn 28 target0
+turn 28 target4
+turn 28 target0
+turn 29 target start
+turn 29 target0
+turn 29 target16
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target48
+turn 29 target123
+turn 29 target0
+turn 29 target12
+turn 29 target5
+turn 29 target0
+turn 29 target5
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target0
+turn 29 target5
+turn 29 target0
+turn 34 target start
+turn 34 target0
+turn 34 target16
+turn 34 target29
+turn 34 target0
+turn 34 target0
+turn 34 target20
+turn 34 target18
+turn 34 target0
+turn 34 target0
+turn 34 target27
+turn 34 target79
+turn 34 target20
+turn 34 target9
+turn 34 target5
+turn 34 target0
+turn 34 target5
+turn 34 target0
+turn 34 target0
+turn 34 target0
+turn 34 target0
+turn 34 target0
+turn 34 target5
+turn 34 target0
+turn 47 target start
+turn 47 target0
+turn 47 target32
+turn 47 target3
+turn 47 target0
+turn 47 target5
+turn 47 target0
+turn 47 target0
+turn 47 target19
+turn 47 target0
+turn 47 target55
+turn 47 target0
+turn 47 target0
+turn 47 target10
+turn 47 target8
+turn 47 target0
+turn 47 target8
+turn 47 target143
+turn 47 target0
+turn 47 target4
+turn 47 target13
+turn 47 target0
+turn 47 target8
+turn 47 target0
+turn 58 target start
+turn 58 target0
+turn 58 target20
+turn 58 target0
+turn 58 target1
+turn 58 target10
+turn 58 target0
+turn 58 target4
+turn 58 target1
+turn 58 target12
+turn 58 target0
+turn 58 target217
+turn 58 target0
+turn 58 target0
+turn 58 target4
+turn 58 target0
+turn 58 target1
+turn 58 target0
+turn 58 target0
+turn 58 target2
+turn 58 target0
+turn 58 target35
+turn 58 target5
+turn 58 target0
+turn 68 target start
+turn 68 target0
+turn 68 target0
+turn 68 target10
+turn 68 target11
+turn 68 target0
+turn 68 target0
+turn 68 target0
+turn 68 target1
+turn 68 target0
+turn 68 target0
+turn 68 target8
+turn 68 target0
+turn 68 target0
+turn 68 target0
+turn 68 target11
+turn 68 target0
+turn 68 target5
+turn 68 target0
+turn 68 target0
+turn 68 target0
+turn 68 target2
+turn 68 target0
+turn 68 target0
+turn 86 target start
+turn 86 target0
+turn 86 target0
+turn 86 target6
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target12
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target2
+turn 86 target8
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 86 target0
+turn 1 dist to their origin23
+turn 1 total planets size 23

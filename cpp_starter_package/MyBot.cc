@@ -2,8 +2,8 @@
 #include "PlanetWars.h"
 #include <time.h>
 #include <algorithm>
-
-
+#include <fstream>
+#include <string>
 // The DoTurn function is where your code goes. The PlanetWars object contains
 // the state of the game, including information about all planets and fleets
 // that currently exist. Inside this function, you issue orders using the
@@ -13,6 +13,9 @@ int enemy_origin = -1;
 int my_origin = -1;
 int turn = 0;
 int game_stage = -1;
+int dist_to_their_origin = -1;
+int total_planets_size = 0;
+
 bool num_ships_compare(const Planet& a, const Planet& b){
 	return a.NumShips() < b.NumShips();
 }
@@ -22,15 +25,15 @@ class PigSort{
 public:
 	PigSort(const PlanetWars& ppw):tom(ppw){}
 	bool operator()(const Planet& a, const Planet& b){
-		double a_dist = tom.Distance(my_origin, a.PlanetID());
-		double b_dist = tom.Distance(my_origin, b.PlanetID());
+		double a_dist = (double)tom.Distance(my_origin, a.PlanetID());
+		double b_dist = (double)tom.Distance(my_origin, b.PlanetID());
 
-		double a_score = 1 / (a.NumShips() * a_dist);
-		double b_score = 1 / (b.NumShips() * b_dist);
-		return a_score > b_score;		
-		// double a_score = 1.0 / ((a_dist * a_dist) + a.NumShips());
-		// double b_score = 1.0 / ((b_dist * b_dist) + b.NumShips());
+		// double a_score = 1 / (a.NumShips() * a_dist);
+		// double b_score = 1 / (b.NumShips() * b_dist);
 		// return a_score > b_score;		
+		double a_score = 1.0 / ((a_dist * a_dist) + (double)a.NumShips());
+		double b_score = 1.0 / ((b_dist * b_dist) + (double)b.NumShips());
+		return a_score > b_score;
 //		double a_score = a.NumShips();
 //		double b_score = b.NumShips();
 //		return a_score < b_score;
@@ -39,7 +42,26 @@ private:
 	const PlanetWars& tom;
 };
 
-
+// void SafeIssue(int p1, int p2, int num){
+// 	if (num > 0){
+// 		// make sure planet has enough to send, make sure i own the planet, make sure the planet exists, make sure it's not 0 or negative
+// 	}
+// }
+void logout(std::string str1) {
+	std::ofstream log_file("botlog.txt", std::ios::app);
+	log_file << "turn "<< turn << " " << str1 << std::endl;
+	log_file.close();
+};
+void logout(std::string str1, std::string str2){
+	std::ofstream log_file("botlog.txt", std::ios::app);
+	log_file << "turn "<< turn << " "  << str1 << str2 << std::endl;
+	log_file.close();
+}
+void logout(std::string str1, int str2){
+	std::ofstream log_file("botlog.txt", std::ios::app);
+	log_file << "turn "<< turn << " "  << str1 << str2 << std::endl;
+	log_file.close();
+}
 //
 // There is already a basic strategy in place here. You can use it as a
 // starting point, or you can throw it out entirely and replace it with your
@@ -50,30 +72,47 @@ void DoTurn(const PlanetWars& pw) {
   	std::vector<Planet> neutral_planets = pw.NeutralPlanets();
   	std::vector<Planet> not_my_planets =  pw.NotMyPlanets();
   	std::vector<Planet> enemy_planets =   pw.EnemyPlanets(); 
+	std::vector<Planet> planets = pw.Planets();
 	bool targeted_everybody = false;
 	turn += 1;
 
 	// set origin
 	if (turn <= 1){
-//	if (enemy_planets.size() == 1){
 		enemy_origin = enemy_planets[0].PlanetID();
 		my_origin = my_planets[0].PlanetID();
+		dist_to_their_origin = pw.Distance(my_origin, enemy_origin);
+		logout("dist to their origin", dist_to_their_origin);
+		total_planets_size = planets.size();
+		logout("total planets size ", total_planets_size);
 		// also need to try to spread to planets that are far away from their origin,
 		// because those planets, especially if they have a high growth rate, will be easier to defend and a good source of troops
 	}
 
-	int max_fleet_size = 100;
+	int max_fleet_size = 30;
+//	int max_fleet_size = dist_to_their_origin + (my_planets.size() * 2);
 	  	if (pw.MyFleets().size() >= max_fleet_size ) {
 	   		return;
 	}
 
   	// Find planet enemy is aiming at.
   	std::vector<Fleet> enemy_fleets = pw.EnemyFleets();
+	int their_targets[total_planets_size] ;
+	for(int i = 0; i < total_planets_size; ++i){ 
+		their_targets[i] = 0; 
+	}
+	
   	int dest = -1;
   	for(int i = 0; i < enemy_fleets.size(); ++i) {
-    	const Fleet& f = enemy_fleets[i];
-    	dest = f.DestinationPlanet();
+  	    	const Fleet& f = enemy_fleets[i];
+  	    	dest = f.DestinationPlanet();
+			if(dest > 0 && dest < total_planets_size){
+				their_targets[dest] += f.NumShips();
+			}
   	}
+	// logout("target start");
+	// for(int i = 0; i < total_planets_size; ++i){
+	// 	logout("target" ,their_targets[i]);
+	// }
 	
 	int their_planets_size = enemy_planets.size();
 	if(their_planets_size < 1){
@@ -95,14 +134,9 @@ void DoTurn(const PlanetWars& pw) {
   	for (int i = 0; i < my_planets.size(); ++i) {
   	  	const Planet& curr_p = my_planets[i];	
 		
-		// if(turn <= 1){
-		// 	return;
-		// }
 		if(turn <= 1){ // first turn
-			
 			PigSort cow(pw);
 			std::sort(neutral_planets.begin(), neutral_planets.end(), cow);	
-		//	std::sort(neutral_planets.begin(), neutral_planets.end(), num_ships_compare);
 
 			std::vector<Planet>::iterator it;
 			int rick = curr_p.NumShips();
@@ -119,16 +153,7 @@ void DoTurn(const PlanetWars& pw) {
 
 		// Determine if I have incoming
 		// Don't leave if there are enemy ships pointed at me.
-		bool incoming = false;
-		int incoming_ships = 0;
-		for(int m = 0; m < enemy_fleets.size(); ++m){
-			const Fleet& pig = enemy_fleets[m];
-			int frak = pig.DestinationPlanet();
-			if (frak == curr_p.PlanetID()){
-				incoming = true;
-				incoming_ships += pig.NumShips();
-			}
-		}
+		int incoming = their_targets[curr_p.PlanetID()];
 		
 		// Find the weakest enemy planet.
 	  	int their_weakest_planet_id = -1;
@@ -195,12 +220,15 @@ void DoTurn(const PlanetWars& pw) {
     	if (my_growth_rate_is_higher && (their_weakest_planet_id > -1)){
 			if(i_have_twice_as_many_planets){
 				int ships_to_send = curr_p.NumShips() / their_planets_size;
+				int total_ships = curr_p.NumShips();
 				for(int j = 0; j < enemy_planets.size(); ++j){
-					if (incoming == false){
+					if (incoming > 0){
 						pw.IssueOrder(curr_p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send);
 					}else{
-						if(ships_to_send > incoming_ships){
-							pw.IssueOrder(curr_p.PlanetID(), enemy_planets[j].PlanetID(), ships_to_send - incoming_ships);
+						if(total_ships > incoming){
+							int temp_ships = total_ships - incoming;
+							total_ships -= temp_ships;
+							pw.IssueOrder(curr_p.PlanetID(), enemy_planets[j].PlanetID(), temp_ships);
 						}
 					}
 				}
@@ -209,7 +237,7 @@ void DoTurn(const PlanetWars& pw) {
 			else {
 				// If this planet has a shit ton of ships, do several things.
 				// First, if you have incoming, just chill.  Maybe should call for help?
-				if ((incoming == true) && ((incoming_ships + 1) > curr_p.NumShips())){
+				if ( incoming > curr_p.NumShips() ){
 					continue;
 				}
 				// Shoot one ship at all their enemy planets, looks like this could be enough to freeze a bunch of people in their tracks.
@@ -244,13 +272,14 @@ void DoTurn(const PlanetWars& pw) {
 	          		// attack the destination of their current fleet with the rest.					
 	          		if (dest > -1){
 						if(p_ships > 2){
+//							logout("dest = ", dest);
 	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships  / 2 );
 						}
 	          		}
 	        	}
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
-					if(incoming == false){
+					if(incoming > 0){
 						if ((p_ships > 2) && (their_second_weakest_id > -1)){
 							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships / 2 );
 							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, p_ships / 2 );
@@ -260,8 +289,8 @@ void DoTurn(const PlanetWars& pw) {
 							}
 						}
 					}else{
-						if(p_ships > incoming_ships){
-							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - incoming_ships );
+						if(p_ships > incoming){
+							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - incoming );
 						}
 					}
 	        	}
@@ -271,7 +300,7 @@ void DoTurn(const PlanetWars& pw) {
       	// Keep getting one planet with a shitload of ships, need to loop and send to different targets.
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
 			if((curr_p.NumShips() > 1)){
-				if (incoming == false){
+				if (incoming > 0){
 					if (desire_planet_id > -1){
 						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() / 2 );	
 					}

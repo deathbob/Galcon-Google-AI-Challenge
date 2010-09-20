@@ -28,12 +28,12 @@ public:
 		double a_dist = (double)tom.Distance(my_origin, a.PlanetID());
 		double b_dist = (double)tom.Distance(my_origin, b.PlanetID());
 
-		// double a_score = 1 / (a.NumShips() * a_dist);
-		// double b_score = 1 / (b.NumShips() * b_dist);
-		// return a_score > b_score;		
-		double a_score = 1.0 / ((a_dist * a_dist) + (double)a.NumShips());
-		double b_score = 1.0 / ((b_dist * b_dist) + (double)b.NumShips());
-		return a_score > b_score;
+		double a_score = a.GrowthRate() / ((double)a.NumShips() * a_dist);
+		double b_score = b.GrowthRate() / ((double)b.NumShips() * b_dist);
+		return a_score > b_score;		
+		// double a_score = 1.0 / ((a_dist * a_dist) + (double)a.NumShips());
+		// double b_score = 1.0 / ((b_dist * b_dist) + (double)b.NumShips());
+		// return a_score > b_score;
 //		double a_score = a.NumShips();
 //		double b_score = b.NumShips();
 //		return a_score < b_score;
@@ -81,9 +81,9 @@ void DoTurn(const PlanetWars& pw) {
 		enemy_origin = enemy_planets[0].PlanetID();
 		my_origin = my_planets[0].PlanetID();
 		dist_to_their_origin = pw.Distance(my_origin, enemy_origin);
-		logout("dist to their origin", dist_to_their_origin);
+//		logout("dist to their origin", dist_to_their_origin);
 		total_planets_size = planets.size();
-		logout("total planets size ", total_planets_size);
+//		logout("total planets size ", total_planets_size);
 		// also need to try to spread to planets that are far away from their origin,
 		// because those planets, especially if they have a high growth rate, will be easier to defend and a good source of troops
 	}
@@ -96,23 +96,28 @@ void DoTurn(const PlanetWars& pw) {
 
   	// Find planet enemy is aiming at.
   	std::vector<Fleet> enemy_fleets = pw.EnemyFleets();
-	int their_targets[total_planets_size] ;
+	int their_targets[total_planets_size][2] ;
 	for(int i = 0; i < total_planets_size; ++i){ 
-		their_targets[i] = 0; 
+		their_targets[i][0] = 0; 
+		their_targets[i][1] = 0; 		
 	}
 	
-  	int dest = -1;
+
+	int their_most_targeted = -1;
   	for(int i = 0; i < enemy_fleets.size(); ++i) {
+  		int dest = -1;	
+		int max_targs = 0;
   	    	const Fleet& f = enemy_fleets[i];
   	    	dest = f.DestinationPlanet();
 			if(dest > 0 && dest < total_planets_size){
-				their_targets[dest] += f.NumShips();
+				their_targets[dest][0] += f.NumShips();
+				if(their_targets[dest][0] > max_targs){
+					max_targs = their_targets[dest][0];
+					their_most_targeted = dest;
+				}
+				their_targets[dest][1] = 1;
 			}
   	}
-	// logout("target start");
-	// for(int i = 0; i < total_planets_size; ++i){
-	// 	logout("target" ,their_targets[i]);
-	// }
 	
 	int their_planets_size = enemy_planets.size();
 	if(their_planets_size < 1){
@@ -153,7 +158,7 @@ void DoTurn(const PlanetWars& pw) {
 
 		// Determine if I have incoming
 		// Don't leave if there are enemy ships pointed at me.
-		int incoming = their_targets[curr_p.PlanetID()];
+		int incoming = their_targets[curr_p.PlanetID()][0];
 		
 		// Find the weakest enemy planet.
 	  	int their_weakest_planet_id = -1;
@@ -216,7 +221,8 @@ void DoTurn(const PlanetWars& pw) {
 	
 		bool i_have_more_planets = ( my_planets.size() > enemy_planets.size() );
 		bool i_have_twice_as_many_planets = (my_planets.size() > (enemy_planets.size() * 2));
-		bool my_growth_rate_is_higher = (my_growth_rate > their_growth_rate);
+		bool my_growth_rate_is_higher = ((double)my_growth_rate > ((double)their_growth_rate));
+//    	if (i_have_twice_as_many_planets && (their_weakest_planet_id > -1)){
     	if (my_growth_rate_is_higher && (their_weakest_planet_id > -1)){
 			if(i_have_twice_as_many_planets){
 				int ships_to_send = curr_p.NumShips() / their_planets_size;
@@ -269,11 +275,16 @@ void DoTurn(const PlanetWars& pw) {
 						}
 					}
 					
-	          		// attack the destination of their current fleet with the rest.					
-	          		if (dest > -1){
+	          		// attack the Destination of their current fleet with the rest.					
+	          		if (their_most_targeted > -1){
 						if(p_ships > 2){
-//							logout("dest = ", dest);
-	            			pw.IssueOrder(curr_p.PlanetID(), dest, p_ships  / 2 );
+							int to_send = 0;
+							if(p_ships > their_targets[their_most_targeted][0]){
+								to_send = their_targets[their_most_targeted][0];
+							}else{
+								to_send = p_ships / 2;
+							}
+	            			pw.IssueOrder(curr_p.PlanetID(), their_most_targeted, to_send );
 						}
 	          		}
 	        	}
@@ -301,13 +312,22 @@ void DoTurn(const PlanetWars& pw) {
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
 			if((curr_p.NumShips() > 1)){
 				if (incoming > 0){
-					if (desire_planet_id > -1){
+					if (desire_planet_id > -1 && incoming < curr_p.NumShips()){
 						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() / 2 );	
 					}
+					// if (desire_planet_id > -1){
+					// 	pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() / 2 );	
+					// }
 				}else{
-					if(closest_planet > -1){
-						pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() / 2);  // This is better, 70 out of 100 vs 62
+					// if(closest_planet > -1){
+					// 	pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() - 1);  // This is better, 70 out of 100 vs 62
+					// }
+					if (their_weakest_planet_id > 0){
+						pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - 1);  // 63 out of 100 vs tenth_bot, tenth_bot goes first.  58 out of 100 vs tenth_bot, MyBot goes first
 					}
+					// if(desire_planet_id > 0)
+					// 	pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() - 1);  //
+					// }
 				}
 			}
   		}

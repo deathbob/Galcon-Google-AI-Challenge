@@ -422,3 +422,119 @@ master>./runner.rb
  Map 98:  MyBot 42 vs.  tenth_bot 56
  Map 99:  MyBot 42 vs.  tenth_bot 57
  Map 100:  MyBot 42 vs.  tenth_bot 58
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ master>./runner.rb
+ You are Player 1
+ RageBot.jar Beat Your Ass On map5
+ DualBot.jar Beat Your Ass On map11
+ DualBot.jar Beat Your Ass On map13
+ DualBot.jar Beat Your Ass On map14
+ RageBot.jar Beat Your Ass On map14
+ DualBot.jar Beat Your Ass On map18
+ RageBot.jar Beat Your Ass On map18
+ DualBot.jar Beat Your Ass On map19
+ RageBot.jar Beat Your Ass On map20
+ DualBot.jar Beat Your Ass On map21
+ RageBot.jar Beat Your Ass On map21
+ DualBot.jar Beat Your Ass On map22
+ RageBot.jar Beat Your Ass On map22
+ RageBot.jar Beat Your Ass On map23
+ DualBot.jar Beat Your Ass On map26
+ ProspectorBot.jar Beat Your Ass On map26
+ RageBot.jar Beat Your Ass On map26
+ BullyBot.jar Beat Your Ass On map27
+ DualBot.jar Beat Your Ass On map27
+ RageBot.jar Beat Your Ass On map27
+ DualBot.jar Beat Your Ass On map29
+ RageBot.jar Beat Your Ass On map29
+ DualBot.jar Beat Your Ass On map30
+ RageBot.jar Beat Your Ass On map30
+ RageBot.jar Beat Your Ass On map33
+ DualBot.jar Beat Your Ass On map34
+ ProspectorBot.jar Beat Your Ass On map34
+ RageBot.jar Beat Your Ass On map34
+ DualBot.jar Beat Your Ass On map36
+ RageBot.jar Beat Your Ass On map36
+ RageBot.jar Beat Your Ass On map39
+ RageBot.jar Beat Your Ass On map40
+ DualBot.jar Beat Your Ass On map43
+ DualBot.jar Beat Your Ass On map44
+ RageBot.jar Beat Your Ass On map44
+ DualBot.jar Beat Your Ass On map46
+ RageBot.jar Beat Your Ass On map46
+ RageBot.jar Beat Your Ass On map48
+ RageBot.jar Beat Your Ass On map50
+ RageBot.jar Beat Your Ass On map51
+ DualBot.jar Beat Your Ass On map53
+ RageBot.jar Beat Your Ass On map53
+
+
+
+ master>./runner.rb
+ You are Player 1
+ RageBot.jar Beat MyBot On map2
+ RageBot.jar Beat MyBot On map3
+ DualBot.jar Beat MyBot On map5
+ RageBot.jar Beat MyBot On map5
+ DualBot.jar Beat MyBot On map6
+ DualBot.jar Beat MyBot On map7
+ RageBot.jar Beat MyBot On map7
+ DualBot.jar Beat MyBot On map8
+ RageBot.jar Beat MyBot On map9
+ DualBot.jar Beat MyBot On map11
+ RageBot.jar Beat MyBot On map11
+ DualBot.jar Beat MyBot On map12
+ RageBot.jar Beat MyBot On map12
+ RageBot.jar Beat MyBot On map13
+ DualBot.jar Beat MyBot On map14
+ ProspectorBot.jar Beat MyBot On map14
+ RageBot.jar Beat MyBot On map14
+ RageBot.jar Beat MyBot On map16
+ DualBot.jar Beat MyBot On map17
+ RageBot.jar Beat MyBot On map17
+ DualBot.jar Beat MyBot On map18
+ BullyBot.jar Beat MyBot On map21
+ DualBot.jar Beat MyBot On map21
+ RageBot.jar Beat MyBot On map21
+ RageBot.jar Beat MyBot On map22
+ DualBot.jar Beat MyBot On map23
+ RageBot.jar Beat MyBot On map23
+ DualBot.jar Beat MyBot On map24
+ RageBot.jar Beat MyBot On map25
+ DualBot.jar Beat MyBot On map26
+ RageBot.jar Beat MyBot On map26
+ DualBot.jar Beat MyBot On map27
+ RageBot.jar Beat MyBot On map27
+ RageBot.jar Beat MyBot On map28
+ DualBot.jar Beat MyBot On map29
+ RageBot.jar Beat MyBot On map29
+ DualBot.jar Beat MyBot On map30
+ RageBot.jar Beat MyBot On map30
+ DualBot.jar Beat MyBot On map31
+ RageBot.jar Beat MyBot On map31
+ RageBot.jar Beat MyBot On map32
+ BullyBot.jar Beat MyBot On map33
+ DualBot.jar Beat MyBot On map33
+ ProspectorBot.jar Beat MyBot On map33
+ RageBot.jar Beat MyBot On map33
+ DualBot.jar Beat MyBot On map34
+ RageBot.jar Beat MyBot On map34
+ DualBot.jar Beat MyBot On map36
+ RageBot.jar Beat MyBot On map36
+
+
+Strange, previous two are runs of tenth_bot first, then MyBot.  

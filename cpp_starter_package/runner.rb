@@ -3,45 +3,33 @@ bots = Dir.entries(Dir.pwd + "/example_bots").collect{|x| x if x.match(/Bot.jar/
 
 
 # # # play my bot against example bots as player 1
+# le_bot = 'MyBot'
+# #le_bot = 'tenth_bot'
 # puts "You are Player 1"
+# go_first = true
 # 1.upto(100) do |x|
 #   bots.each do |bot|
 #     # Just noticed it makes a difference where you start on maps, so run it with my bot starting first or second both
-#     `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./MyBot" "java -jar example_bots/#{bot}" &> poop.out`
-# #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./first_bot" "java -jar example_bots/#{bot}" &> poop.out`
-# #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./second_bot" "java -jar example_bots/#{bot}" &> poop.out`    
-#     result = %x{cat poop.out | grep Player}
-#     
-#     unless result.match(/Player 1/)
-#       puts "#{bot} Beat Your Ass On map#{x}\n"  
+#     if go_first
+#       `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./#{le_bot}" "java -jar example_bots/#{bot}" &> poop.out`    
+#       result = %x{cat poop.out | grep Player}
+#       puts "#{bot} Beat #{le_bot} On map#{x}\n"        unless result.match(/Player 1/)
+#     else
+#       `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/#{bot}" "./#{le_bot}" &> poop.out`    
+#       result = %x{cat poop.out | grep Player}
+#       puts "#{bot} Beat #{le_bot} On map#{x}\n"        unless result.match(/Player 2/)
 #     end
 #   end
 # end
 
 
-
-
-# # # play my bot against example bots as player 2
-# puts "You are Player 2"
-# 1.upto(100) do |x|
-#   bots.each do |bot|
-#     # Just noticed it makes a difference where you start on maps, so run it with my bot starting first or second both
-#     `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/#{bot}" "./MyBot" &> poop.out`    
-# #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/#{bot}" "./second_bot" &> poop.out`        
-#     result = %x{cat poop.out | grep Player}
-#     
-#     unless result.match(/Player 2/)
-#       puts "#{bot} Beat Your Ass On map#{x}\n"  
-#     end
-#   end
-# end
 
 
 # play my bots against eachother
 #bots = %w{ ninth_bot MyBot }
 #bots = %w{ MyBot ninth_bot }
-bots = %w{ MyBot tenth_bot }
-#bots = %w{ tenth_bot MyBot }
+#bots = %w{ MyBot tenth_bot }
+bots = %w{ tenth_bot MyBot }
 tricks = [0,0]
 1.upto(100) do |x|
 #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./MyBot" "./#{bot}" &> poop.out`

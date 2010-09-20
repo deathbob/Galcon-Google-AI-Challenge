@@ -248,7 +248,7 @@ void DoTurn(const PlanetWars& pw) {
 				}
 				// Shoot one ship at all their enemy planets, looks like this could be enough to freeze a bunch of people in their tracks.
 				int p_ships = curr_p.NumShips();
-				if ((p_ships > enemy_planets.size())&& (targeted_everybody == false)){
+				if ((p_ships > enemy_planets.size()) && (targeted_everybody == false)){
 					targeted_everybody = true;
 					for(int q = 0; q < enemy_planets.size(); ++q){
 						const Planet& zzz = enemy_planets[q];
@@ -264,13 +264,13 @@ void DoTurn(const PlanetWars& pw) {
 
 					if(desire_planet_id > -1){
 						if (p_ships > desire_ship_count + 1){
-							p_ships = p_ships - desire_ship_count;
+							p_ships -= (desire_ship_count + 1);
 							pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, desire_ship_count + 1);
 						}
 					}
 					if(their_second_weakest_id > -1){
 						if(p_ships > their_second_weakest_ships + 1){
-							p_ships = p_ships - their_second_weakest_ships;
+							p_ships -= (their_second_weakest_ships + 1);
 							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, their_second_weakest_ships + 1);
 						}
 					}
@@ -279,8 +279,8 @@ void DoTurn(const PlanetWars& pw) {
 	          		if (their_most_targeted > -1){
 						if(p_ships > 2){
 							int to_send = 0;
-							if(p_ships > their_targets[their_most_targeted][0]){
-								to_send = their_targets[their_most_targeted][0];
+							if(p_ships > (their_targets[their_most_targeted][0] + 1) ){
+								to_send = (their_targets[their_most_targeted][0] + 1) ;
 							}else{
 								to_send = p_ships / 2;
 							}
@@ -291,16 +291,21 @@ void DoTurn(const PlanetWars& pw) {
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
 					if(incoming > 0){
-						if ((p_ships > 2) && (their_second_weakest_id > -1)){
+						if ((p_ships > 1) && (their_second_weakest_id > -1)){
 							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships / 2 );
 							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, p_ships / 2 );
 						}else{
-							if(p_ships > -1){
+							// Really need to make a save IssueOrder version that checks for valid input
+							// luckily this never got called but it had a serious logic flaw.
+							if(p_ships > 1){
 								pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - 1 );
 							}
 						}
 					}else{
 						if(p_ships > incoming){
+							// this doesn't really make sense, because incoming should be 0 if this is hit.
+							// These two sections are actually backwards from what I intended, have not
+							// had time to flip them and verify that they work better in their intended configuration.
 							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - incoming );
 						}
 					}
@@ -312,7 +317,7 @@ void DoTurn(const PlanetWars& pw) {
 		else{ // if i'm not ahead, or if we can't find a weakest planet for them. 
 			if((curr_p.NumShips() > 1)){
 				if (incoming > 0){
-					if (desire_planet_id > -1 && incoming < curr_p.NumShips()){
+					if ( (desire_planet_id > -1) && (incoming < curr_p.NumShips()) ){
 						pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, curr_p.NumShips() / 2 );	
 					}
 					// if (desire_planet_id > -1){
@@ -322,7 +327,7 @@ void DoTurn(const PlanetWars& pw) {
 					// if(closest_planet > -1){
 					// 	pw.IssueOrder(curr_p.PlanetID(), closest_planet, curr_p.NumShips() - 1);  // This is better, 70 out of 100 vs 62
 					// }
-					if (their_weakest_planet_id > 0){
+					if (their_weakest_planet_id > -1){
 						pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, curr_p.NumShips() - 1);  // 63 out of 100 vs tenth_bot, tenth_bot goes first.  58 out of 100 vs tenth_bot, MyBot goes first
 					}
 					// if(desire_planet_id > 0)

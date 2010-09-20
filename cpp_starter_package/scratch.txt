@@ -538,3 +538,120 @@ master>./runner.rb
 
 
 Strange, previous two are runs of tenth_bot first, then MyBot.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+master>./runner.rb
+ Map 1:  tenth_bot 0 vs.  MyBot 1
+ Map 2:  tenth_bot 0 vs.  MyBot 2
+ Map 3:  tenth_bot 0 vs.  MyBot 3
+ Map 4:  tenth_bot 0 vs.  MyBot 4
+ Map 5:  tenth_bot 0 vs.  MyBot 5
+ Map 6:  tenth_bot 1 vs.  MyBot 5
+ Map 7:  tenth_bot 1 vs.  MyBot 6
+ Map 8:  tenth_bot 2 vs.  MyBot 6
+ Map 9:  tenth_bot 2 vs.  MyBot 7
+ Map 10:  tenth_bot 2 vs.  MyBot 8
+ Map 11:  tenth_bot 2 vs.  MyBot 9
+ Map 12:  tenth_bot 2 vs.  MyBot 10
+ Map 13:  tenth_bot 2 vs.  MyBot 11
+ Map 14:  tenth_bot 3 vs.  MyBot 11
+ Map 15:  tenth_bot 3 vs.  MyBot 12
+ Map 16:  tenth_bot 3 vs.  MyBot 13
+ Map 17:  tenth_bot 3 vs.  MyBot 14
+ Map 18:  tenth_bot 3 vs.  MyBot 15
+ Map 19:  tenth_bot 3 vs.  MyBot 16
+ Map 20:  tenth_bot 3 vs.  MyBot 17
+ Map 21:  tenth_bot 3 vs.  MyBot 18
+ Map 22:  tenth_bot 3 vs.  MyBot 19
+ Map 23:  tenth_bot 3 vs.  MyBot 20
+ Map 24:  tenth_bot 4 vs.  MyBot 20
+ Map 25:  tenth_bot 4 vs.  MyBot 21
+ Map 26:  tenth_bot 4 vs.  MyBot 22
+ Map 27:  tenth_bot 4 vs.  MyBot 23
+ Map 28:  tenth_bot 4 vs.  MyBot 24
+ Map 29:  tenth_bot 4 vs.  MyBot 25
+ Map 30:  tenth_bot 4 vs.  MyBot 26
+ Map 31:  tenth_bot 4 vs.  MyBot 27
+ Map 32:  tenth_bot 4 vs.  MyBot 28
+ Map 33:  tenth_bot 4 vs.  MyBot 29
+ Map 34:  tenth_bot 4 vs.  MyBot 30
+ Map 35:  tenth_bot 4 vs.  MyBot 31
+ Map 36:  tenth_bot 4 vs.  MyBot 32
+ Map 37:  tenth_bot 4 vs.  MyBot 33
+ Map 38:  tenth_bot 4 vs.  MyBot 34
+ Map 39:  tenth_bot 4 vs.  MyBot 35
+ Map 40:  tenth_bot 4 vs.  MyBot 36
+ Map 41:  tenth_bot 4 vs.  MyBot 37
+ Map 42:  tenth_bot 4 vs.  MyBot 38
+ Map 43:  tenth_bot 4 vs.  MyBot 39
+ Map 44:  tenth_bot 4 vs.  MyBot 40
+ Map 45:  tenth_bot 4 vs.  MyBot 41
+ Map 46:  tenth_bot 4 vs.  MyBot 42
+ Map 47:  tenth_bot 4 vs.  MyBot 43
+ Map 48:  tenth_bot 4 vs.  MyBot 44
+ Map 49:  tenth_bot 4 vs.  MyBot 45
+ Map 50:  tenth_bot 4 vs.  MyBot 46
+ Map 51:  tenth_bot 4 vs.  MyBot 47
+ Map 52:  tenth_bot 4 vs.  MyBot 48
+ Map 53:  tenth_bot 4 vs.  MyBot 49
+ Map 54:  tenth_bot 5 vs.  MyBot 49
+ Map 55:  tenth_bot 5 vs.  MyBot 50
+ Map 56:  tenth_bot 6 vs.  MyBot 50
+ Map 57:  tenth_bot 6 vs.  MyBot 51
+ Map 58:  tenth_bot 6 vs.  MyBot 52
+ Map 59:  tenth_bot 6 vs.  MyBot 53
+ Map 60:  tenth_bot 6 vs.  MyBot 54
+ Map 61:  tenth_bot 6 vs.  MyBot 55
+ Map 62:  tenth_bot 6 vs.  MyBot 56
+ Map 63:  tenth_bot 7 vs.  MyBot 56
+ Map 64:  tenth_bot 7 vs.  MyBot 57
+ Map 65:  tenth_bot 8 vs.  MyBot 57
+ Map 66:  tenth_bot 8 vs.  MyBot 58
+ Map 67:  tenth_bot 8 vs.  MyBot 59
+ Map 68:  tenth_bot 8 vs.  MyBot 60
+ Map 69:  tenth_bot 8 vs.  MyBot 61
+ Map 70:  tenth_bot 8 vs.  MyBot 62
+ Map 71:  tenth_bot 8 vs.  MyBot 63
+ Map 72:  tenth_bot 8 vs.  MyBot 64
+ Map 73:  tenth_bot 8 vs.  MyBot 65
+ Map 74:  tenth_bot 8 vs.  MyBot 66
+ Map 75:  tenth_bot 8 vs.  MyBot 67
+ Map 76:  tenth_bot 8 vs.  MyBot 68
+ Map 77:  tenth_bot 9 vs.  MyBot 68
+ Map 78:  tenth_bot 9 vs.  MyBot 69
+ Map 79:  tenth_bot 9 vs.  MyBot 70
+ Map 80:  tenth_bot 9 vs.  MyBot 71
+ Map 81:  tenth_bot 9 vs.  MyBot 72
+ Map 82:  tenth_bot 9 vs.  MyBot 73
+ Map 83:  tenth_bot 10 vs.  MyBot 73
+ Map 84:  tenth_bot 10 vs.  MyBot 74
+ Map 85:  tenth_bot 10 vs.  MyBot 75
+ Map 86:  tenth_bot 10 vs.  MyBot 76
+ Map 87:  tenth_bot 11 vs.  MyBot 76
+ Map 88:  tenth_bot 11 vs.  MyBot 77
+ Map 89:  tenth_bot 11 vs.  MyBot 78
+ Map 90:  tenth_bot 11 vs.  MyBot 79
+ Map 91:  tenth_bot 11 vs.  MyBot 80
+ Map 92:  tenth_bot 11 vs.  MyBot 81
+ Map 93:  tenth_bot 11 vs.  MyBot 82
+ Map 94:  tenth_bot 11 vs.  MyBot 83
+ Map 95:  tenth_bot 12 vs.  MyBot 83
+ Map 96:  tenth_bot 12 vs.  MyBot 84
+ Map 97:  tenth_bot 13 vs.  MyBot 84
+ Map 98:  tenth_bot 13 vs.  MyBot 85
+ Map 99:  tenth_bot 13 vs.  MyBot 86
+ Map 100:  tenth_bot 13 vs.  MyBot 87

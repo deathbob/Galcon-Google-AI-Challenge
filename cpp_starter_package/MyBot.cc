@@ -291,22 +291,30 @@ void DoTurn(const PlanetWars& pw) {
 	        	else{
 	          		// this is hit for planets that are not heavily stacked, attack only one target with them.
 					if(incoming > 0){
+						if(p_ships > incoming){
+							// this doesn't really make sense, because incoming should be 0 if this is hit.
+							// These two sections are actually backwards from what I intended, have not
+							// had time to flip them and verify that they work better in their intended configuration.
+							// Nevermind, just did flip them. 
+							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, incoming );
+						}
+					}else{
+						// if ((p_ships > 1) && (desire_planet_id > -1)){
+						// 	pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships / 2 );
+						// 	pw.IssueOrder(curr_p.PlanetID(), desire_planet_id, p_ships / 2 );
+						// }
+						// Neither the above nor the below is significantly better.  Both win 90 of 100 against tenth_bot
+						// Need to figure out how to do best of both.
 						if ((p_ships > 1) && (their_second_weakest_id > -1)){
 							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships / 2 );
 							pw.IssueOrder(curr_p.PlanetID(), their_second_weakest_id, p_ships / 2 );
-						}else{
+						}
+						else{
 							// Really need to make a save IssueOrder version that checks for valid input
 							// luckily this never got called but it had a serious logic flaw.
 							if(p_ships > 1){
 								pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - 1 );
 							}
-						}
-					}else{
-						if(p_ships > incoming){
-							// this doesn't really make sense, because incoming should be 0 if this is hit.
-							// These two sections are actually backwards from what I intended, have not
-							// had time to flip them and verify that they work better in their intended configuration.
-							pw.IssueOrder(curr_p.PlanetID(), their_weakest_planet_id, p_ships - incoming );
 						}
 					}
 	        	}

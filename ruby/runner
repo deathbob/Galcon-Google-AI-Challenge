@@ -30,11 +30,12 @@ bots = Dir.entries(Dir.pwd + "/example_bots").collect{|x| x if x.match(/Bot.jar/
 #bots = %w{ MyBot ninth_bot }
 #bots = %w{ MyBot tenth_bot }
 #bots = %w{ rubybot MyBot }
-bots = %w{ MyBot rubybot }
+bots = %w{ BullyBot rubybot }
 tricks = [0,0]
 1.upto(100) do |x|
 #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./MyBot" "./#{bot}" &> poop.out`
-    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./#{bots[0]}" "./#{bots[1]}" &> poop.out`    
+#    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "./#{bots[0]}" "./#{bots[1]}" &> poop.out`    
+    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/BullyBot.jar" "./rubybot" &> poop.out`
     result = %x{cat poop.out | grep Player}
     if result.match(/Player 1/)
 #      puts "#{bots[0]} Beat #{bots[1]}'s Ass On map#{x}\n"
@@ -54,8 +55,12 @@ end
 # java -jar tools/PlayGame.jar maps/map4.txt 1000 1000 log.txt "./first_bot" "./MyBot" | java -jar tools/ShowGame.jar
 # java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MyBot" "./ninth_bot" | java -jar tools/ShowGame.jar
 
-# play my bot vs prospector bot
-# java -jar tools/PlayGame.jar maps/map2.txt 1000 1000 log.txt "java -jar example_bots/ProspectorBot.jar" "./MyBot" | java -jar tools/ShowGame.jar
+=begin
+play my bot vs prospector bot
+java -jar tools/PlayGame.jar maps/map2.txt 1000 1000 log.txt "java -jar example_bots/ProspectorBot.jar" "./MyBot" | java -jar tools/ShowGame.jar
+java -jar tools/PlayGame.jar maps/map2.txt 1000 1000 log.txt "java -jar example_bots/ProspectorBot.jar" "./rubybot" | java -jar tools/ShowGame.jar
+=end
+
 
 =begin
 ruby bot

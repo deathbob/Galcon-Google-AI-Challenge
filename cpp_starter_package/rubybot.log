@@ -1,195 +1,1915 @@
 Game On
 Turn 1
-Planet
-2 15 100
-Planet
-2 15 100
-Game On
-Turn 1
-2 15 100
+	order 2 1 50
+
+	order 2 15 10
+
+	order 2 21 36
+
 Turn 2
-2 15 5
+	order 2 1 4
+
 Turn 3
-2 15 5
+	order 2 1 5
+
 Turn 4
-2 4 5
+	order 2 1 5
+
 Turn 5
-2 19 5
+	order 2 1 5
+
 Turn 6
-2 15 5
+	order 2 16 5
+
+	order 2 16 2
+
 Turn 7
-2 15 5
+	order 2 16 4
+
 Turn 8
-2 15 5
+	order 2 22 4
+
+	order 2 22 2
+
+	order 15 22 5
+
 Turn 9
-2 15 5
+	order 2 22 4
+
+	order 15 22 5
+
+	order 21 22 3
+
 Turn 10
-2 15 5
+	order 2 22 4
+
+	order 15 22 5
+
+	order 21 22 4
+
 Turn 11
-2 15 5
+	order 2 16 5
+
+	order 15 16 5
+
+	order 21 16 4
+
 Turn 12
-2 15 5
+	order 2 3 5
+
+	order 2 3 2
+
+	order 15 3 5
+
+	order 21 3 5
+
+	order 21 3 2
+
 Turn 13
-2 15 5
+	order 2 3 4
+
+	order 15 3 5
+
+	order 21 3 4
+
 Turn 14
-2 15 5
+	order 2 3 4
+
+	order 15 3 5
+
+	order 21 3 4
+
 Turn 15
-2 1 5
+	order 2 3 5
+
+	order 15 3 5
+
+	order 21 3 5
+
 Turn 16
-2 16 5
-15 16 90
+	order 21 16 5
+
 Turn 17
-2 16 5
-15 16 6
+	order 15 16 8
+
+	order 21 3 5
+
 Turn 18
-2 16 5
-15 16 6
+	order 15 16 6
+
+	order 21 3 5
+
 Turn 19
-15 2 1
+	order 21 1 5
+
 Turn 20
-15 16 1
+	order 21 1 5
+
 Turn 21
-15 2 6
+	order 21 1 5
+
 Turn 22
-15 4 6
+	order 21 1 5
+
 Turn 23
-15 16 6
 Turn 24
-15 16 6
-19 16 1
 Turn 25
-15 16 6
-19 16 4
 Turn 26
-15 16 6
-19 16 4
+	order 21 3 12
+
 Turn 27
-15 16 6
-19 16 4
+	order 1 3 31
+
 Turn 28
-15 16 6
-19 16 1
 Turn 29
-15 16 6
-19 16 4
+	order 15 3 26
+
+	order 21 3 14
+
 Turn 30
-15 16 1
 Turn 31
-15 16 1
+	order 2 3 42
+
 Turn 32
-15 1 1
+	order 21 8 14
+
 Turn 33
-15 16 1
 Turn 34
-15 1 1
+	order 15 22 25
+
+	order 21 22 12
+
 Turn 35
 Turn 36
 Turn 37
+	order 21 22 3
+
 Turn 38
-16 4 1
+	order 21 16 4
+
 Turn 39
-16 4 10
+	order 2 8 20
+
+	order 15 8 2
+
+	order 21 8 4
+
 Turn 40
-16 15 5
+	order 15 8 3
+
+	order 21 8 4
+
 Turn 41
-16 1 5
+	order 15 1 4
+
+	order 21 1 5
+
 Turn 42
-16 19 2
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 43
-16 19 3
+	order 2 1 19
+
+	order 3 1 52
+
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 44
-16 21 1
+	order 3 2 41
+
+	order 15 2 4
+
+	order 21 2 4
+
 Turn 45
-16 1 1
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 46
-16 15 0
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 47
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 48
-16 1 78
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 49
-16 4 4
+	order 21 2 5
+
 Turn 50
-16 15 7
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 51
-16 1 1
+	order 15 2 5
+
+	order 21 2 4
+
 Turn 52
-16 19 2
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 53
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 54
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 55
+	order 15 2 5
+
+	order 21 2 5
+
 Turn 56
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 57
+	order 15 22 5
+
+	order 21 22 5
+
 Turn 58
+	order 15 22 5
+
+	order 21 22 5
+
 Turn 59
+	order 15 8 4
+
+	order 21 8 4
+
 Turn 60
+	order 2 22 29
+
+	order 15 22 5
+
+	order 21 22 4
+
 Turn 61
+	order 2 22 40
+
+	order 2 4 22
+
+	order 2 22 14
+
+	order 15 22 5
+
+	order 21 22 5
+
 Turn 62
+	order 2 8 7
+
+	order 15 8 5
+
+	order 21 8 5
+
 Turn 63
-1 15 16
+	order 15 8 5
+
+	order 21 8 5
+
 Turn 64
-1 15 5
+	order 15 8 5
+
+	order 21 8 5
+
 Turn 65
-1 16 5
+	order 15 8 5
+
+	order 21 8 5
+
 Turn 66
+	order 15 16 5
+
+	order 21 16 5
+
 Turn 67
+	order 15 16 4
+
+	order 21 16 5
+
 Turn 68
+	order 15 16 4
+
+	order 21 16 4
+
 Turn 69
+	order 2 16 21
+
+	order 15 16 4
+
+	order 21 16 4
+
 Turn 70
+	order 15 16 4
+
+	order 21 16 4
+
 Turn 71
+	order 15 1 5
+
+	order 21 1 4
+
 Turn 72
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 73
+	order 4 1 2
+
+	order 15 1 4
+
+	order 21 1 5
+
 Turn 74
+	order 2 1 23
+
+	order 4 1 3
+
+	order 15 1 5
+
+	order 21 1 4
+
 Turn 75
+	order 4 1 4
+
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 76
+	order 4 3 4
+
+	order 15 3 5
+
+	order 21 3 5
+
 Turn 77
+	order 4 3 4
+
 Turn 78
+	order 4 3 4
+
+	order 15 3 7
+
+	order 21 3 7
+
 Turn 79
+	order 2 3 24
+
+	order 4 3 4
+
+	order 15 3 6
+
+	order 21 3 6
+
 Turn 80
+	order 4 1 4
+
 Turn 81
+	order 15 8 8
+
+	order 21 8 8
+
 Turn 82
+	order 15 16 6
+
+	order 21 16 6
+
 Turn 83
 Turn 84
-15 2 8
+	order 2 10 8
+
+	order 15 10 7
+
+	order 21 10 7
+
 Turn 85
-15 16 6
+	order 2 10 7
+
+	order 15 10 6
+
+	order 21 10 6
+
 Turn 86
-15 16 1
+	order 8 22 24
+
+	order 15 22 5
+
+	order 21 22 6
+
 Turn 87
-15 16 1
+	order 2 22 4
+
+	order 8 22 19
+
+	order 15 22 5
+
+	order 21 22 5
+
 Turn 88
-15 1 1
+	order 2 22 4
+
+	order 4 22 18
+
+	order 15 22 5
+
+	order 21 22 5
+
 Turn 89
-15 13 1
+	order 2 22 5
+
+	order 8 22 15
+
+	order 15 22 5
+
+	order 21 22 5
+
 Turn 90
-15 4 1
+	order 2 16 5
+
+	order 15 16 5
+
+	order 21 16 2
+
 Turn 91
-15 12 1
+	order 2 22 5
+
+	order 2 22 3
+
+	order 15 22 2
+
+	order 21 22 3
+
 Turn 92
-15 12 1
+	order 2 16 3
+
+	order 15 16 3
+
+	order 21 16 3
+
 Turn 93
-15 9 1
+	order 2 16 3
+
+	order 4 16 10
+
+	order 15 16 4
+
+	order 21 3 4
+
 Turn 94
+	order 2 8 4
+
+	order 15 8 4
+
+	order 21 8 5
+
 Turn 95
+	order 2 8 4
+
+	order 15 8 5
+
+	order 21 8 5
+
 Turn 96
+	order 2 3 5
+
+	order 2 3 3
+
+	order 4 3 2
+
+	order 15 3 5
+
+	order 15 3 3
+
+	order 21 3 5
+
+	order 21 3 3
+
 Turn 97
+	order 2 3 3
+
+	order 2 3 3
+
+	order 15 3 3
+
+	order 15 3 3
+
+	order 21 3 3
+
+	order 21 3 3
+
 Turn 98
+	order 2 3 3
+
+	order 15 3 3
+
+	order 21 3 3
+
 Turn 99
+	order 2 1 4
+
+	order 15 3 4
+
+	order 21 3 4
+
 Turn 100
+	order 2 1 4
+
+	order 15 1 4
+
+	order 21 1 4
+
 Turn 101
+	order 2 9 4
+
+	order 4 9 11
+
+	order 15 9 5
+
+	order 21 9 5
+
 Turn 102
+	order 2 9 5
+
+	order 2 10 3
+
+	order 15 9 4
+
+	order 15 10 3
+
+	order 21 9 5
+
+	order 21 10 3
+
 Turn 103
+	order 2 10 3
+
+	order 2 10 1
+
+	order 15 9 3
+
+	order 21 9 3
+
 Turn 104
+	order 2 10 4
+
+	order 15 9 4
+
+	order 21 9 4
+
 Turn 105
+	order 2 10 4
+
+	order 2 10 4
+
+	order 15 10 5
+
+	order 21 10 4
+
 Turn 106
+	order 2 8 3
+
+	order 15 9 5
+
+	order 21 9 5
+
 Turn 107
+	order 2 1 4
+
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 108
+	order 2 1 4
+
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 109
+	order 2 1 5
+
+	order 15 1 5
+
+	order 21 1 5
+
 Turn 110
+	order 2 4 5
+
+	order 15 4 5
+
+	order 21 4 4
+
 Turn 111
+	order 15 4 4
+
+	order 21 4 4
+
 Turn 112
+	order 2 4 7
+
+	order 15 4 4
+
+	order 21 4 5
+
+	order 22 8 11
+
 Turn 113
+	order 2 4 6
+
+	order 15 4 5
+
+	order 21 4 5
+
+	order 22 8 12
+
 Turn 114
+	order 15 3 5
+
+	order 21 3 5
+
+	order 22 3 11
+
+	order 22 3 10
+
 Turn 115
+	order 2 3 8
+
+	order 15 3 5
+
+	order 21 3 5
+
+	order 22 3 3
+
 Turn 116
+	order 2 3 7
+
+	order 15 3 5
+
+	order 21 3 5
+
+	order 22 8 4
+
 Turn 117
+	order 15 8 5
+
+	order 21 8 5
+
+	order 22 8 5
+
 Turn 118
+	order 2 3 8
+
+	order 15 3 5
+
+	order 21 3 5
+
+	order 22 3 5
+
+Turn 119
+	order 2 3 7
+
+	order 15 3 5
+
+	order 21 3 5
+
+	order 22 3 5
+
+Turn 120
+	order 15 10 5
+
+	order 21 10 5
+
+Turn 121
+	order 2 9 5
+
+	order 8 10 12
+
+	order 15 9 5
+
+Turn 122
+	order 2 9 4
+
+	order 8 10 11
+
+	order 15 9 5
+
+Turn 123
+	order 15 9 4
+
+Turn 124
+	order 15 9 3
+
+	order 21 9 12
+
+Turn 125
+	order 15 4 4
+
+Turn 126
+	order 10 4 23
+
+	order 15 4 4
+
+	order 21 4 9
+
+Turn 127
+	order 15 16 4
+
+Turn 128
+	order 2 16 15
+
+	order 15 16 4
+
+	order 21 16 8
+
+Turn 129
+	order 10 22 21
+
+	order 15 22 5
+
+Turn 130
+	order 15 22 4
+
+	order 21 22 3
+
+Turn 131
+	order 2 1 15
+
+	order 15 1 5
+
+	order 21 1 4
+
+Turn 132
+	order 15 3 5
+
+	order 21 3 5
+
+Turn 133
+	order 10 8 7
+
+	order 15 9 5
+
+	order 21 9 5
+
+Turn 134
+	order 2 9 15
+
+	order 15 9 5
+
+	order 21 9 5
+
+Turn 135
+	order 3 9 16
+
+	order 4 9 34
+
+	order 4 8 27
+
+	order 15 9 5
+
+	order 21 9 5
+
+Turn 136
+	order 3 9 14
+
+	order 3 9 12
+
+	order 15 9 5
+
+	order 21 9 5
+
+Turn 137
+	order 2 9 15
+
+	order 15 9 5
+
+	order 21 9 5
+
+Turn 138
+	order 4 22 9
+
+	order 15 22 5
+
+	order 21 9 5
+
+Turn 139
+	order 4 10 9
+
+	order 15 10 5
+
+	order 15 10 4
+
+	order 21 10 5
+
+	order 21 10 4
+
+Turn 140
+	order 2 10 15
+
+	order 4 10 8
+
+	order 15 10 3
+
+	order 21 10 3
+
+Turn 141
+	order 4 10 6
+
+	order 15 10 4
+
+	order 21 10 4
+
+Turn 142
+	order 3 1 13
+
+	order 4 10 10
+
+	order 15 9 4
+
+	order 21 9 4
+
+Turn 143
+	order 4 10 7
+
+	order 15 9 5
+
+	order 21 9 5
+
+Turn 144
+	order 2 9 10
+
+	order 15 9 4
+
+	order 21 9 5
+
+Turn 145
+	order 15 22 4
+
+	order 21 22 4
+
+Turn 146
+	order 2 22 4
+
+	order 15 22 5
+
+	order 21 22 4
+
+Turn 147
+	order 2 8 4
+
+	order 2 8 2
+
+	order 15 8 5
+
+	order 15 8 2
+
+	order 21 8 5
+
+	order 21 8 2
+
+Turn 148
+	order 2 8 4
+
+	order 15 8 4
+
+	order 21 8 4
+
+Turn 149
+	order 2 8 4
+
+	order 15 8 4
+
+	order 21 8 4
+
+Turn 150
+	order 2 16 5
+
+	order 15 16 5
+
+	order 21 16 5
+
+Turn 151
+	order 2 16 5
+
+	order 2 16 3
+
+	order 9 16 50
+
+	order 15 16 5
+
+	order 15 16 3
+
+	order 21 16 5
+
+	order 21 16 3
+
+Turn 152
+	order 2 16 3
+
+	order 15 16 3
+
+	order 21 16 3
+
+Turn 153
+	order 2 1 4
+
+	order 9 1 39
+
+	order 15 1 4
+
+	order 21 1 4
+
+Turn 154
+	order 2 1 4
+
+	order 15 1 4
+
+	order 21 1 5
+
+Turn 155
+	order 2 1 5
+
+	order 9 1 44
+
+	order 9 7 14
+
+	order 9 1 12
+
+	order 15 1 5
+
+	order 21 1 4
+
+Turn 156
+	order 2 4 5
+
+	order 15 1 5
+
+	order 21 1 5
+
+Turn 157
+	order 9 8 14
+
+	order 15 8 5
+
+	order 21 8 5
+
+Turn 158
+	order 9 4 14
+
+	order 15 4 5
+
+	order 21 4 5
+
+Turn 159
+	order 9 4 10
+
+	order 15 4 5
+
+	order 21 4 5
+
+Turn 160
+	order 7 4 3
+
+	order 15 4 4
+
+	order 21 4 5
+
+Turn 161
+	order 7 4 4
+
+	order 9 4 10
+
+	order 15 4 4
+
+	order 21 4 4
+
+Turn 162
+	order 7 10 4
+
+	order 15 10 5
+
+	order 21 10 4
+
+Turn 163
+	order 7 10 5
+
+	order 9 10 10
+
+	order 15 10 5
+
+	order 21 10 5
+
+Turn 164
+	order 2 10 21
+
+	order 7 10 5
+
+	order 15 10 4
+
+	order 21 10 5
+
+Turn 165
+	order 7 10 5
+
+	order 9 10 6
+
+	order 15 10 5
+
+	order 21 10 4
+
+Turn 166
+	order 7 10 5
+
+	order 9 10 5
+
+	order 15 10 5
+
+	order 21 10 5
+
+Turn 167
+	order 7 22 5
+
+	order 9 22 2
+
+	order 15 22 5
+
+	order 21 22 5
+
+Turn 168
+	order 7 22 5
+
+	order 9 22 3
+
+	order 15 22 5
+
+	order 21 22 5
+
+Turn 169
+	order 7 22 5
+
+	order 9 22 4
+
+	order 15 22 5
+
+	order 21 22 5
+
+Turn 170
+	order 7 22 5
+
+	order 9 22 5
+
+	order 15 22 4
+
+	order 21 22 5
+
+Turn 171
+	order 7 22 5
+
+	order 9 22 5
+
+	order 15 8 4
+
+	order 21 8 5
+
+Turn 172
+	order 7 8 5
+
+	order 9 8 5
+
+	order 15 8 5
+
+	order 21 8 4
+
+Turn 173
+	order 7 1 5
+
+	order 9 1 5
+
+	order 15 1 5
+
+	order 16 1 15
+
+	order 16 1 7
+
+	order 21 1 4
+
+Turn 174
+	order 7 1 5
+
+	order 9 1 5
+
+	order 15 1 5
+
+	order 16 1 12
+
+	order 21 1 5
+
+Turn 175
+	order 7 3 5
+
+	order 15 3 5
+
+	order 16 1 10
+
+	order 16 1 5
+
+	order 21 3 5
+
+Turn 176
+	order 7 3 5
+
+	order 15 3 5
+
+	order 16 3 5
+
+	order 21 3 5
+
+Turn 177
+	order 2 3 23
+
+	order 7 3 5
+
+	order 15 3 5
+
+	order 16 3 5
+
+	order 21 3 5
+
+Turn 178
+	order 7 2 5
+
+	order 15 2 5
+
+	order 16 4 5
+
+	order 21 2 5
+
+Turn 179
+	order 1 2 36
+
+	order 7 2 5
+
+	order 16 2 5
+
+	order 21 2 5
+
+Turn 180
+	order 1 2 28
+
+	order 7 2 5
+
+	order 9 2 16
+
+	order 15 2 7
+
+	order 21 2 5
+
+Turn 181
+	order 4 2 9
+
+	order 7 2 5
+
+	order 15 2 6
+
+	order 21 2 5
+
+Turn 182
+	order 4 2 7
+
+	order 7 2 5
+
+	order 21 2 5
+
+Turn 183
+	order 1 8 22
+
+	order 4 2 5
+
+	order 7 2 5
+
+	order 15 2 2
+
+	order 16 8 12
+
+	order 21 2 5
+
+Turn 184
+	order 4 2 5
+
+	order 7 2 5
+
+	order 9 2 2
+
+	order 15 2 4
+
+	order 21 2 5
+
+Turn 185
+	order 4 2 4
+
+	order 7 2 5
+
+	order 9 2 4
+
+	order 15 2 4
+
+	order 21 2 5
+
+Turn 186
+	order 7 2 5
+
+	order 15 2 5
+
+	order 21 2 5
+
+Turn 187
+	order 1 10 21
+
+	order 7 2 5
+
+	order 15 2 5
+
+	order 21 2 5
+
+Turn 188
+	order 7 2 5
+
+	order 7 10 4
+
+	order 15 2 5
+
+	order 15 10 4
+
+	order 21 2 5
+
+	order 21 10 4
+
+Turn 189
+	order 7 2 3
+
+	order 15 2 3
+
+	order 21 2 3
+
+Turn 190
+	order 7 16 4
+
+	order 15 16 4
+
+	order 21 16 4
+
+Turn 191
+	order 7 3 4
+
+	order 15 3 4
+
+	order 21 3 4
+
+Turn 192
+	order 7 3 5
+
+	order 15 3 5
+
+	order 21 3 5
+
+Turn 193
+	order 1 22 19
+
+	order 4 22 21
+
+	order 7 3 5
+
+	order 15 3 5
+
+	order 21 3 5
+
+Turn 194
+	order 2 4 61
+
+	order 7 9 5
+
+	order 7 22 4
+
+	order 15 9 5
+
+	order 15 22 4
+
+	order 21 9 5
+
+	order 21 22 4
+
+Turn 195
+	order 1 22 19
+
+	order 15 9 3
+
+	order 21 9 3
+
+Turn 196
+	order 1 8 14
+
+	order 2 4 49
+
+	order 15 9 4
+
+	order 15 8 3
+
+	order 21 9 4
+
+	order 21 8 3
+
+Turn 197
+	order 7 9 8
+
+	order 15 9 3
+
+	order 21 9 3
+
+Turn 198
+	order 15 4 4
+
+	order 21 4 4
+
+Turn 199
+	order 2 4 42
+
+	order 15 4 4
+
+	order 21 4 4
+
+Turn 200
+	order 15 16 5
+
+	order 21 16 5
+
+Turn 201
+	order 2 16 48
+
+	order 2 4 30
+
+	order 10 8 33
+
+	order 10 8 17
+
+	order 15 16 5
+
+	order 21 16 5
+
+Turn 202
+	order 2 7 26
+
+	order 2 7 2
+
+	order 2 13 15
+
+	order 2 22 6
+
+	order 15 7 5
+
+	order 15 7 2
+
+	order 21 7 5
+
+	order 21 7 2
+
+Turn 203
+	order 1 22 9
+
+	order 2 7 4
+
+	order 3 7 24
+
+	order 15 7 4
+
+Turn 204
+	order 2 7 4
+
+	order 15 7 4
+
+Turn 205
+	order 1 22 2
+
+	order 2 7 5
+
+	order 3 9 23
+
+	order 10 22 8
+
+	order 15 7 5
+
+	order 21 7 9
+
+Turn 206
+	order 1 9 3
+
+	order 2 9 5
+
+	order 3 9 18
+
+	order 3 9 6
+
+	order 10 9 7
+
+	order 15 9 5
+
+Turn 207
+	order 1 22 4
+
+	order 2 9 5
+
+	order 3 9 13
+
+	order 3 9 8
+
+	order 8 22 19
+
+	order 8 22 10
+
+	order 8 9 8
+
+	order 15 9 5
+
+Turn 208
+	order 1 22 5
+
+	order 2 9 5
+
+	order 3 9 7
+
+	order 10 22 8
+
+	order 15 9 5
+
+	order 21 9 12
+
+Turn 209
+	order 1 22 5
+
+	order 2 9 5
+
+	order 3 9 5
+
+	order 8 22 5
+
+	order 10 22 9
+
+	order 15 9 5
+
+Turn 210
+	order 1 22 5
+
+	order 2 7 5
+
+	order 3 7 5
+
+	order 4 22 63
+
+	order 4 13 15
+
+	order 4 6 33
+
+	order 8 22 5
+
+	order 10 22 9
+
+	order 15 7 5
+
+Turn 211
+	order 1 22 5
+
+	order 2 7 5
+
+	order 3 7 4
+
+	order 8 22 5
+
+	order 10 22 7
+
+	order 15 7 5
+
+	order 21 7 5
+
+Turn 212
+	order 1 7 5
+
+	order 2 7 5
+
+	order 3 7 4
+
+	order 4 7 29
+
+	order 4 13 15
+
+	order 8 7 5
+
+	order 10 7 8
+
+	order 15 7 5
+
+	order 21 7 5
+
+Turn 213
+	order 1 9 5
+
+	order 2 9 5
+
+	order 3 9 4
+
+	order 4 9 11
+
+	order 8 9 5
+
+	order 10 9 6
+
+	order 15 9 5
+
+	order 21 9 5
+
+Turn 214
+	order 1 9 5
+
+	order 2 9 5
+
+	order 3 9 4
+
+	order 4 9 9
+
+	order 8 9 5
+
+	order 10 9 6
+
+	order 15 9 5
+
+	order 21 9 2
+
+Turn 215
+	order 1 9 5
+
+	order 1 9 1
+
+	order 2 9 5
+
+	order 2 9 1
+
+	order 3 9 4
+
+	order 3 9 1
+
+	order 4 9 9
+
+	order 4 9 1
+
+	order 8 9 5
+
+	order 10 9 5
+
+	order 10 9 1
+
+	order 15 9 5
+
+	order 15 9 1
+
+	order 21 9 3
+
+	order 21 9 1
+
+Turn 216
+	order 2 16 4
+
+	order 3 16 4
+
+	order 4 16 6
+
+	order 8 16 5
+
+	order 10 16 5
+
+	order 13 16 9
+
+	order 15 16 4
+
+	order 21 16 4
+
+Turn 217
+	order 2 16 5
+
+	order 3 16 4
+
+	order 4 16 5
+
+	order 6 16 1
+
+	order 8 16 5
+
+	order 10 16 5
+
+	order 13 16 14
+
+	order 15 16 5
+
+	order 21 16 4
+
+Turn 218
+	order 2 16 5
+
+	order 3 16 4
+
+	order 4 16 4
+
+	order 6 16 2
+
+	order 7 16 45
+
+	order 8 16 7
+
+	order 10 16 5
+
+	order 13 16 8
+
+	order 15 16 5
+
+	order 21 16 5
+
+	order 22 16 56
+
+Turn 219
+	order 2 16 5
+
+	order 3 16 4
+
+	order 4 16 4
+
+	order 6 16 2
+
+	order 8 16 7
+
+	order 10 16 5
+
+	order 13 16 6
+
+	order 15 16 5
+
+	order 21 16 5
+
+Turn 220
+	order 2 1 5
+
+	order 3 1 4
+
+	order 4 1 4
+
+	order 6 1 2
+
+	order 8 1 6
+
+	order 10 1 5
+
+	order 13 1 4
+
+	order 15 1 5
+
+	order 21 1 5
+
+	order 22 1 41
+
+Turn 221
+	order 2 1 5
+
+	order 3 1 4
+
+	order 4 1 4
+
+	order 6 1 2
+
+	order 8 16 6
+
+	order 10 16 5
+
+	order 13 1 4
+
+	order 15 1 5
+
+	order 21 1 5
+
+Turn 222
+	order 2 1 5
+
+	order 3 1 4
+
+	order 4 1 4
+
+	order 6 1 2
+
+	order 7 1 42
+
+	order 8 1 5
+
+	order 10 1 5
+
+	order 13 1 3
+
+	order 15 1 5
+
+	order 21 1 5
+
+Turn 223
+	order 2 1 5
+
+	order 3 1 4
+
+	order 4 1 4
+
+	order 6 1 2
+
+	order 7 1 28
+
+	order 8 1 5
+
+	order 9 1 67
+
+	order 10 1 5
+
+	order 13 1 3
+
+	order 15 1 5
+
+	order 21 1 5
+
+Turn 224
+	order 2 1 5
+
+	order 3 1 4
+
+	order 4 1 4
+
+	order 6 1 2
+
+	order 8 1 5
+
+	order 10 1 5
+
+	order 13 1 3
+
+	order 15 1 5
+
+	order 21 1 5
+
+	order 22 1 65
+
+	order 22 1 22
+
+	order 22 5 33
+
+Turn 225
+	order 2 1 5
+
+	order 3 1 4
+
+	order 4 1 4
+
+	order 6 1 2
+
+	order 8 1 5
+
+	order 10 1 5
+
+	order 13 1 3
+
+	order 15 1 5
+
+	order 21 1 5
+
+	order 22 1 7
+
+Turn 226
+	order 2 1 5
+
+	order 3 1 4
+
+	order 4 1 4
+
+	order 6 1 2
+
+	order 7 1 24
+
+	order 8 1 5
+
+	order 10 1 5
+
+	order 13 1 3
+
+	order 15 1 5
+
+	order 21 1 5
+
+	order 22 1 6
+
+Turn 227
+	order 2 4 5
+
+	order 3 4 4
+
+	order 4 4 4
+
+	order 6 4 2
+
+	order 8 4 5
+
+	order 9 4 58
+
+	order 10 4 5
+
+	order 13 4 3
+
+	order 15 4 5
+
+	order 21 4 5
+
+	order 22 4 6
+
+Turn 228
+	order 2 4 5
+
+	order 3 4 4
+
+	order 6 4 2
+
+	order 8 4 5
+
+	order 10 4 5
+
+	order 13 4 3
+
+	order 15 4 5
+
+	order 21 4 5
+
+	order 22 4 5
+
+Turn 229
+	order 2 4 5
+
+	order 3 4 4
+
+	order 6 4 2
+
+	order 8 4 5
+
+	order 10 4 5
+
+	order 13 4 3
+
+	order 15 4 5
+
+	order 21 4 5
+
+	order 22 4 5
+
+Turn 230
+	order 2 4 5
+
+	order 3 4 4
+
+	order 6 4 2
+
+	order 7 4 36
+
+	order 7 5 33
+
+	order 8 4 5
+
+	order 9 4 45
+
+	order 10 4 5
+
+	order 13 4 3
+
+	order 15 4 5
+
+	order 21 4 5
+
+	order 22 4 5
+

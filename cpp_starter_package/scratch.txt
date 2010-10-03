@@ -1,657 +1,1472 @@
-Map 1:  MyBot 1 vs.  eighth_bot 0
-Map 2:  MyBot 2 vs.  eighth_bot 0
-Map 3:  MyBot 3 vs.  eighth_bot 0
-Map 4:  MyBot 4 vs.  eighth_bot 0
-Map 5:  MyBot 4 vs.  eighth_bot 1
-Map 6:  MyBot 4 vs.  eighth_bot 2
-Map 7:  MyBot 5 vs.  eighth_bot 2
-Map 8:  MyBot 6 vs.  eighth_bot 2
-Map 9:  MyBot 6 vs.  eighth_bot 3
-Map 10:  MyBot 7 vs.  eighth_bot 3
-Map 11:  MyBot 7 vs.  eighth_bot 4
-Map 12:  MyBot 8 vs.  eighth_bot 4
-Map 13:  MyBot 9 vs.  eighth_bot 4
-Map 14:  MyBot 10 vs.  eighth_bot 4
-Map 15:  MyBot 11 vs.  eighth_bot 4
-Map 16:  MyBot 12 vs.  eighth_bot 4
-Map 17:  MyBot 13 vs.  eighth_bot 4
-Map 18:  MyBot 14 vs.  eighth_bot 4
-Map 19:  MyBot 15 vs.  eighth_bot 4
-Map 20:  MyBot 16 vs.  eighth_bot 4
-Map 21:  MyBot 17 vs.  eighth_bot 4
-Map 22:  MyBot 18 vs.  eighth_bot 4
-Map 23:  MyBot 18 vs.  eighth_bot 5
-Map 24:  MyBot 19 vs.  eighth_bot 5
-Map 25:  MyBot 19 vs.  eighth_bot 6
-Map 26:  MyBot 19 vs.  eighth_bot 7
-Map 27:  MyBot 20 vs.  eighth_bot 7
-Map 28:  MyBot 21 vs.  eighth_bot 7
-Map 29:  MyBot 21 vs.  eighth_bot 8
-Map 30:  MyBot 21 vs.  eighth_bot 9
-Map 31:  MyBot 22 vs.  eighth_bot 9
-Map 32:  MyBot 23 vs.  eighth_bot 9
-Map 33:  MyBot 24 vs.  eighth_bot 9
-Map 34:  MyBot 25 vs.  eighth_bot 9
-Map 35:  MyBot 26 vs.  eighth_bot 9
-Map 36:  MyBot 27 vs.  eighth_bot 9
-Map 37:  MyBot 28 vs.  eighth_bot 9
-Map 38:  MyBot 28 vs.  eighth_bot 10
-Map 39:  MyBot 28 vs.  eighth_bot 11
-Map 40:  MyBot 28 vs.  eighth_bot 12
-Map 41:  MyBot 29 vs.  eighth_bot 12
-Map 42:  MyBot 30 vs.  eighth_bot 12
-Map 43:  MyBot 30 vs.  eighth_bot 13
-Map 44:  MyBot 31 vs.  eighth_bot 13
-Map 45:  MyBot 32 vs.  eighth_bot 13
-Map 46:  MyBot 33 vs.  eighth_bot 13
-Map 47:  MyBot 34 vs.  eighth_bot 13
-Map 48:  MyBot 34 vs.  eighth_bot 14
-Map 49:  MyBot 34 vs.  eighth_bot 15
-Map 50:  MyBot 34 vs.  eighth_bot 16
-Map 51:  MyBot 35 vs.  eighth_bot 16
-Map 52:  MyBot 36 vs.  eighth_bot 16
-Map 53:  MyBot 37 vs.  eighth_bot 16
-Map 54:  MyBot 38 vs.  eighth_bot 16
-Map 55:  MyBot 39 vs.  eighth_bot 16
-Map 56:  MyBot 40 vs.  eighth_bot 16
-Map 57:  MyBot 41 vs.  eighth_bot 16
-Map 58:  MyBot 42 vs.  eighth_bot 16
-Map 59:  MyBot 43 vs.  eighth_bot 16
-Map 60:  MyBot 44 vs.  eighth_bot 16
-Map 61:  MyBot 45 vs.  eighth_bot 16
-Map 62:  MyBot 45 vs.  eighth_bot 17
-Map 63:  MyBot 46 vs.  eighth_bot 17
-Map 64:  MyBot 46 vs.  eighth_bot 18
-Map 65:  MyBot 47 vs.  eighth_bot 18
-Map 66:  MyBot 48 vs.  eighth_bot 18
-Map 67:  MyBot 49 vs.  eighth_bot 18
-Map 68:  MyBot 50 vs.  eighth_bot 18
-Map 69:  MyBot 50 vs.  eighth_bot 19
-Map 70:  MyBot 51 vs.  eighth_bot 19
-Map 71:  MyBot 52 vs.  eighth_bot 19
-Map 72:  MyBot 53 vs.  eighth_bot 19
-Map 73:  MyBot 54 vs.  eighth_bot 19
-Map 74:  MyBot 54 vs.  eighth_bot 20
-Map 75:  MyBot 55 vs.  eighth_bot 20
-Map 76:  MyBot 56 vs.  eighth_bot 20
-Map 77:  MyBot 57 vs.  eighth_bot 20
-Map 78:  MyBot 57 vs.  eighth_bot 21
-Map 79:  MyBot 58 vs.  eighth_bot 21
-Map 80:  MyBot 58 vs.  eighth_bot 22
-Map 81:  MyBot 58 vs.  eighth_bot 23
-Map 82:  MyBot 58 vs.  eighth_bot 24
-Map 83:  MyBot 58 vs.  eighth_bot 25
-Map 84:  MyBot 58 vs.  eighth_bot 26
-Map 85:  MyBot 58 vs.  eighth_bot 27
-Map 86:  MyBot 58 vs.  eighth_bot 28
-Map 87:  MyBot 59 vs.  eighth_bot 28
-Map 88:  MyBot 59 vs.  eighth_bot 29
-Map 89:  MyBot 60 vs.  eighth_bot 29
-Map 90:  MyBot 61 vs.  eighth_bot 29
-Map 91:  MyBot 62 vs.  eighth_bot 29
-Map 92:  MyBot 63 vs.  eighth_bot 29
-Map 93:  MyBot 64 vs.  eighth_bot 29
-Map 94:  MyBot 64 vs.  eighth_bot 30
-Map 95:  MyBot 65 vs.  eighth_bot 30
-Map 96:  MyBot 66 vs.  eighth_bot 30
-Map 97:  MyBot 67 vs.  eighth_bot 30
-Map 98:  MyBot 68 vs.  eighth_bot 30
-Map 99:  MyBot 69 vs.  eighth_bot 30
-Map 100:  MyBot 70 vs.  eighth_bot 30
+Game On
+Turn 1
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 100, distance 22
+id 2, growth 5, ships 100, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 9, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 100
 
+Turn 2
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 27, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 9, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 5
 
+Turn 3
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 32, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 9, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 5
 
+Turn 4
+my origin 2
 
-Map 1:  MyBot 1 vs.  eighth_bot 0
-Map 2:  MyBot 2 vs.  eighth_bot 0
-Map 3:  MyBot 3 vs.  eighth_bot 0
-Map 4:  MyBot 4 vs.  eighth_bot 0
-Map 5:  MyBot 5 vs.  eighth_bot 0
-Map 6:  MyBot 6 vs.  eighth_bot 0
-Map 7:  MyBot 6 vs.  eighth_bot 1
-Map 8:  MyBot 7 vs.  eighth_bot 1
-Map 9:  MyBot 7 vs.  eighth_bot 2
-Map 10:  MyBot 8 vs.  eighth_bot 2
-Map 11:  MyBot 9 vs.  eighth_bot 2
-Map 12:  MyBot 10 vs.  eighth_bot 2
-Map 13:  MyBot 11 vs.  eighth_bot 2
-Map 14:  MyBot 11 vs.  eighth_bot 3
-Map 15:  MyBot 12 vs.  eighth_bot 3
-Map 16:  MyBot 13 vs.  eighth_bot 3
-Map 17:  MyBot 14 vs.  eighth_bot 3
-Map 18:  MyBot 15 vs.  eighth_bot 3
-Map 19:  MyBot 15 vs.  eighth_bot 4
-Map 20:  MyBot 16 vs.  eighth_bot 4
-Map 21:  MyBot 17 vs.  eighth_bot 4
-Map 22:  MyBot 18 vs.  eighth_bot 4
-Map 23:  MyBot 18 vs.  eighth_bot 5
-Map 24:  MyBot 19 vs.  eighth_bot 5
-Map 25:  MyBot 19 vs.  eighth_bot 6
-Map 26:  MyBot 19 vs.  eighth_bot 7
-Map 27:  MyBot 20 vs.  eighth_bot 7
-Map 28:  MyBot 21 vs.  eighth_bot 7
-Map 29:  MyBot 22 vs.  eighth_bot 7
-Map 30:  MyBot 23 vs.  eighth_bot 7
-Map 31:  MyBot 24 vs.  eighth_bot 7
-Map 32:  MyBot 25 vs.  eighth_bot 7
-Map 33:  MyBot 26 vs.  eighth_bot 7
-Map 34:  MyBot 27 vs.  eighth_bot 7
-Map 35:  MyBot 28 vs.  eighth_bot 7
-Map 36:  MyBot 29 vs.  eighth_bot 7
-Map 37:  MyBot 30 vs.  eighth_bot 7
-Map 38:  MyBot 30 vs.  eighth_bot 8
-Map 39:  MyBot 31 vs.  eighth_bot 8
-Map 40:  MyBot 31 vs.  eighth_bot 9
-Map 41:  MyBot 31 vs.  eighth_bot 10
-Map 42:  MyBot 32 vs.  eighth_bot 10
-Map 43:  MyBot 32 vs.  eighth_bot 11
-Map 44:  MyBot 33 vs.  eighth_bot 11
-Map 45:  MyBot 33 vs.  eighth_bot 12
-Map 46:  MyBot 34 vs.  eighth_bot 12
-Map 47:  MyBot 35 vs.  eighth_bot 12
-Map 48:  MyBot 35 vs.  eighth_bot 13
-Map 49:  MyBot 36 vs.  eighth_bot 13
-Map 50:  MyBot 37 vs.  eighth_bot 13
-Map 51:  MyBot 38 vs.  eighth_bot 13
-Map 52:  MyBot 39 vs.  eighth_bot 13
-Map 53:  MyBot 40 vs.  eighth_bot 13
-Map 54:  MyBot 41 vs.  eighth_bot 13
-Map 55:  MyBot 42 vs.  eighth_bot 13
-Map 56:  MyBot 43 vs.  eighth_bot 13
-Map 57:  MyBot 44 vs.  eighth_bot 13
-Map 58:  MyBot 45 vs.  eighth_bot 13
-Map 59:  MyBot 46 vs.  eighth_bot 13
-Map 60:  MyBot 47 vs.  eighth_bot 13
-Map 61:  MyBot 48 vs.  eighth_bot 13
-Map 62:  MyBot 49 vs.  eighth_bot 13
-Map 63:  MyBot 50 vs.  eighth_bot 13
-Map 64:  MyBot 50 vs.  eighth_bot 14
-Map 65:  MyBot 50 vs.  eighth_bot 15
-Map 66:  MyBot 51 vs.  eighth_bot 15
-Map 67:  MyBot 52 vs.  eighth_bot 15
-Map 68:  MyBot 53 vs.  eighth_bot 15
-Map 69:  MyBot 54 vs.  eighth_bot 15
-Map 70:  MyBot 55 vs.  eighth_bot 15
-Map 71:  MyBot 56 vs.  eighth_bot 15
-Map 72:  MyBot 57 vs.  eighth_bot 15
-Map 73:  MyBot 58 vs.  eighth_bot 15
-Map 74:  MyBot 59 vs.  eighth_bot 15
-Map 75:  MyBot 60 vs.  eighth_bot 15
-Map 76:  MyBot 61 vs.  eighth_bot 15
-Map 77:  MyBot 62 vs.  eighth_bot 15
-Map 78:  MyBot 63 vs.  eighth_bot 15
-Map 79:  MyBot 64 vs.  eighth_bot 15
-Map 80:  MyBot 65 vs.  eighth_bot 15
-Map 81:  MyBot 65 vs.  eighth_bot 16
-Map 82:  MyBot 66 vs.  eighth_bot 16
-Map 83:  MyBot 67 vs.  eighth_bot 16
-Map 84:  MyBot 68 vs.  eighth_bot 16
-Map 85:  MyBot 69 vs.  eighth_bot 16
-Map 86:  MyBot 70 vs.  eighth_bot 16
-Map 87:  MyBot 71 vs.  eighth_bot 16
-Map 88:  MyBot 72 vs.  eighth_bot 16
-Map 89:  MyBot 73 vs.  eighth_bot 16
-Map 90:  MyBot 74 vs.  eighth_bot 16
-Map 91:  MyBot 75 vs.  eighth_bot 16
-Map 92:  MyBot 76 vs.  eighth_bot 16
-Map 93:  MyBot 76 vs.  eighth_bot 17
-Map 94:  MyBot 77 vs.  eighth_bot 17
-Map 95:  MyBot 78 vs.  eighth_bot 17
-Map 96:  MyBot 79 vs.  eighth_bot 17
-Map 97:  MyBot 79 vs.  eighth_bot 18
-Map 98:  MyBot 80 vs.  eighth_bot 18
-Map 99:  MyBot 81 vs.  eighth_bot 18
-Map 100:  MyBot 82 vs.  eighth_bot 18
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 37, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 9, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 5
 
+Turn 5
+my origin 2
 
+enemy_origin 1
 
-//// Sept 18, 22:43 
-//// master>./runner.rb
- Map 1:  tenth_bot 1 vs.  MyBot 0
- Map 2:  tenth_bot 2 vs.  MyBot 0
- Map 3:  tenth_bot 3 vs.  MyBot 0
- Map 4:  tenth_bot 4 vs.  MyBot 0
- Map 5:  tenth_bot 5 vs.  MyBot 0
- Map 6:  tenth_bot 6 vs.  MyBot 0
- Map 7:  tenth_bot 6 vs.  MyBot 1
- Map 8:  tenth_bot 6 vs.  MyBot 2
- Map 9:  tenth_bot 7 vs.  MyBot 2
- Map 10:  tenth_bot 7 vs.  MyBot 3
- Map 11:  tenth_bot 7 vs.  MyBot 4
- Map 12:  tenth_bot 7 vs.  MyBot 5
- Map 13:  tenth_bot 7 vs.  MyBot 6
- Map 14:  tenth_bot 7 vs.  MyBot 7
- Map 15:  tenth_bot 7 vs.  MyBot 8
- Map 16:  tenth_bot 7 vs.  MyBot 9
- Map 17:  tenth_bot 8 vs.  MyBot 9
- Map 18:  tenth_bot 8 vs.  MyBot 10
- Map 19:  tenth_bot 9 vs.  MyBot 10
- Map 20:  tenth_bot 10 vs.  MyBot 10
- Map 21:  tenth_bot 10 vs.  MyBot 11
- Map 22:  tenth_bot 10 vs.  MyBot 12
- Map 23:  tenth_bot 10 vs.  MyBot 13
- Map 24:  tenth_bot 11 vs.  MyBot 13
- Map 25:  tenth_bot 12 vs.  MyBot 13
- Map 26:  tenth_bot 12 vs.  MyBot 14
- Map 27:  tenth_bot 13 vs.  MyBot 14
- Map 28:  tenth_bot 14 vs.  MyBot 14
- Map 29:  tenth_bot 14 vs.  MyBot 15
- Map 30:  tenth_bot 14 vs.  MyBot 16
- Map 31:  tenth_bot 15 vs.  MyBot 16
- Map 32:  tenth_bot 15 vs.  MyBot 17
- Map 33:  tenth_bot 16 vs.  MyBot 17
- Map 34:  tenth_bot 16 vs.  MyBot 18
- Map 35:  tenth_bot 16 vs.  MyBot 19
- Map 36:  tenth_bot 17 vs.  MyBot 19
- Map 37:  tenth_bot 18 vs.  MyBot 19
- Map 38:  tenth_bot 18 vs.  MyBot 20
- Map 39:  tenth_bot 18 vs.  MyBot 21
- Map 40:  tenth_bot 19 vs.  MyBot 21
- Map 41:  tenth_bot 19 vs.  MyBot 22
- Map 42:  tenth_bot 19 vs.  MyBot 23
- Map 43:  tenth_bot 19 vs.  MyBot 24
- Map 44:  tenth_bot 19 vs.  MyBot 25
- Map 45:  tenth_bot 19 vs.  MyBot 26
- Map 46:  tenth_bot 19 vs.  MyBot 27
- Map 47:  tenth_bot 19 vs.  MyBot 28
- Map 48:  tenth_bot 19 vs.  MyBot 29
- Map 49:  tenth_bot 19 vs.  MyBot 30
- Map 50:  tenth_bot 19 vs.  MyBot 31
- Map 51:  tenth_bot 19 vs.  MyBot 32
- Map 52:  tenth_bot 20 vs.  MyBot 32
- Map 53:  tenth_bot 21 vs.  MyBot 32
- Map 54:  tenth_bot 22 vs.  MyBot 32
- Map 55:  tenth_bot 23 vs.  MyBot 32
- Map 56:  tenth_bot 24 vs.  MyBot 32
- Map 57:  tenth_bot 25 vs.  MyBot 32
- Map 58:  tenth_bot 25 vs.  MyBot 33
- Map 59:  tenth_bot 25 vs.  MyBot 34
- Map 60:  tenth_bot 25 vs.  MyBot 35
- Map 61:  tenth_bot 25 vs.  MyBot 36
- Map 62:  tenth_bot 26 vs.  MyBot 36
- Map 63:  tenth_bot 26 vs.  MyBot 37
- Map 64:  tenth_bot 26 vs.  MyBot 38
- Map 65:  tenth_bot 27 vs.  MyBot 38
- Map 66:  tenth_bot 27 vs.  MyBot 39
- Map 67:  tenth_bot 27 vs.  MyBot 40
- Map 68:  tenth_bot 27 vs.  MyBot 41
- Map 69:  tenth_bot 28 vs.  MyBot 41
- Map 70:  tenth_bot 28 vs.  MyBot 42
- Map 71:  tenth_bot 28 vs.  MyBot 43
- Map 72:  tenth_bot 28 vs.  MyBot 44
- Map 73:  tenth_bot 28 vs.  MyBot 45
- Map 74:  tenth_bot 29 vs.  MyBot 45
- Map 75:  tenth_bot 30 vs.  MyBot 45
- Map 76:  tenth_bot 30 vs.  MyBot 46
- Map 77:  tenth_bot 30 vs.  MyBot 47
- Map 78:  tenth_bot 30 vs.  MyBot 48
- Map 79:  tenth_bot 30 vs.  MyBot 49
- Map 80:  tenth_bot 31 vs.  MyBot 49
- Map 81:  tenth_bot 31 vs.  MyBot 50
- Map 82:  tenth_bot 32 vs.  MyBot 50
- Map 83:  tenth_bot 33 vs.  MyBot 50
- Map 84:  tenth_bot 34 vs.  MyBot 50
- Map 85:  tenth_bot 35 vs.  MyBot 50
- Map 86:  tenth_bot 35 vs.  MyBot 51
- Map 87:  tenth_bot 36 vs.  MyBot 51
- Map 88:  tenth_bot 36 vs.  MyBot 52
- Map 89:  tenth_bot 36 vs.  MyBot 53
- Map 90:  tenth_bot 37 vs.  MyBot 53
- Map 91:  tenth_bot 38 vs.  MyBot 53
- Map 92:  tenth_bot 38 vs.  MyBot 54
- Map 93:  tenth_bot 39 vs.  MyBot 54
- Map 94:  tenth_bot 40 vs.  MyBot 54
- Map 95:  tenth_bot 40 vs.  MyBot 55
- Map 96:  tenth_bot 40 vs.  MyBot 56
- Map 97:  tenth_bot 40 vs.  MyBot 57
- Map 98:  tenth_bot 40 vs.  MyBot 58
- Map 99:  tenth_bot 40 vs.  MyBot 59
- Map 100:  tenth_bot 40 vs.  MyBot 60
-master>           
-master>
-master>
-master>
-master>
-master>
-master>
-master>./runner.rb
- Map 1:  MyBot 1 vs.  tenth_bot 0
- Map 2:  MyBot 1 vs.  tenth_bot 1
- Map 3:  MyBot 1 vs.  tenth_bot 2
- Map 4:  MyBot 1 vs.  tenth_bot 3
- Map 5:  MyBot 1 vs.  tenth_bot 4
- Map 6:  MyBot 2 vs.  tenth_bot 4
- Map 7:  MyBot 3 vs.  tenth_bot 4
- Map 8:  MyBot 4 vs.  tenth_bot 4
- Map 9:  MyBot 4 vs.  tenth_bot 5
- Map 10:  MyBot 5 vs.  tenth_bot 5
- Map 11:  MyBot 6 vs.  tenth_bot 5
- Map 12:  MyBot 6 vs.  tenth_bot 6
- Map 13:  MyBot 7 vs.  tenth_bot 6
- Map 14:  MyBot 7 vs.  tenth_bot 7
- Map 15:  MyBot 8 vs.  tenth_bot 7
- Map 16:  MyBot 9 vs.  tenth_bot 7
- Map 17:  MyBot 9 vs.  tenth_bot 8
- Map 18:  MyBot 10 vs.  tenth_bot 8
- Map 19:  MyBot 10 vs.  tenth_bot 9
- Map 20:  MyBot 10 vs.  tenth_bot 10
- Map 21:  MyBot 10 vs.  tenth_bot 11
- Map 22:  MyBot 10 vs.  tenth_bot 12
- Map 23:  MyBot 11 vs.  tenth_bot 12
- Map 24:  MyBot 11 vs.  tenth_bot 13
- Map 25:  MyBot 11 vs.  tenth_bot 14
- Map 26:  MyBot 12 vs.  tenth_bot 14
- Map 27:  MyBot 12 vs.  tenth_bot 15
- Map 28:  MyBot 12 vs.  tenth_bot 16
- Map 29:  MyBot 12 vs.  tenth_bot 17
- Map 30:  MyBot 13 vs.  tenth_bot 17
- Map 31:  MyBot 13 vs.  tenth_bot 18
- Map 32:  MyBot 14 vs.  tenth_bot 18
- Map 33:  MyBot 14 vs.  tenth_bot 19
- Map 34:  MyBot 15 vs.  tenth_bot 19
- Map 35:  MyBot 15 vs.  tenth_bot 20
- Map 36:  MyBot 15 vs.  tenth_bot 21
- Map 37:  MyBot 15 vs.  tenth_bot 22
- Map 38:  MyBot 16 vs.  tenth_bot 22
- Map 39:  MyBot 17 vs.  tenth_bot 22
- Map 40:  MyBot 17 vs.  tenth_bot 23
- Map 41:  MyBot 18 vs.  tenth_bot 23
- Map 42:  MyBot 19 vs.  tenth_bot 23
- Map 43:  MyBot 19 vs.  tenth_bot 24
- Map 44:  MyBot 20 vs.  tenth_bot 24
- Map 45:  MyBot 21 vs.  tenth_bot 24
- Map 46:  MyBot 21 vs.  tenth_bot 25
- Map 47:  MyBot 21 vs.  tenth_bot 26
- Map 48:  MyBot 22 vs.  tenth_bot 26
- Map 49:  MyBot 23 vs.  tenth_bot 26
- Map 50:  MyBot 23 vs.  tenth_bot 27
- Map 51:  MyBot 24 vs.  tenth_bot 27
- Map 52:  MyBot 24 vs.  tenth_bot 28
- Map 53:  MyBot 24 vs.  tenth_bot 29
- Map 54:  MyBot 25 vs.  tenth_bot 29
- Map 55:  MyBot 25 vs.  tenth_bot 30
- Map 56:  MyBot 25 vs.  tenth_bot 31
- Map 57:  MyBot 25 vs.  tenth_bot 32
- Map 58:  MyBot 26 vs.  tenth_bot 32
- Map 59:  MyBot 27 vs.  tenth_bot 32
- Map 60:  MyBot 28 vs.  tenth_bot 32
- Map 61:  MyBot 29 vs.  tenth_bot 32
- Map 62:  MyBot 30 vs.  tenth_bot 32
- Map 63:  MyBot 31 vs.  tenth_bot 32
- Map 64:  MyBot 31 vs.  tenth_bot 33
- Map 65:  MyBot 31 vs.  tenth_bot 34
- Map 66:  MyBot 32 vs.  tenth_bot 34
- Map 67:  MyBot 32 vs.  tenth_bot 35
- Map 68:  MyBot 32 vs.  tenth_bot 36
- Map 69:  MyBot 32 vs.  tenth_bot 37
- Map 70:  MyBot 33 vs.  tenth_bot 37
- Map 71:  MyBot 33 vs.  tenth_bot 38
- Map 72:  MyBot 33 vs.  tenth_bot 39
- Map 73:  MyBot 33 vs.  tenth_bot 40
- Map 74:  MyBot 33 vs.  tenth_bot 41
- Map 75:  MyBot 33 vs.  tenth_bot 42
- Map 76:  MyBot 34 vs.  tenth_bot 42
- Map 77:  MyBot 34 vs.  tenth_bot 43
- Map 78:  MyBot 34 vs.  tenth_bot 44
- Map 79:  MyBot 35 vs.  tenth_bot 44
- Map 80:  MyBot 35 vs.  tenth_bot 45
- Map 81:  MyBot 36 vs.  tenth_bot 45
- Map 82:  MyBot 36 vs.  tenth_bot 46
- Map 83:  MyBot 36 vs.  tenth_bot 47
- Map 84:  MyBot 36 vs.  tenth_bot 48
- Map 85:  MyBot 36 vs.  tenth_bot 49
- Map 86:  MyBot 37 vs.  tenth_bot 49
- Map 87:  MyBot 38 vs.  tenth_bot 49
- Map 88:  MyBot 39 vs.  tenth_bot 49
- Map 89:  MyBot 40 vs.  tenth_bot 49
- Map 90:  MyBot 40 vs.  tenth_bot 50
- Map 91:  MyBot 41 vs.  tenth_bot 50
- Map 92:  MyBot 41 vs.  tenth_bot 51
- Map 93:  MyBot 41 vs.  tenth_bot 52
- Map 94:  MyBot 41 vs.  tenth_bot 53
- Map 95:  MyBot 41 vs.  tenth_bot 54
- Map 96:  MyBot 41 vs.  tenth_bot 55
- Map 97:  MyBot 42 vs.  tenth_bot 55
- Map 98:  MyBot 42 vs.  tenth_bot 56
- Map 99:  MyBot 42 vs.  tenth_bot 57
- Map 100:  MyBot 42 vs.  tenth_bot 58
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 42, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 9, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 5
 
+Turn 6
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 47, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 1, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 5
 
+Turn 7
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 52, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 6, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 5
 
+Turn 8
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 57, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 6, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 1, distance 22
+	order 2 1 5
 
+Turn 9
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 10
+my origin 2
 
+enemy_origin 1
 
- master>./runner.rb
- You are Player 1
- RageBot.jar Beat Your Ass On map5
- DualBot.jar Beat Your Ass On map11
- DualBot.jar Beat Your Ass On map13
- DualBot.jar Beat Your Ass On map14
- RageBot.jar Beat Your Ass On map14
- DualBot.jar Beat Your Ass On map18
- RageBot.jar Beat Your Ass On map18
- DualBot.jar Beat Your Ass On map19
- RageBot.jar Beat Your Ass On map20
- DualBot.jar Beat Your Ass On map21
- RageBot.jar Beat Your Ass On map21
- DualBot.jar Beat Your Ass On map22
- RageBot.jar Beat Your Ass On map22
- RageBot.jar Beat Your Ass On map23
- DualBot.jar Beat Your Ass On map26
- ProspectorBot.jar Beat Your Ass On map26
- RageBot.jar Beat Your Ass On map26
- BullyBot.jar Beat Your Ass On map27
- DualBot.jar Beat Your Ass On map27
- RageBot.jar Beat Your Ass On map27
- DualBot.jar Beat Your Ass On map29
- RageBot.jar Beat Your Ass On map29
- DualBot.jar Beat Your Ass On map30
- RageBot.jar Beat Your Ass On map30
- RageBot.jar Beat Your Ass On map33
- DualBot.jar Beat Your Ass On map34
- ProspectorBot.jar Beat Your Ass On map34
- RageBot.jar Beat Your Ass On map34
- DualBot.jar Beat Your Ass On map36
- RageBot.jar Beat Your Ass On map36
- RageBot.jar Beat Your Ass On map39
- RageBot.jar Beat Your Ass On map40
- DualBot.jar Beat Your Ass On map43
- DualBot.jar Beat Your Ass On map44
- RageBot.jar Beat Your Ass On map44
- DualBot.jar Beat Your Ass On map46
- RageBot.jar Beat Your Ass On map46
- RageBot.jar Beat Your Ass On map48
- RageBot.jar Beat Your Ass On map50
- RageBot.jar Beat Your Ass On map51
- DualBot.jar Beat Your Ass On map53
- RageBot.jar Beat Your Ass On map53
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 11
+my origin 2
 
+enemy_origin 1
 
- master>./runner.rb
- You are Player 1
- RageBot.jar Beat MyBot On map2
- RageBot.jar Beat MyBot On map3
- DualBot.jar Beat MyBot On map5
- RageBot.jar Beat MyBot On map5
- DualBot.jar Beat MyBot On map6
- DualBot.jar Beat MyBot On map7
- RageBot.jar Beat MyBot On map7
- DualBot.jar Beat MyBot On map8
- RageBot.jar Beat MyBot On map9
- DualBot.jar Beat MyBot On map11
- RageBot.jar Beat MyBot On map11
- DualBot.jar Beat MyBot On map12
- RageBot.jar Beat MyBot On map12
- RageBot.jar Beat MyBot On map13
- DualBot.jar Beat MyBot On map14
- ProspectorBot.jar Beat MyBot On map14
- RageBot.jar Beat MyBot On map14
- RageBot.jar Beat MyBot On map16
- DualBot.jar Beat MyBot On map17
- RageBot.jar Beat MyBot On map17
- DualBot.jar Beat MyBot On map18
- BullyBot.jar Beat MyBot On map21
- DualBot.jar Beat MyBot On map21
- RageBot.jar Beat MyBot On map21
- RageBot.jar Beat MyBot On map22
- DualBot.jar Beat MyBot On map23
- RageBot.jar Beat MyBot On map23
- DualBot.jar Beat MyBot On map24
- RageBot.jar Beat MyBot On map25
- DualBot.jar Beat MyBot On map26
- RageBot.jar Beat MyBot On map26
- DualBot.jar Beat MyBot On map27
- RageBot.jar Beat MyBot On map27
- RageBot.jar Beat MyBot On map28
- DualBot.jar Beat MyBot On map29
- RageBot.jar Beat MyBot On map29
- DualBot.jar Beat MyBot On map30
- RageBot.jar Beat MyBot On map30
- DualBot.jar Beat MyBot On map31
- RageBot.jar Beat MyBot On map31
- RageBot.jar Beat MyBot On map32
- BullyBot.jar Beat MyBot On map33
- DualBot.jar Beat MyBot On map33
- ProspectorBot.jar Beat MyBot On map33
- RageBot.jar Beat MyBot On map33
- DualBot.jar Beat MyBot On map34
- RageBot.jar Beat MyBot On map34
- DualBot.jar Beat MyBot On map36
- RageBot.jar Beat MyBot On map36
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 21, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 12
+my origin 2
 
-Strange, previous two are runs of tenth_bot first, then MyBot.  
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 1, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 13
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 4, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 14
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 4, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 15
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 4, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 16
+my origin 2
 
+enemy_origin 1
 
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 5, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 4, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 5, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 5, distance 22
+	order 2 1 5
 
+Turn 17
+my origin 2
 
+enemy_origin 1
 
-master>./runner.rb
- Map 1:  tenth_bot 0 vs.  MyBot 1
- Map 2:  tenth_bot 0 vs.  MyBot 2
- Map 3:  tenth_bot 0 vs.  MyBot 3
- Map 4:  tenth_bot 0 vs.  MyBot 4
- Map 5:  tenth_bot 0 vs.  MyBot 5
- Map 6:  tenth_bot 1 vs.  MyBot 5
- Map 7:  tenth_bot 1 vs.  MyBot 6
- Map 8:  tenth_bot 2 vs.  MyBot 6
- Map 9:  tenth_bot 2 vs.  MyBot 7
- Map 10:  tenth_bot 2 vs.  MyBot 8
- Map 11:  tenth_bot 2 vs.  MyBot 9
- Map 12:  tenth_bot 2 vs.  MyBot 10
- Map 13:  tenth_bot 2 vs.  MyBot 11
- Map 14:  tenth_bot 3 vs.  MyBot 11
- Map 15:  tenth_bot 3 vs.  MyBot 12
- Map 16:  tenth_bot 3 vs.  MyBot 13
- Map 17:  tenth_bot 3 vs.  MyBot 14
- Map 18:  tenth_bot 3 vs.  MyBot 15
- Map 19:  tenth_bot 3 vs.  MyBot 16
- Map 20:  tenth_bot 3 vs.  MyBot 17
- Map 21:  tenth_bot 3 vs.  MyBot 18
- Map 22:  tenth_bot 3 vs.  MyBot 19
- Map 23:  tenth_bot 3 vs.  MyBot 20
- Map 24:  tenth_bot 4 vs.  MyBot 20
- Map 25:  tenth_bot 4 vs.  MyBot 21
- Map 26:  tenth_bot 4 vs.  MyBot 22
- Map 27:  tenth_bot 4 vs.  MyBot 23
- Map 28:  tenth_bot 4 vs.  MyBot 24
- Map 29:  tenth_bot 4 vs.  MyBot 25
- Map 30:  tenth_bot 4 vs.  MyBot 26
- Map 31:  tenth_bot 4 vs.  MyBot 27
- Map 32:  tenth_bot 4 vs.  MyBot 28
- Map 33:  tenth_bot 4 vs.  MyBot 29
- Map 34:  tenth_bot 4 vs.  MyBot 30
- Map 35:  tenth_bot 4 vs.  MyBot 31
- Map 36:  tenth_bot 4 vs.  MyBot 32
- Map 37:  tenth_bot 4 vs.  MyBot 33
- Map 38:  tenth_bot 4 vs.  MyBot 34
- Map 39:  tenth_bot 4 vs.  MyBot 35
- Map 40:  tenth_bot 4 vs.  MyBot 36
- Map 41:  tenth_bot 4 vs.  MyBot 37
- Map 42:  tenth_bot 4 vs.  MyBot 38
- Map 43:  tenth_bot 4 vs.  MyBot 39
- Map 44:  tenth_bot 4 vs.  MyBot 40
- Map 45:  tenth_bot 4 vs.  MyBot 41
- Map 46:  tenth_bot 4 vs.  MyBot 42
- Map 47:  tenth_bot 4 vs.  MyBot 43
- Map 48:  tenth_bot 4 vs.  MyBot 44
- Map 49:  tenth_bot 4 vs.  MyBot 45
- Map 50:  tenth_bot 4 vs.  MyBot 46
- Map 51:  tenth_bot 4 vs.  MyBot 47
- Map 52:  tenth_bot 4 vs.  MyBot 48
- Map 53:  tenth_bot 4 vs.  MyBot 49
- Map 54:  tenth_bot 5 vs.  MyBot 49
- Map 55:  tenth_bot 5 vs.  MyBot 50
- Map 56:  tenth_bot 6 vs.  MyBot 50
- Map 57:  tenth_bot 6 vs.  MyBot 51
- Map 58:  tenth_bot 6 vs.  MyBot 52
- Map 59:  tenth_bot 6 vs.  MyBot 53
- Map 60:  tenth_bot 6 vs.  MyBot 54
- Map 61:  tenth_bot 6 vs.  MyBot 55
- Map 62:  tenth_bot 6 vs.  MyBot 56
- Map 63:  tenth_bot 7 vs.  MyBot 56
- Map 64:  tenth_bot 7 vs.  MyBot 57
- Map 65:  tenth_bot 8 vs.  MyBot 57
- Map 66:  tenth_bot 8 vs.  MyBot 58
- Map 67:  tenth_bot 8 vs.  MyBot 59
- Map 68:  tenth_bot 8 vs.  MyBot 60
- Map 69:  tenth_bot 8 vs.  MyBot 61
- Map 70:  tenth_bot 8 vs.  MyBot 62
- Map 71:  tenth_bot 8 vs.  MyBot 63
- Map 72:  tenth_bot 8 vs.  MyBot 64
- Map 73:  tenth_bot 8 vs.  MyBot 65
- Map 74:  tenth_bot 8 vs.  MyBot 66
- Map 75:  tenth_bot 8 vs.  MyBot 67
- Map 76:  tenth_bot 8 vs.  MyBot 68
- Map 77:  tenth_bot 9 vs.  MyBot 68
- Map 78:  tenth_bot 9 vs.  MyBot 69
- Map 79:  tenth_bot 9 vs.  MyBot 70
- Map 80:  tenth_bot 9 vs.  MyBot 71
- Map 81:  tenth_bot 9 vs.  MyBot 72
- Map 82:  tenth_bot 9 vs.  MyBot 73
- Map 83:  tenth_bot 10 vs.  MyBot 73
- Map 84:  tenth_bot 10 vs.  MyBot 74
- Map 85:  tenth_bot 10 vs.  MyBot 75
- Map 86:  tenth_bot 10 vs.  MyBot 76
- Map 87:  tenth_bot 11 vs.  MyBot 76
- Map 88:  tenth_bot 11 vs.  MyBot 77
- Map 89:  tenth_bot 11 vs.  MyBot 78
- Map 90:  tenth_bot 11 vs.  MyBot 79
- Map 91:  tenth_bot 11 vs.  MyBot 80
- Map 92:  tenth_bot 11 vs.  MyBot 81
- Map 93:  tenth_bot 11 vs.  MyBot 82
- Map 94:  tenth_bot 11 vs.  MyBot 83
- Map 95:  tenth_bot 12 vs.  MyBot 83
- Map 96:  tenth_bot 12 vs.  MyBot 84
- Map 97:  tenth_bot 13 vs.  MyBot 84
- Map 98:  tenth_bot 13 vs.  MyBot 85
- Map 99:  tenth_bot 13 vs.  MyBot 86
- Map 100:  tenth_bot 13 vs.  MyBot 87
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 8, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 10, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 10, distance 22
+	order 2 1 5
+
+Turn 18
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 15, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 12, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 15, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 15, distance 22
+	order 2 1 5
+
+Turn 19
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 20, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 16, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 20, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 20, distance 22
+	order 2 1 5
+
+Turn 20
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 25, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 20, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 25, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 25, distance 22
+	order 2 1 5
+
+Turn 21
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 30, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 24, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 9, distance 5
+id 16, growth 5, ships 30, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 30, distance 22
+	order 2 1 5
+
+Turn 22
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 35, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 28, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 1, distance 5
+id 16, growth 5, ships 35, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 35, distance 22
+	order 2 1 5
+
+Turn 23
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 60, distance 0
+id 2, growth 5, ships 5, distance 22
+id 3, growth 4, ships 32, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 6, distance 21
+id 16, growth 5, ships 40, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 40, distance 7
+	order 1 3 33
+
+	order 1 15 7
+
+	order 1 16 20
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 60, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 32, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 6, distance 5
+id 16, growth 5, ships 40, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 40, distance 22
+	order 2 3 5
+
+Turn 24
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 5, distance 22
+id 3, growth 4, ships 36, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 11, distance 21
+id 16, growth 5, ships 45, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 45, distance 7
+	order 1 3 10
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 36, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 11, distance 5
+id 16, growth 5, ships 45, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 45, distance 22
+	order 2 3 5
+
+Turn 25
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 5, distance 22
+id 3, growth 4, ships 40, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 16, distance 21
+id 16, growth 5, ships 50, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 50, distance 7
+	order 1 3 10
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 40, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 16, distance 5
+id 16, growth 5, ships 50, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 50, distance 22
+	order 2 3 5
+
+Turn 26
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 5, distance 22
+id 3, growth 4, ships 44, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 21, distance 21
+id 16, growth 5, ships 55, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 55, distance 7
+	order 1 3 10
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 44, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 21, distance 5
+id 16, growth 5, ships 55, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 55, distance 22
+	order 2 3 5
+
+Turn 27
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 5, distance 22
+id 3, growth 4, ships 48, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 26, distance 21
+id 16, growth 5, ships 60, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 60, distance 7
+	order 1 3 10
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 22
+id 2, growth 5, ships 5, distance 0
+id 3, growth 4, ships 48, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 26, distance 5
+id 16, growth 5, ships 60, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 60, distance 22
+	order 2 3 5
+
+Turn 28
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 0, distance 22
+id 3, growth 4, ships 52, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 31, distance 21
+id 16, growth 5, ships 45, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 65, distance 7
+	order 1 3 10
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 22
+id 2, growth 5, ships 0, distance 0
+id 3, growth 4, ships 52, distance 17
+id 4, growth 4, ships 21, distance 11
+id 5, growth 2, ships 32, distance 23
+id 6, growth 2, ships 32, distance 9
+id 7, growth 5, ships 60, distance 11
+id 8, growth 5, ships 60, distance 20
+id 9, growth 5, ships 74, distance 14
+id 10, growth 5, ships 74, distance 18
+id 11, growth 1, ships 85, distance 20
+id 12, growth 1, ships 85, distance 9
+id 13, growth 3, ships 72, distance 14
+id 14, growth 3, ships 72, distance 19
+id 15, growth 5, ships 31, distance 5
+id 16, growth 5, ships 45, distance 21
+id 17, growth 2, ships 69, distance 18
+id 18, growth 2, ships 69, distance 6
+id 19, growth 1, ships 41, distance 15
+id 20, growth 1, ships 41, distance 14
+id 21, growth 5, ships 35, distance 7
+id 22, growth 5, ships 65, distance 22
+Turn 29
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 2, distance 22
+id 3, growth 4, ships 56, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 14, distance 21
+id 16, growth 5, ships 12, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 22, distance 7
+	order 1 2 3
+
+	order 1 3 7
+
+Turn 30
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 74, distance 22
+id 3, growth 4, ships 60, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 19, distance 21
+id 16, growth 5, ships 17, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 27, distance 7
+	order 1 2 10
+
+Turn 31
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 98, distance 22
+id 3, growth 4, ships 64, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 24, distance 21
+id 16, growth 5, ships 22, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 32, distance 7
+	order 1 2 10
+
+Turn 32
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 11
+id 1, growth 5, ships 10, distance 0
+id 2, growth 5, ships 122, distance 22
+id 3, growth 4, ships 68, distance 11
+id 4, growth 4, ships 21, distance 17
+id 5, growth 2, ships 32, distance 9
+id 6, growth 2, ships 32, distance 23
+id 7, growth 5, ships 60, distance 20
+id 8, growth 5, ships 60, distance 11
+id 9, growth 5, ships 74, distance 18
+id 10, growth 5, ships 74, distance 14
+id 11, growth 1, ships 85, distance 9
+id 12, growth 1, ships 85, distance 20
+id 13, growth 3, ships 72, distance 19
+id 14, growth 3, ships 72, distance 14
+id 15, growth 5, ships 29, distance 21
+id 16, growth 5, ships 27, distance 5
+id 17, growth 2, ships 69, distance 6
+id 18, growth 2, ships 69, distance 18
+id 19, growth 1, ships 41, distance 14
+id 20, growth 1, ships 41, distance 15
+id 21, growth 5, ships 35, distance 22
+id 22, growth 5, ships 37, distance 7
+	order 1 2 10
+
+Turn 33
+my origin 2
+
+enemy_origin 1
+
+Turn 34
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 21, distance 11
+id 2, growth 5, ships 42, distance 17
+id 3, growth 4, ships 25, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 10, distance 15
+id 16, growth 5, ships 10, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 10, distance 16
+	order 3 1 22
+
+	order 3 2 3
+
+Turn 35
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 31, distance 11
+id 2, growth 5, ships 20, distance 17
+id 3, growth 4, ships 14, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 5, distance 15
+id 16, growth 5, ships 5, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 5, distance 16
+	order 3 1 14
+
+Turn 36
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 0, distance 11
+id 2, growth 5, ships 20, distance 17
+id 3, growth 4, ships 14, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 5, distance 15
+id 16, growth 5, ships 5, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 5, distance 16
+	order 3 21 14
+
+Turn 37
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 27, distance 11
+id 2, growth 5, ships 15, distance 17
+id 3, growth 4, ships 14, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 5, distance 15
+id 16, growth 5, ships 5, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 5, distance 16
+	order 3 1 14
+
+Turn 38
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 0, distance 11
+id 2, growth 5, ships 5, distance 17
+id 3, growth 4, ships 14, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 5, distance 15
+id 16, growth 5, ships 5, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 5, distance 16
+	order 3 21 14
+
+Turn 39
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 37, distance 11
+id 2, growth 5, ships 5, distance 17
+id 3, growth 4, ships 14, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 5, distance 15
+id 16, growth 5, ships 5, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 5, distance 16
+	order 3 1 14
+
+Turn 40
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 37, distance 11
+id 2, growth 5, ships 10, distance 17
+id 3, growth 4, ships 16, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 10, distance 15
+id 16, growth 5, ships 10, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 10, distance 16
+	order 3 1 16
+
+Turn 41
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 37, distance 11
+id 2, growth 5, ships 15, distance 17
+id 3, growth 4, ships 9, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 15, distance 15
+id 16, growth 5, ships 15, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 15, distance 16
+	order 3 1 9
+
+Turn 42
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 37, distance 11
+id 2, growth 5, ships 20, distance 17
+id 3, growth 4, ships 2, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 20, distance 15
+id 16, growth 5, ships 20, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 20, distance 16
+	order 3 1 2
+
+Turn 43
+my origin 2
+
+enemy_origin 1
+
+id 0, growth 0, ships 119, distance 9
+id 1, growth 5, ships 105, distance 11
+id 2, growth 5, ships 25, distance 17
+id 3, growth 4, ships 1, distance 0
+id 4, growth 4, ships 21, distance 18
+id 5, growth 2, ships 32, distance 6
+id 6, growth 2, ships 32, distance 22
+id 7, growth 5, ships 60, distance 12
+id 8, growth 5, ships 60, distance 18
+id 9, growth 5, ships 74, distance 9
+id 10, growth 5, ships 74, distance 20
+id 11, growth 1, ships 85, distance 16
+id 12, growth 1, ships 85, distance 12
+id 13, growth 3, ships 72, distance 22
+id 14, growth 3, ships 72, distance 5
+id 15, growth 5, ships 25, distance 15
+id 16, growth 5, ships 25, distance 14
+id 17, growth 2, ships 69, distance 5
+id 18, growth 2, ships 69, distance 16
+id 19, growth 1, ships 41, distance 4
+id 20, growth 1, ships 41, distance 18
+id 21, growth 5, ships 35, distance 14
+id 22, growth 5, ships 25, distance 16
+	order 3 1 1
+
+Turn 44
+my origin 2
+
+enemy_origin 1
+
+Turn 45
+my origin 2
+
+enemy_origin 1
+
+Turn 46
+my origin 2
+
+enemy_origin 1
+
+Turn 47
+my origin 2
+
+enemy_origin 1
+
+Turn 48
+my origin 2
+
+enemy_origin 1
+
+Turn 49
+my origin 2
+
+enemy_origin 1
+
+Turn 50
+my origin 2
+
+enemy_origin 1
+
+Turn 51
+my origin 2
+
+enemy_origin 1
+
+Turn 52
+my origin 2
+
+enemy_origin 1
+
+Turn 53
+my origin 2
+
+enemy_origin 1
+

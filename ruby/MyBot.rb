@@ -1,16 +1,12 @@
-#! /usr/bin/ruby
-
-
 require 'planetwars'
 require 'bot'
-require 'benchmark'
 
-File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
+#File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
 # main loop
 map_data = []
 mybot = Bot.new
 while true
-  current_line  = gets
+  current_line = gets
   if current_line.match /go/
     p = PlanetWars.new(map_data)
     mybot.do_turn(p)

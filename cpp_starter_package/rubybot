@@ -5,7 +5,7 @@ require 'planetwars'
 require 'bot'
 require 'benchmark'
 
-File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
+#File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
 # main loop
 map_data = []
 mybot = Bot.new

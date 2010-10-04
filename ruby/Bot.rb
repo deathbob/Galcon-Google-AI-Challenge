@@ -42,19 +42,12 @@ class Bot
   
   def do_turn(pw)
     @turn = @turn + 1
-    log "Turn #{@turn}"
+#    log "Turn #{@turn}"
     @planet_wars = pw
 
     parse_game_state
     snake_style
     finish_turn
-
-    # Benchmark.bmbm do |x|
-    #   x.report("parse_game_state"){parse_game_state}
-    #   x.report("snake_style"){snake_style}
-    #   x.report("1000 times"){1000.times {|z| z * 10}}
-    #   x.report("Finish turn"){finish_turn}
-    # end
   end
   
   def log_planets(planet = nil)
@@ -127,15 +120,15 @@ class Bot
   def issue_order(from, to, num)
     return unless num > 0 and from.ships >= num
     order = "#{from.id} #{to.id} #{num}\n"
-    log "\torder #{order}"
+#    log "\torder #{order}"
     from.ships = from.ships - num
     @orders << order
     true
   end
   
-  def log(str, mode = 'a+')
-    File.open("rubybot.log", mode) {|f|  f << str << "\n"}
-  end
+  # def log(str, mode = 'a+')
+  #   File.open("rubybot.log", mode) {|f|  f << str << "\n"}
+  # end
   
 end
 

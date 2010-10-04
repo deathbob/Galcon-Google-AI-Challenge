@@ -14,9 +14,6 @@ class PlanetWars
     end
   end
   
-  def issue_order
-  end
-  
 end
 
 class Planet
@@ -59,7 +56,6 @@ class Fleet
     @destination = cow[4].to_i
     @total_turns = cow[5].to_i
     @remaining_turns = cow[6].to_i
-#    junk, @owner, @ships, @source, @destination, @total_turns, @remaining_turns = str.split
     @id = id
   end
   
@@ -68,6 +64,6 @@ class Fleet
   end
 end
 
-def log(str, mode = 'a+')
-  File.open("rubybot.log", mode) {|f|  f << str}
-end
+# def log(str, mode = 'a+')
+#   File.open("rubybot.log", mode) {|f|  f << str}
+# end

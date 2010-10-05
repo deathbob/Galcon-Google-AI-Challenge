@@ -1,6 +1,7 @@
 class Bot
   attr_accessor :planet_wars, :orders, :my_planets, :enemy_planets, :neutral_planets, 
-                :my_fleets, :enemy_fleets, :planets, :fleets, :turn, :enemy_origin, :my_origin
+                :my_fleets, :enemy_fleets, :planets, :fleets, :turn, :enemy_origin, :my_origin,
+                :my_growth_rate, :their_growth_rate, :my_ships, :their_ships
   
 
   def initialize
@@ -8,8 +9,28 @@ class Bot
     @orders = []
   end
   
+  def my_ship_count
+    @my_ships ||= @my_planets.inject(0){|memo, x| memo + x.ships}
+  end
+  
+  def their_ship_count
+    @their_ships ||= @enemy_planets.inject(0){|memo, x| memo + x.ships}
+  end
+  
+  def behind_on_ships
+    my_ship_count < their_ship_count
+  end
+  
   def my_growth_rate
-    @my_planets.inject(0){|memo, x| memo + x.growth}
+    @my_growth_rate ||= @my_planets.inject(0){|memo, x| memo + x.growth}
+  end
+
+  def their_growth_rate
+    @their_growth_rate ||= @enemy_planets.inject(0){|memo, x| memo + x.growth}
+  end
+  
+  def behind_on_growth
+    my_growth_rate <= their_growth_rate
   end
   
   def parse_game_state
@@ -27,15 +48,19 @@ class Bot
       @enemy_origin = @enemy_planets.first
       @my_origin = @my_planets.first
     end
-    # log "my origin #{@my_origin.id}\n"
-    # log "enemy_origin #{@enemy_origin.id}\n"
+    # log "my origin #{@my_origin.pid}\n"
+    # log "enemy_origin #{@enemy_origin.pid}\n"
     set_incoming
     
   end
   
   def set_incoming
     @fleets.each do |x|
-      @planets[x.destination].incoming = @planets[x.destination].incoming + x.ships
+      if x.owner == 1
+        @planets[x.destination].incoming_mine = @planets[x.destination].incoming_mine + x.ships
+      elsif x.owner == 2
+        @planets[x.destination].incoming_enemy = @planets[x.destination].incoming_enemy + x.ships
+      end
     end
   end
     
@@ -46,38 +71,59 @@ class Bot
     @planet_wars = pw
 
     parse_game_state
-    snake_style
+    snake_style #unless turn == 1
     finish_turn
   end
   
   def log_planets(planet = nil)
     @planets.each do |x|
       piss = planet ? "distance #{planet.distance(x)}" : "no planet given"
-      log("id #{x.id}, growth #{x.growth}, ships #{x.ships}, #{piss}")
+      log("id #{x.pid}, growth #{x.growth}, ships #{x.ships}, #{piss}")
+    end
+  end
+  
+  def issue_reinforcements
+    troubled, saviors = @my_planets.partition{|x| x.in_trouble?}
+    troubled.each do |x|
+      saviors.each do |y|
+        if x.reinforcements_needed < y.reinforcements_available
+          issue_order(y, x, x.reinforcements_needed)
+        else
+          break
+        end
+      end
     end
   end
   
   def snake_style
-
+    issue_reinforcements
     @my_planets.each do |p|
-#      log_planets(p)
-      issue_order(p, weakest_enemy(p), p.ships / 2) unless p.in_trouble?
-      @not_my_planets = @not_my_planets.sort{|a, b|
-        ad = p.distance(a)
-        bd = p.distance(b)
-        # a_score = ( a.growth.to_f / ((a.ships * ad) + 1) )
-        # log "#{a.id} score #{a_score}"
-        (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
-      }
-      it = @not_my_planets.size
-      while (p.ships > 0 && it > 0) do
-        curr = @not_my_planets[-it]
-        it = it - 1
-        if p.ships > (curr.ships + 1)
-          issue_order(p, curr, (curr.ships + 1)) unless p.in_trouble?
-        else
-#          issue_order(p, curr, p.ships) unless p.in_trouble?
+      if p.in_trouble?      
+        next 
+      end
+      if behind_on_growth 
+        @not_my_planets = @not_my_planets.sort{|a, b|
+          ad = p.distance(a)
+          bd = p.distance(b)
+          (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+        }
+        it = @not_my_planets.size
+        while (p.ships > 0 && it > 0) do
+          curr = @not_my_planets[-it]
+          it = it - 1
+          # bail out conditions
+          if (p.ships < curr.ships + 1) || curr.is_as_good_as_mine
+            next
+          else
+            issue_order(p, curr, (curr.ships + 1))             
+          end
         end
+      elsif behind_on_ships
+        # do nothing
+      else
+        issue_order(p, most_vulnerable_enemy(p), p.ships / 2)        
+        issue_order(p, closest_enemy(p), p.ships / 2)        
+        issue_order(p, weakest_enemy(p), p.ships / 2) 
       end
     end
     true
@@ -87,9 +133,8 @@ class Bot
     @not_my_planets.min{|a, b|
       ad = planet.distance(a)
       bd = planet.distance(b)
-      (a.growth / ((ad * ad) + a.ships)) <=> (b.growth / ((bd * bd) + b.ships))
+      (a.growth.to_f / ((ad * ad) + a.ships)) <=> (b.growth.to_f / ((bd * bd) + b.ships))
     }
-#    			double score = grow / ((dist * dist ) + pop) ; // This is the (one from c++) best one so far.
   end
   
   def closest_neutral(planet)
@@ -98,8 +143,21 @@ class Bot
   
   def weakest_enemy(planet)
     @enemy_planets.min do |a, b| 
-#      a.ships <=> b.ships
-      (a.ships + planet.distance(a)) <=> (b.ships + planet.distance(b))
+      a.ships <=> b.ships
+    end
+  end
+
+  def closest_enemy(planet)
+    @enemy_planets.min do |a, b| 
+      (planet.distance(a)) <=> (planet.distance(b))
+    end
+  end
+  
+  def most_vulnerable_enemy(planet)
+    @enemy_planets.min do |a, b|
+      ad = planet.distance(a)
+      bd = planet.distance(b)
+      (a.ships + (ad * ad)) <=> (b.ships + (bd * bd))
     end
   end
   
@@ -119,9 +177,12 @@ class Bot
   
   def issue_order(from, to, num)
     return unless num > 0 and from.ships >= num
-    order = "#{from.id} #{to.id} #{num}\n"
-#    log "\torder #{order}"
+    return unless from && to
+    
+    to.incoming_mine = to.incoming_mine + num
     from.ships = from.ships - num
+        
+    order = "#{from.pid} #{to.pid} #{num}\n"
     @orders << order
     true
   end

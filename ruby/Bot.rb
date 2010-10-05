@@ -69,7 +69,6 @@ class Bot
     @turn = @turn + 1
 #    log "Turn #{@turn}"
     @planet_wars = pw
-
     parse_game_state
     snake_style #unless turn == 1
     finish_turn
@@ -95,18 +94,18 @@ class Bot
     end
   end
   
-  def snake_style
+  def fake_style
     issue_reinforcements
     @my_planets.each do |p|
       if p.in_trouble?      
         next 
       end
       if behind_on_growth 
-        @not_my_planets = @not_my_planets.sort{|a, b|
-          ad = p.distance(a)
-          bd = p.distance(b)
-          (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
-        }
+				@not_my_planets = @not_my_planets.sort do |a, b|
+		      ad = p.distance(a)
+		      bd = p.distance(b)
+		      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+				end
         it = @not_my_planets.size
         while (p.ships > 0 && it > 0) do
           curr = @not_my_planets[-it]
@@ -122,11 +121,32 @@ class Bot
         # do nothing
       else
         issue_order(p, most_vulnerable_enemy(p), p.ships / 2)        
-        issue_order(p, closest_enemy(p), p.ships / 2)        
-        issue_order(p, weakest_enemy(p), p.ships / 2) 
+        # issue_order(p, weakest_enemy(p), p.ships / 2) 
+        # issue_order(p, closest_enemy(p), p.ships / 2)        
       end
     end
     true
+  end
+  
+  def snake_style
+		@my_planets.each do |p|
+			issue_order(p, weakest_enemy(p), p.ships / 2) unless p.in_trouble?
+			@not_my_planets = @not_my_planets.sort do |a, b|
+			      ad = p.distance(a)
+			      bd = p.distance(b)
+			      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+			end
+			it = @not_my_planets.size
+			while ((p.ships > 0) && (it > 0))
+				curr = @not_my_planets[-it]
+				it = it - 1
+				if p.ships > (curr.ships + 1)
+					issue_order(p, curr, (curr.ships + 1)) unless p.in_trouble?
+				else
+					issue_order(p, curr, p.ships) unless p.in_trouble?
+				end
+			end
+		end
   end
   
   def most_desireable(planet)
@@ -157,7 +177,8 @@ class Bot
     @enemy_planets.min do |a, b|
       ad = planet.distance(a)
       bd = planet.distance(b)
-      (a.ships + (ad * ad)) <=> (b.ships + (bd * bd))
+#      (a.ships + (ad * ad)) <=> (b.ships + (bd * bd))
+      (a.ships + (2 * ad)) <=> (b.ships + (2 * bd))
     end
   end
   

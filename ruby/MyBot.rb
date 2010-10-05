@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 require 'planetwars'
 require 'bot'
 
@@ -7,6 +9,7 @@ map_data = []
 mybot = Bot.new
 while true
   current_line = gets
+  next unless current_line
   if current_line.match /go/
     p = PlanetWars.new(map_data)
     mybot.do_turn(p)

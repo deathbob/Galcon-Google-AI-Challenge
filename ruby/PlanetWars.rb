@@ -18,7 +18,7 @@ end
 
 class Planet
 
-  attr_accessor :x, :y, :owner, :ships, :growth, :id, :incoming
+  attr_accessor :x, :y, :owner, :ships, :growth, :pid, :incoming_mine, :incoming_enemy
   def initialize(str, id)
     cow = str.split
     @x = cow[1].to_f
@@ -26,8 +26,9 @@ class Planet
     @owner = cow[3].to_i
     @ships = cow[4].to_i
     @growth = cow[5].to_i
-    @incoming = 0
-    @id = id
+    @incoming_mine = 0
+    @incoming_enemy = 0    
+    @pid = id
   end
   
   def to_s
@@ -41,13 +42,31 @@ class Planet
   end
   
   def in_trouble?
-    self.ships <= self.incoming
+    (self.ships + self.incoming_mine) <= self.incoming_enemy
+  end
+  
+  def is_as_good_as_mine
+    if self.owner == 1 #me
+      (self.ships + self.incoming_mine) > self.incoming_enemy
+    else # enemy owned
+      (self.ships + self.incoming_enemy + (self.growth * 3)) <  self.incoming_mine
+    end
+  end
+  
+  def reinforcements_needed
+    cow = self.incoming_enemy - (self.ships + self.incoming_mine)
+    cow <= 0 ? 0 : cow
+  end
+  
+  def reinforcements_available
+    cow = (self.incoming_mine + self.ships) - self.incoming_enemy
+    cow <= 0 ? 0 : cow
   end
   
 end
 
 class Fleet
-  attr_accessor :owner, :ships, :source, :destination, :total_turns, :remaining_turns, :id
+  attr_accessor :owner, :ships, :source, :destination, :total_turns, :remaining_turns, :fid
   def initialize(str, id)
     cow = str.split
     @owner = cow[1].to_i
@@ -56,7 +75,7 @@ class Fleet
     @destination = cow[4].to_i
     @total_turns = cow[5].to_i
     @remaining_turns = cow[6].to_i
-    @id = id
+    @fid = id
   end
   
   def to_s

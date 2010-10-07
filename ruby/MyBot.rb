@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
-require 'planetwars'
-require 'bot'
+require './planetwars.rb'
+require './bot.rb'
 
 #File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
 

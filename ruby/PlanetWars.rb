@@ -42,7 +42,7 @@ class Planet
   end
   
   def in_trouble?
-    (self.ships + self.incoming_mine) <= self.incoming_enemy
+    (self.growth + self.ships + self.incoming_mine) <= self.incoming_enemy
   end
   
   def is_as_good_as_mine
@@ -52,17 +52,47 @@ class Planet
       (self.ships + self.incoming_enemy + (self.growth * 3)) <  self.incoming_mine
     end
   end
+
+	def total_power
+		@ships + @incoming_mine + @growth
+	end
   
   def reinforcements_needed
-    cow = self.incoming_enemy - (self.ships + self.incoming_mine)
-    cow <= 0 ? 0 : cow
+		cow = @incoming_enemy - total_power
+		(cow <= 0) ? 0 : cow
   end
   
   def reinforcements_available
-    cow = (self.incoming_mine + self.ships) - self.incoming_enemy
-    cow <= 0 ? 0 : cow
+    cow = total_power - @incoming_enemy
+    (cow <= 0) ? 0 : cow
   end
+
+	def would_be_in_trouble(s)
+		(total_power - s) <= self.incoming_enemy
+	end
   
+	def enemy?
+		@owner == 2
+	end
+	
+	def mine?
+		@owner == 1
+	end
+	
+	def neutral?
+		(@owner != 2) && (@owner != 1)
+	end
+	
+	def ships_to_take(planet)
+		if neutral?
+			(@ships + @incoming_enemy - @incoming_mine) + 1			
+		elsif enemy?
+			(@ships + (@growth * distance(planet)) - @incoming_mine + @incoming_enemy) + 2
+		else
+			(@incoming_enemy - @ships - @incoming_mine - @growth)
+		end
+	end
+	
 end
 
 class Fleet

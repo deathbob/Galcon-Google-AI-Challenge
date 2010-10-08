@@ -149,7 +149,7 @@ class Bot
 				issue_order(p, curr, ships_needed)
 			else
 				# do nothing?
-#				issue_order(p, curr, p.reinforcements_available)
+				issue_order(p, curr, p.reinforcements_available)
 			end
 		end
 	end
@@ -164,9 +164,9 @@ class Bot
 			it = it + 1
 			ships_needed = planet.ships_to_take(p)
 			if p.ships > ships_needed
-				issue_order(p, planet, ships_needed) # unless p.would_be_in_trouble(ships_needed)
+				issue_order(p, planet, ships_needed) unless p.would_be_in_trouble(ships_needed)
 			else
-#				issue_order(p, planet, p.reinforcements_available)
+				issue_order(p, planet, p.reinforcements_available)
 				keep_on = false
 			end
 		end
@@ -218,7 +218,7 @@ class Bot
 				# do nothing, just wait until catch up on ships
 			else
 				mass_assault_two(p)
-				half_kill(p) # do this after mass_assault in case there were no targets we could take.  Continue to spread.
+#				half_kill(p) # do this after mass_assault in case there were no targets we could take.  Continue to spread.
 			end
 		end
   end

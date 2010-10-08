@@ -9,28 +9,32 @@ class Bot
     @orders = []
   end
   
-  def my_ship_count
-    @my_ships ||= @my_planets.inject(0){|memo, x| memo + x.ships}
+  def calc_my_ships
+    @my_ships = @my_planets.inject(0){|memo, x| memo + x.ships}
   end
   
-  def their_ship_count
-    @their_ships ||= @enemy_planets.inject(0){|memo, x| memo + x.ships}
+  def calc_their_ships
+    @their_ships = @enemy_planets.inject(0){|memo, x| memo + x.ships}
   end
   
   def behind_on_ships
-    my_ship_count < their_ship_count
+    @my_ships < @their_ships
   end
   
-  def my_growth_rate
-    @my_growth_rate ||= @my_planets.inject(0){|memo, x| memo + x.growth}
+  def calc_my_growth_rate
+    @my_growth_rate = @my_planets.inject(0){|memo, x| memo + x.growth}
   end
 
-  def their_growth_rate
-    @their_growth_rate ||= @enemy_planets.inject(0){|memo, x| memo + x.growth}
+  def calc_their_growth_rate
+    @their_growth_rate = @enemy_planets.inject(0){|memo, x| memo + x.growth}
   end
+	
+	def log(str)
+		$stderr.puts str + "\n"
+	end
   
   def behind_on_growth
-    my_growth_rate <= their_growth_rate
+    @my_growth_rate <= @their_growth_rate
   end
   
   def parse_game_state
@@ -42,16 +46,24 @@ class Bot
     @enemy_planets = @planets.collect{|x| x if x.owner == 2}.compact
     @not_my_planets = @enemy_planets + @neutral_planets
     @fleets = @planet_wars.fleets
-    @my_fleets = @planet_wars.fleets.collect{|x| x.owner == 1}
-    @enemy_fleets = @planet_wars.fleets.collect{|x| x.owner == 2}
+    @my_fleets = @planet_wars.fleets.collect{|x| x if x.owner == 1}.compact
+    @enemy_fleets = @planet_wars.fleets.collect{|x| x if x.owner == 2}.compact
     if @turn == 1
       @enemy_origin = @enemy_planets.first
       @my_origin = @my_planets.first
     end
+		
     # log "my origin #{@my_origin.pid}\n"
     # log "enemy_origin #{@enemy_origin.pid}\n"
     set_incoming
-    
+    calc_my_growth_rate
+		calc_their_growth_rate
+		calc_my_ships
+		calc_their_ships
+		# log("turn #{@turn}")
+		# log("\tmy growth rate #{my_growth_rate}  their growth rate #{their_growth_rate}")		
+		# log("\tmy ships  #{@my_ships}  their ships #{@their_ships}")
+
   end
   
   def set_incoming
@@ -83,7 +95,9 @@ class Bot
   
   def issue_reinforcements
     troubled, saviors = @my_planets.partition{|x| x.in_trouble?}
+		troubled = troubled.sort{|a, b| b.growth <=> a.growth}
     troubled.each do |x|
+			saviors = saviors.sort{|a, b| a.distance(x) <=> b.distance(x)}
       saviors.each do |y|
 #				$stderr.puts "reinforcements_available #{x.reinforcements_available}, ships #{x.ships}, incoming_enemy #{x.incoming_enemy}"	
         if x.reinforcements_needed < y.reinforcements_available
@@ -97,57 +111,13 @@ class Bot
     end
   end
   
-  # def fake_style
-  #   issue_reinforcements
-  #   @my_planets.each do |p|
-  #     if p.in_trouble?      
-  #       next 
-  #     end
-  #     if behind_on_growth 
-  # 				@not_my_planets = @not_my_planets.sort do |a, b|
-  # 		      ad = p.distance(a)
-  # 		      bd = p.distance(b)
-  # 		      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
-  # 				end
-  #       it = @not_my_planets.size
-  #       while (p.ships > 0 && it > 0) do
-  #         curr = @not_my_planets[-it]
-  #         it = it - 1
-  #         # bail out conditions
-  #         if (p.ships < curr.ships + 1) || curr.is_as_good_as_mine
-  #           next
-  #         else
-  #           issue_order(p, curr, (curr.ships + 1))             
-  #         end
-  #       end
-  #     elsif behind_on_ships
-  #       # do nothing
-  #     else
-  # 				@enemy_planets.sort do |a, b|
-  # 		      ad = p.distance(a)
-  # 		      bd = p.distance(b)
-  # 		      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
-  # 				end
-  # 				it = @enemy_planets.size
-  # 				while((p.ships > 0) && (it > 0))
-  # 					curr = @enemy_planets[-it]
-  # 					if(p.ships < curr.ships)
-  # 					end
-  # 				end
-  #       issue_order(p, most_vulnerable_enemy(p), p.ships / 2)        
-  #       # issue_order(p, weakest_enemy(p), p.ships / 2) 
-  #       # issue_order(p, closest_enemy(p), p.ships / 2)        
-  #     end
-  #   end
-  #   true
-  # end
 
 	def round_robin(p)
 		@not_my_planets = @not_my_planets.sort do |a, b|
       ad = p.distance(a)
       bd = p.distance(b)
 			# need to divide the distance part by 2 to mitigate the effects of it.  
-      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+      (b.growth.to_f / ((bd * bd / 2) + b.ships)) <=> (a.growth.to_f / ((ad * ad / 2) + a.ships))
 		end
 		it = @not_my_planets.size
 		while ((p.ships > 0) && (it > 0))
@@ -164,8 +134,7 @@ class Bot
 		end
 	end
 
-	def mass_assault(planet)
-		p = planet
+	def mass_assault(p)
 		@enemy_planets.sort do |a, b|
       ad = p.distance(a)
       bd = p.distance(b)
@@ -180,7 +149,25 @@ class Bot
 				issue_order(p, curr, ships_needed)
 			else
 				# do nothing?
-#				issue_order(p, curr, p.ships / 2)
+#				issue_order(p, curr, p.reinforcements_available)
+			end
+		end
+	end
+	
+	def mass_assault_two(p)
+		@enemy_planets = @enemy_planets.sort{|a, b|	a.ships_to_take(p) <=> b.ships_to_take(p)	}
+		keep_on = true
+		it = 0
+		stopper = @enemy_planets.size
+		while keep_on && (it < stopper)
+			planet = @enemy_planets[it]
+			it = it + 1
+			ships_needed = planet.ships_to_take(p)
+			if p.ships > ships_needed
+				issue_order(p, planet, ships_needed) # unless p.would_be_in_trouble(ships_needed)
+			else
+#				issue_order(p, planet, p.reinforcements_available)
+				keep_on = false
 			end
 		end
 	end
@@ -213,7 +200,7 @@ class Bot
 	end
 	
 	def crazy_style
-		issue_reinforcements
+#		issue_reinforcements
 		snipe_their_targets
 	end
 	
@@ -224,13 +211,50 @@ class Bot
 			# need to work snipe_their_targets in there somewhere
 			if behind_on_growth
 				round_robin(p)
+#				nasty(p) # not real good, end up taking a lot of small growth planets usually
+#				half_kill(p) # better, still needs more testing to figure out where it really lands. 
 			elsif behind_on_ships
+#				snipe_their_targets
 				# do nothing, just wait until catch up on ships
 			else
-				mass_assault(p)
+				mass_assault_two(p)
+				half_kill(p) # do this after mass_assault in case there were no targets we could take.  Continue to spread.
 			end
 		end
   end
+
+	def half_kill(p)
+#		@not_my_planets = @not_my_planets.sort{|a, b| ((b.growth.to_f * 2) / (b.ships + 1)) <=> ((a.growth.to_f * 2) / (a.ships + 1)) }
+		@not_my_planets = @not_my_planets.sort{|a, b| ((b.growth.to_f) / (b.ships + 1)) <=> ((a.growth.to_f) / (a.ships + 1)) }
+#		@not_my_planets = @not_my_planets.sort{|a, b| b.growth <=> a.growth}
+		tom = @not_my_planets[0..(@not_my_planets.size / 2)]
+		tom = tom.sort{|a, b| a.distance(p) <=> b.distance(p)}
+		tom.each do |planet|
+			ships_needed = planet.ships_to_take(p)
+			if p.ships > ships_needed
+				issue_order(p, planet, ships_needed) unless p.would_be_in_trouble(ships_needed)
+			else
+				issue_order(p, planet, (p.reinforcements_available / 2))
+			end
+		end
+	end
+	
+	def nasty(p)
+		@not_my_planets = @not_my_planets.sort{|a, b|	a.ships_to_take(p) <=> b.ships_to_take(p)	}
+		keep_on = true
+		it = 0
+		while keep_on
+			planet = @not_my_planets[it]
+			it = it + 1
+			ships_needed = planet.ships_to_take(p)
+			if p.ships > ships_needed
+				issue_order(p, planet, ships_needed) unless p.would_be_in_trouble(ships_needed)
+			else
+				issue_order(p, planet, p.reinforcements_available)
+				keep_on = false
+			end
+		end
+	end
 
 	# make a list of the cheapest planets to take (growth / ships) and then sort by distance
 	# or sort by growth, take the top half, then sort by distance. 

@@ -1,20 +1,23 @@
 class Bot
   attr_accessor :planet_wars, :orders, :my_planets, :enemy_planets, :neutral_planets, 
                 :my_fleets, :enemy_fleets, :planets, :fleets, :turn, :enemy_origin, :my_origin,
-                :my_growth_rate, :their_growth_rate, :my_ships, :their_ships
+                :my_growth_rate, :their_growth_rate, :my_ships, :their_ships, :enemy_targets, :really_ahead
   
 
   def initialize
     @turn = 0
+		@really_ahead = 0
     @orders = []
   end
   
   def calc_my_ships
     @my_ships = @my_planets.inject(0){|memo, x| memo + x.ships}
+		@my_ships = @my_ships + @my_fleets.inject(0){|memo, x| memo + x.ships}
   end
   
   def calc_their_ships
     @their_ships = @enemy_planets.inject(0){|memo, x| memo + x.ships}
+		@their_ships = @their_ships + @enemy_fleets.inject(0){|memo, x| memo + x.ships}
   end
   
   def behind_on_ships
@@ -39,15 +42,17 @@ class Bot
   
   def parse_game_state
     @planets = @planet_wars.planets
-    
     @neutral_planets = @planets.collect{|x| x if x.owner == 0}.compact
-    
-    @my_planets = @planets.collect{|x| x if x.owner == 1}.compact
-    @enemy_planets = @planets.collect{|x| x if x.owner == 2}.compact
-    @not_my_planets = @enemy_planets + @neutral_planets
+    @my_planets =      @planets.collect{|x| x if x.owner == 1}.compact
+    @enemy_planets =   @planets.collect{|x| x if x.owner == 2}.compact
+    @not_my_planets =  @enemy_planets + @neutral_planets
+
     @fleets = @planet_wars.fleets
-    @my_fleets = @planet_wars.fleets.collect{|x| x if x.owner == 1}.compact
+    @my_fleets =    @planet_wars.fleets.collect{|x| x if x.owner == 1}.compact
     @enemy_fleets = @planet_wars.fleets.collect{|x| x if x.owner == 2}.compact
+
+		@enemy_targets = @enemy_fleets.collect{|f| f.destination}.uniq
+
     if @turn == 1
       @enemy_origin = @enemy_planets.first
       @my_origin = @my_planets.first
@@ -60,9 +65,9 @@ class Bot
 		calc_their_growth_rate
 		calc_my_ships
 		calc_their_ships
-		# log("turn #{@turn}")
-		# log("\tmy growth rate #{my_growth_rate}  their growth rate #{their_growth_rate}")		
-		# log("\tmy ships  #{@my_ships}  their ships #{@their_ships}")
+		 log("turn #{@turn}")
+		 log("\tmy growth rate #{my_growth_rate}  their growth rate #{their_growth_rate}")		
+		 log("\tmy ships  #{@my_ships}  their ships #{@their_ships}")
 
   end
   
@@ -113,65 +118,59 @@ class Bot
   
 
 	def round_robin(p)
+		log("\t round robin")
 		@not_my_planets = @not_my_planets.sort do |a, b|
       ad = p.distance(a)
       bd = p.distance(b)
 			# need to divide the distance part by 2 to mitigate the effects of it.  
-      (b.growth.to_f / ((bd * bd / 2) + b.ships)) <=> (a.growth.to_f / ((ad * ad / 2) + a.ships))
+			# actually that seems to do a little worse
+#      (b.growth.to_f / ((bd * bd / 2) + b.ships)) <=> (a.growth.to_f / ((ad * ad / 2) + a.ships))
+      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
 		end
-		it = @not_my_planets.size
-		while ((p.ships > 0) && (it > 0))
-			curr = @not_my_planets[-it]
-			it = it - 1
-			ships_needed = curr.ships_to_take(p)
-			if p.ships > ships_needed
-				issue_order(p, curr, ships_needed) unless p.would_be_in_trouble(ships_needed)
-			else
-				# do nothing? 
-				# issue_order(p, curr, p.reinforcements_available)
-				it = 0
-			end
-		end
+		attack_with_reserves(@not_my_planets, p)
 	end
 
 	def mass_assault(p)
+		log("\t mass_assault")
 		@enemy_planets.sort do |a, b|
       ad = p.distance(a)
       bd = p.distance(b)
       (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
 		end
-		it = @enemy_planets.size
-		while((p.ships > 0) && (it > 0))
-			curr = @enemy_planets[-it]
-			it = it + 1
-			ships_needed = curr.ships_to_take(p)
-			if(p.ships > ships_needed)
-				issue_order(p, curr, ships_needed)
+		attack_with_reserves(@enemy_planets, p)
+	end
+
+	def mass_assault_two(p)
+		log "\t mass assault two"
+		@enemy_planets = @enemy_planets.sort{|a, b|	b.ships_to_take(p) <=> a.ships_to_take(p)	}
+#		attack_with_reserves(@enemy_planets, p)
+		attack_without_reserves(@enemy_planets, p)
+	end
+	
+	def attack_without_reserves(planet_array, attacking_planet)
+		planet_array.each do |planet|
+			ships_needed = planet.ships_to_take(attacking_planet)
+			if attacking_planet.ships > ships_needed
+				issue_order(attacking_planet, planet, ships_needed)
 			else
-				# do nothing?
-				issue_order(p, curr, p.reinforcements_available)
+				issue_order(attacking_planet, planet, attacking_planet.ships - 1)
+				break
 			end
 		end
 	end
 	
-	def mass_assault_two(p)
-		@enemy_planets = @enemy_planets.sort{|a, b|	a.ships_to_take(p) <=> b.ships_to_take(p)	}
-		keep_on = true
-		it = 0
-		stopper = @enemy_planets.size
-		while keep_on && (it < stopper)
-			planet = @enemy_planets[it]
-			it = it + 1
-			ships_needed = planet.ships_to_take(p)
-			if p.ships > ships_needed
-				issue_order(p, planet, ships_needed) unless p.would_be_in_trouble(ships_needed)
+	def attack_with_reserves(planet_array, attacking_planet)
+		planet_array.each do |planet|
+			ships_needed = planet.ships_to_take(attacking_planet)
+			if attacking_planet.ships > ships_needed
+				issue_order(attacking_planet, planet, ships_needed) unless attacking_planet.would_be_in_trouble(ships_needed)
 			else
-				issue_order(p, planet, p.reinforcements_available)
-				keep_on = false
+				issue_order(attacking_planet, planet, attacking_planet.reinforcements_available)
+				break
 			end
 		end
 	end
-
+	
 	def mirror_mode
 		@enemy_targets = @enemy_fleets.collect{|f| @planets[f.destination]}
 		@my_planets.each do |p|
@@ -187,13 +186,13 @@ class Bot
 	end
 	
 	def snipe_their_targets
-		enemy_targets = @enemy_fleets.collect{|f| f.destination}.uniq
-		enemy_targets = enemy_targets.map{|x| @planets[x] if @planets[x].neutral?}.compact
-		enemy_targets.each do |target|
-			@my_planets.each do |mine|
-				cow = target.ships_to_take(mine)
-				if mine.reinforcements_available > cow
-					issue_order(mine, target, cow)
+		log("\t sniping")
+		targets = @enemy_targets.map{|x| @planets[x] if @planets[x].neutral?}.compact
+		@my_planets.each do |mine|
+			targets.sort{|a, b| a.ships_to_take(mine) <=> b.ships_to_take(mine) }.each do |x|
+				ships_needed = x.ships_to_take(mine)
+				if x.ships > ships_needed
+					issue_order(mine, x, ships_needed)
 				end
 			end
 		end
@@ -210,15 +209,23 @@ class Bot
 		@my_planets.each do |p|
 			# need to work snipe_their_targets in there somewhere
 			if behind_on_growth
+				@really_ahead = 0
 				round_robin(p)
 #				nasty(p) # not real good, end up taking a lot of small growth planets usually
 #				half_kill(p) # better, still needs more testing to figure out where it really lands. 
 			elsif behind_on_ships
+#				round_robin(p)
+#				nasty(p)
+				snipe_their_targets
 #				snipe_their_targets
 				# do nothing, just wait until catch up on ships
 			else
-				mass_assault_two(p)
-#				half_kill(p) # do this after mass_assault in case there were no targets we could take.  Continue to spread.
+				@really_ahead = @really_ahead + 1
+				if @really_ahead > 1
+					mass_assault_two(p) 
+# 				mass_assault(p)
+#	  			half_kill(p) # do this after mass_assault in case there were no targets we could take.  Continue to spread.
+				end
 			end
 		end
   end
@@ -240,20 +247,9 @@ class Bot
 	end
 	
 	def nasty(p)
+		log "\t nasty"
 		@not_my_planets = @not_my_planets.sort{|a, b|	a.ships_to_take(p) <=> b.ships_to_take(p)	}
-		keep_on = true
-		it = 0
-		while keep_on
-			planet = @not_my_planets[it]
-			it = it + 1
-			ships_needed = planet.ships_to_take(p)
-			if p.ships > ships_needed
-				issue_order(p, planet, ships_needed) unless p.would_be_in_trouble(ships_needed)
-			else
-				issue_order(p, planet, p.reinforcements_available)
-				keep_on = false
-			end
-		end
+		attack_with_reserves(@not_my_planets, p)
 	end
 
 	# make a list of the cheapest planets to take (growth / ships) and then sort by distance

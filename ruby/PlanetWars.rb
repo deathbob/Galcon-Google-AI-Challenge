@@ -54,7 +54,7 @@ class Planet
   end
 
 	def total_power
-		@ships + (@incoming_mine / 2) + @growth
+		@ships + @growth
 	end
   
   def reinforcements_needed
@@ -85,9 +85,9 @@ class Planet
 	
 	def ships_to_take(planet)
 		if neutral?
-			(@ships + @incoming_enemy - @incoming_mine) + 1			
+			(@ships + @incoming_enemy - @incoming_mine) + 2
 		elsif enemy?
-			(@ships + (@growth * distance(planet)) - @incoming_mine + @incoming_enemy) + 3
+			(@ships + (@growth * distance(planet)) - (@incoming_mine / 2) + @incoming_enemy) + 3
 		else
 			(@incoming_enemy - @ships - @incoming_mine - @growth)
 		end

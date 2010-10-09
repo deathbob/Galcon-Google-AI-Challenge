@@ -1,0 +1,4 @@
+for i in {1..100}                                                                                     
+do
+./tcp 72.44.46.68 995 lovebob14 -p lovebob ./MyBot.rb
+done

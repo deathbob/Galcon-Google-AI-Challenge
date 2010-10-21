@@ -18,7 +18,7 @@ end
 
 class Planet
 
-  attr_accessor :x, :y, :owner, :ships, :growth, :pid, :incoming_mine, :incoming_enemy
+  attr_accessor :x, :y, :owner, :ships, :growth, :pid, :incoming_mine, :incoming_enemy, :incoming, :incoming_mine_i, :incoming_enemy_i
   def initialize(str, id)
     cow = str.split
     @x = cow[1].to_f
@@ -26,13 +26,17 @@ class Planet
     @owner = cow[3].to_i
     @ships = cow[4].to_i
     @growth = cow[5].to_i
-    @incoming_mine = 0
-    @incoming_enemy = 0    
+    @incoming_mine_i = 0
+    @incoming_mine = []
+    @incoming_enemy_i = 0
+    @incoming_enemy = []
     @pid = id
+		@net_inc = {}
+		@incoming = []
   end
   
   def to_s
-    "Planet #{@id}: X: #{@x} Y: #{@y} Owner: #{@owner} Ships: #{@ships} Growth: #{@growth}\n"
+    "Planet #{@pid}: X: #{@x} Y: #{@y} Owner: #{@owner} Ships: #{@ships} Growth: #{@growth} \n"
   end
   
   def distance(planet)
@@ -42,14 +46,14 @@ class Planet
   end
   
   def in_trouble?
-    (self.growth + self.ships + self.incoming_mine) <= self.incoming_enemy
+    (@growth + @ships + @incoming_mine_i) <= @incoming_enemy_i
   end
   
   def is_as_good_as_mine
-    if self.owner == 1 #me
-      (self.ships + self.incoming_mine) > self.incoming_enemy
+    if mine? #me
+      (@ships + @incoming_mine_i) > @incoming_enemy_i
     else # enemy owned
-      (self.ships + self.incoming_enemy + (self.growth * 3)) <  self.incoming_mine
+      (@ships + @incoming_enemy_i + (@growth * 3)) <  @incoming_mine_i
     end
   end
 
@@ -58,17 +62,17 @@ class Planet
 	end
   
   def reinforcements_needed
-		cow = @incoming_enemy - total_power
+		cow = @incoming_enemy_i - total_power
 		(cow <= 0) ? 0 : cow
   end
   
   def reinforcements_available
-    cow = total_power - @incoming_enemy
+    cow = total_power - @incoming_enemy_i
     (cow <= 0) ? 0 : cow
   end
 
 	def would_be_in_trouble(s)
-		(total_power - s) <= self.incoming_enemy
+		(total_power - s) <= @incoming_enemy_i
 	end
   
 	def enemy?
@@ -84,16 +88,48 @@ class Planet
 	end
 	
 	def ships_to_take(planet)
+		dist = self.distance(planet)		
 		if neutral?
-			(@ships + @incoming_enemy - @incoming_mine) + 2
+			base = @ships
+			ene = 0
+			me = 0
+			if @incoming_enemy.size > 0
+				ene = @incoming_enemy.inject(0){|memo, x| memo += (x.remaining_turns < dist) ? x.ships : 0	}
+			end
+			if @incoming_mine.size > 0
+				me = @incoming_mine.inject(0){|memo, x| memo += (x.remaining_turns < dist) ? x.ships : 0	}
+			end
+			base + ene - me + 1
 		elsif enemy?
-			(@ships + (@growth * distance(planet)) - (@incoming_mine / 2) + @incoming_enemy) + 3
-		else
-			(@incoming_enemy - @ships - @incoming_mine - @growth)
+			base = @ships + (@growth * distance(planet)) 
+			ene = 0
+			if @incoming_enemy.size > 0
+				ene = @incoming.inject(0) do |memo, x| 
+					val = if x.enemy? && (x.remaining_turns < dist)
+ 						x.ships
+					elsif x.mine? && (x.remaining_turns < dist)
+						-x.ships
+					else
+						0
+					end
+					memo += val
+				end
+			end
+			base + ene + 1
+		else # mine
+			(@incoming_enemy_i - @ships - @incoming_mine_i - @growth)
 		end
 	end
 	
 end
+
+
+
+
+
+
+
+
 
 class Fleet
   attr_accessor :owner, :ships, :source, :destination, :total_turns, :remaining_turns, :fid
@@ -107,12 +143,23 @@ class Fleet
     @remaining_turns = cow[6].to_i
     @fid = id
   end
+
+	def enemy?
+		@owner == 2
+	end
+	
+	def mine?
+		@owner == 1
+	end
+
   
   def to_s
-    "Fleet #{@id}: Owner: #{@owner} Ships: #{@ships} Source: #{@source} Destination: #{@destination} TotalTurns: #{@total_turns} RemainingTurns: #{@remaining_turns}\n"
+    "Fleet #{@fid}: Owner: #{@owner} Ships: #{@ships} Source: #{@source} Destination: #{@destination} TotalTurns: #{@total_turns} RemainingTurns: #{@remaining_turns}\n"
   end
 end
 
-# def log(str, mode = 'a+')
-#   File.open("rubybot.log", mode) {|f|  f << str}
-# end
+
+def log(str, mode = 'a+')
+	$stderr.puts str + "\n"
+#  File.open("rubybot.log", mode) {|f|  f << str}
+end

@@ -35,7 +35,7 @@ class Bot
   end
 	
 	def log(str, mode = 'a+')
-#		$stderr.puts str + "\n"		
+		$stderr.puts str + "\n"		
 #    File.open("rubybot.log", mode) {|f|  f << str << "\n"}
   end
   
@@ -93,7 +93,8 @@ class Bot
 
 		if @mode == 'sleep'
 		else
-			snake_style
+#			snake_style
+			snake_style_two
 #			worm
 			#	crazy_style
 		end
@@ -116,13 +117,25 @@ class Bot
         if x.reinforcements_needed < y.reinforcements_available
           issue_order(y, x, x.reinforcements_needed)
         else
-					if y.reinforcements_available > 4
-						issue_order(y, x, y.reinforcements_available / 2)
+					if y.reinforcements_available > 3
+						issue_order(y, x, y.reinforcements_available - 1)
 					end
         end
       end
     end
   end
+
+	def first_turn(p)
+		@not_my_planets = @not_my_planets.sort do |a, b| 
+      ad = p.distance(a)
+      bd = p.distance(b)			
+      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
+		end
+		dist = @my_origin.distance(@enemy_origin)
+		ships_to_risk = (p.ships - ((1.0 / dist) * p.ships )).floor	
+		p.ships = ships_to_risk
+		first_turn_attack(@not_my_planets, p)
+	end
   
 
 	def round_robin(p)
@@ -137,7 +150,12 @@ class Bot
 	
 	
 	def round_robin_two(p)
-		@not_my_planets = @not_my_planets.sort{ |a, b| a.ships_to_take(p) <=> b.ships_to_take(p) }
+#		@not_my_planets = @not_my_planets.sort{ |a, b| (a.ships_to_take(p).to_f / a.growth) <=> (b.ships_to_take(p).to_f / b.growth }
+		@not_my_planets = @not_my_planets.sort do |a, b| 
+      ad = p.distance(a)
+      bd = p.distance(b)			
+      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
+		end
 		attack_with_reserves(@not_my_planets, p)
 	end
 	
@@ -173,17 +191,43 @@ class Bot
 	def attack_with_reserves(planet_array, attacking_planet)
 		planet_array.each do |planet|
 			ships_needed = planet.ships_to_take(attacking_planet)
-#			log(" reinforcements: #{attacking_planet.reinforcements_available}")
-			if attacking_planet.reinforcements_available > ships_needed
+			ria = attacking_planet.reinforcements_available			
+			if ria > ships_needed
 				issue_order(attacking_planet, planet, ships_needed) 
 			else
-				issue_order(attacking_planet, planet, attacking_planet.reinforcements_available)
-				break
+				issue_order(attacking_planet, planet, ria) if ria > 4
 			end
 		end
 	end
 	
-
+	def first_turn_attack(planet_array, attacking_planet)
+		planet_array.each do |planet|
+			ships_needed = planet.ships_to_take(attacking_planet)
+			attacking_planet.reinforcements_available
+			if attacking_planet.reinforcements_available > ships_needed
+				issue_order(attacking_planet, planet, ships_needed) 
+			end
+#			break if attacking_planet.ships <= 0
+		end
+	end
+	
+  def snake_style_two
+		issue_reinforcements
+		targ = closest_to_me_and_enemy_origin	
+		
+		@my_planets.each do |p|
+			if @turn == 1
+				first_turn(p)
+			end
+			if !behind_on_ships
+				# log("\tFocusing Fire Two")
+				# log("\ttarg #{targ.to_s}")
+				focus_fire_two(p, targ)
+			else
+				round_robin_two(p)
+			end
+		end
+	end
 	
   
   def snake_style
@@ -195,18 +239,23 @@ class Bot
 		else
 			@really_ahead -= 1 if (@really_ahead > 0)
 		end
-		log("really ahead #{@really_ahead}")		
-			
+		log("really ahead #{@really_ahead}")
+		targ = closest_to_me_and_enemy_origin	
+		# 	log "\ttarg = #{targ.to_s},\t owned by #{targ.mine? ? 'me' : 'enemy'}" if targ
 		@my_planets.each do |p|
-			if @really_ahead > 2
-				mass_assault(p) 
+			if @really_ahead > 2			
+#				mass_assault(p) 
+				mass_assault_two(p)
+#				focus_fire(p, targ)
 			else
-				round_robin(p)
+				if @turn < 10
+					round_robin(p)
+				else
+					round_robin_two(p)
+				end
 			end
 		end
   end
-
-
 
 	def worm
 		issue_reinforcements
@@ -220,6 +269,17 @@ class Bot
 			end
 		end
 	end
+	
+		def focus_fire(p, target)
+			issue_order(p, target, p.ships ) if p.ships > 4
+		end
+		
+		def focus_fire_two(p, target)
+			tom = p.reinforcements_available			
+			# log("\t\tissuing order")
+			# log("\t\t #{p.pid}, #{target.pid}, #{tom}")
+			issue_order(p, target, tom ) 
+		end
 
 
 	def half_kill(p)
@@ -293,7 +353,7 @@ class Bot
     @neutral_planets.closest(planet)
   end
   
-  def weakest_enemy(planet)
+  def weakest_enemy(planet=nil)
     @enemy_planets.min do |a, b| 
       a.ships <=> b.ships
     end
@@ -315,21 +375,26 @@ class Bot
   end
   
   def closest_to_me_and_enemy_origin
-    ctto = @my_planets.closest(@enemy_origin)
-		log("closest #{ctto.to_s}")
+		eyo = @planets[@enemy_origin.pid]
+		if eyo.mine?
+			eyo = weakest_enemy
+		end
+		return nil if eyo.nil?
+    ctto = @my_planets.closest(eyo)
 		return nil if ctto.nil?
-		max_d = @my_origin.distance(@enemy_origin)
+		max_d = @my_origin.distance(eyo)
 
-		cow = (@not_my_planets - [@planets[@enemy_origin.pid]]).collect do |x| 
-			[x, (x.distance(ctto) + x.distance(@enemy_origin)) ]
+		cow = (@not_my_planets - [eyo]).collect do |x| 
+			[x, (x.distance(ctto) + x.distance(eyo)) ]
 		end
 		cow = cow.sort{|a, b| a[1] <=> b[1]}
-		new_target = cow.first[0]
-		if new_target == @planets[@my_origin.pid]
-			new_target = @enemy_origin
-		end
-		if(new_target.distance(@enemy_origin) > ctto.distance(@enemy_origin))	|| (ctto.distance(new_target) > ctto.distance(@enemy_origin)) 
-			new_target = @enemy_origin
+		return nil unless cow.first
+		new_target = cow.first[0] 
+		# if new_target == @planets[@enemy_origin.pid]
+		# 	new_target = @planets[@enemy_origin.pid]
+		# end
+		if(new_target.distance(eyo) > ctto.distance(eyo))	|| (ctto.distance(new_target) > ctto.distance(eyo)) 
+			new_target = eyo
 		end
 #    @not_my_planets.closest(closest_to_their_origin)		
 		new_target
@@ -343,15 +408,33 @@ class Bot
   end
   
   def issue_order(from, to, num)
-    return unless num > 0 and from.ships >= num
-    return unless from && to
-		return if from == to # 
-		return if to.growth == 0
+		unless num > 0 and from.ships >= num	
+			log "\tERROR num #{num} > 0    OR   from.ships #{from.ships} < num #{num}"
+			return
+		end
+		unless from && to
+			log "\tERROR from or to doesn't exist"
+			return
+		end
+		if from == to 
+			log "\tERROR from == to"
+			return
+		end
+		if to.growth == 0
+			log "\tERROR to.growth == 0"
+			return
+		end
+		unless from.mine?
+			log '\tERROR from is not mine'
+			return
+		end
+				
+	  order = "#{from.pid} #{to.pid} #{num}"
     
     to.incoming_mine_i += num
-    from.ships = from.ships - num
+    from.ships -= num
         
-    order = "#{from.pid} #{to.pid} #{num}"
+		log "\tORDER UP #{order}"
     @orders << order
     true
   end

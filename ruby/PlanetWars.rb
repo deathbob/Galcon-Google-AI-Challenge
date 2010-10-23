@@ -46,7 +46,11 @@ class Planet
   end
   
   def in_trouble?
-    (@growth + @ships + @incoming_mine_i) <= @incoming_enemy_i
+		if @incoming_enemy_i > 0
+    	(@growth + @ships + @incoming_mine_i) <= @incoming_enemy_i + 4
+		else
+			false
+		end
   end
   
   def is_as_good_as_mine
@@ -67,7 +71,8 @@ class Planet
   end
   
   def reinforcements_available
-    cow = total_power - @incoming_enemy_i
+    cow = @ships - @incoming_enemy_i
+#		log("\t#{self.to_s}\treinforcements available #{cow} ")
     (cow <= 0) ? 0 : cow
   end
 
@@ -99,6 +104,11 @@ class Planet
 			if @incoming_mine.size > 0
 				me = @incoming_mine.inject(0){|memo, x| memo += (x.remaining_turns < dist) ? x.ships : 0	}
 			end
+			# if ene > me
+			# 	(base - ene).abs - me + 1				
+			# else
+			# 	(base -me).abs + ene + 1				
+			# end
 			base + ene - me + 1
 		elsif enemy?
 			base = @ships + (@growth * distance(planet)) 

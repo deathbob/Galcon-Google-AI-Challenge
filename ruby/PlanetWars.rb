@@ -18,7 +18,8 @@ end
 
 class Planet
 
-  attr_accessor :x, :y, :owner, :ships, :growth, :pid, :incoming_mine, :incoming_enemy, :incoming, :incoming_mine_i, :incoming_enemy_i
+  attr_accessor :x, :y, :owner, :ships, :growth, :pid, :incoming_mine, :incoming_enemy, 
+								:incoming, :incoming_mine_i, :incoming_enemy_i, :incoming_mine_j, :incoming_enemy_j
   def initialize(str, id)
     cow = str.split
     @x = cow[1].to_f
@@ -27,8 +28,10 @@ class Planet
     @ships = cow[4].to_i
     @growth = cow[5].to_i
     @incoming_mine_i = 0
+    @incoming_mine_j = Hash.new{|hash, key| hash[key] = 0}
     @incoming_mine = []
     @incoming_enemy_i = 0
+    @incoming_enemy_j = Hash.new{|hash, key| hash[key] = 0}
     @incoming_enemy = []
     @pid = id
 		@net_inc = {}
@@ -36,7 +39,7 @@ class Planet
   end
   
   def to_s
-    "Planet #{@pid}: X: #{@x} Y: #{@y} Owner: #{@owner} Ships: #{@ships} Growth: #{@growth} \n"
+    "Planet #{@pid}: X: #{@x} Y: #{@y} Owner: #{@owner} Ships: #{@ships} Growth: #{@growth} "
   end
   
   def distance(planet)
@@ -47,11 +50,24 @@ class Planet
   
   def in_trouble?
 		if @incoming_enemy_i > 0
-    	(@growth + @ships + @incoming_mine_i) <= @incoming_enemy_i + 4
+			pig = @ships
+			(1..10).to_a.each do |x|
+				pig += @incoming_mine_j[x] - @incoming_enemy_j[x]
+				return true if pig < 0
+			end
+		end
+		false
+  end
+
+	def doomed?
+		we = @incoming_mine_j[1] 
+		they = @incoming_enemy_j[1]
+		if (@ships + we - they) < 0
+			true
 		else
 			false
 		end
-  end
+	end
   
   def is_as_good_as_mine
     if mine? #me
@@ -65,13 +81,38 @@ class Planet
 		@ships + @growth
 	end
   
-  def reinforcements_needed
-		cow = @incoming_enemy_i - total_power
+  def reinforcements_needed(p = nil)
+		return 0 unless @incoming_enemy.size > 0
+		if p
+			dist = distance(p) + 1
+			ene = @incoming_enemy.inject(0){|memo, x|
+				memo += (x.remaining_turns <= dist) ? x.ships : 0
+			}
+			mine = @incoming_mine.inject(0){|memo, x|
+				memo += (x.remaining_turns <= dist) ? x.ships : 0
+			}
+			cow = ene - (@ships + mine)
+		else
+			cow = @incoming_enemy_i - total_power	
+		end
+
 		(cow <= 0) ? 0 : cow
   end
   
-  def reinforcements_available
-    cow = @ships - @incoming_enemy_i
+  def reinforcements_available(p = nil)
+		if p
+			dist = distance(p)
+	    ene = @incoming_enemy.inject(0){|memo, x| 
+				memo += (x.remaining_turns <= dist) ? x.ships : 0
+			}
+			mine = @incoming_enemy.inject(0){|memo, x|
+				memo += (x.remaining_turns <= dist) ? x.ships : 0
+			}
+			cow = @ships + mine - ene
+		else
+    	cow = @ships - @incoming_enemy_i
+		end
+
 #		log("\t#{self.to_s}\treinforcements available #{cow} ")
     (cow <= 0) ? 0 : cow
   end
@@ -93,31 +134,61 @@ class Planet
 	end
 	
 	def ships_to_take(planet)
-		dist = self.distance(planet)		
-		if neutral?
-			base = @ships
-			ene = 0
-			me = 0
-			if @incoming_enemy.size > 0
-				ene = @incoming_enemy.inject(0){|memo, x| memo += (x.remaining_turns < dist) ? x.ships : 0	}
+		dist = self.distance(planet) + 1
+		cow = if neutral?
+			mine = false
+			enemy = false
+			pig = @ships			
+			(1..dist).to_a.each do |i|
+				mj = @incoming_mine_j[i]
+				ej = @incoming_enemy_j[i]
+				tom = [pig, ej, mj].sort # rank forces
+				if (pig >= mj) && (pig >= ej) # biggest force is neutral, can't go negative, can't switch hands
+					pig -= tom[1]
+				elsif (mj >= pig) && (mj >= ej) # biggest force is mine
+					if mine
+						pig += mj
+					else #neutral or enemy, doesn't matter
+						pig -= mj
+						if pig < 0
+							mine = true
+							enemy = false
+							pig = pig.abs
+						end
+					end
+				else # biggest force is enemy
+					if enemy
+						pig += ej
+					else # neutral or mine, doesn't matter
+						pig -= ej
+						if pig < 0
+							mine = false
+							enemy = true
+							pig = pig.abs
+						end
+					end
+				end
+
 			end
-			if @incoming_mine.size > 0
-				me = @incoming_mine.inject(0){|memo, x| memo += (x.remaining_turns < dist) ? x.ships : 0	}
-			end
-			# if ene > me
-			# 	(base - ene).abs - me + 1				
-			# else
-			# 	(base -me).abs + ene + 1				
+			pig + 1
+			# base = @ships
+			# ene = 0
+			# me = 0
+			# if @incoming_enemy.size > 0
+			# 	ene = @incoming_enemy.inject(0){|memo, x| memo += (x.remaining_turns <= dist) ? x.ships : 0	}
 			# end
-			base + ene - me + 1
+			# if @incoming_mine.size > 0
+			# 	me = @incoming_mine.inject(0){|memo, x| memo += (x.remaining_turns <= dist) ? x.ships : 0	}
+			# end
+			# base + ene - me + 1
 		elsif enemy?
-			base = @ships + (@growth * distance(planet)) 
+			base = @ships + (@growth * dist) 
 			ene = 0
 			if @incoming_enemy.size > 0
 				ene = @incoming.inject(0) do |memo, x| 
-					val = if x.enemy? && (x.remaining_turns < dist)
+					val = if x.enemy? && (x.remaining_turns <= dist)
  						x.ships
-					elsif x.mine? && (x.remaining_turns < dist)
+					elsif x.mine? && (x.remaining_turns <= dist)
 						-x.ships
 					else
 						0
@@ -125,11 +196,14 @@ class Planet
 					memo += val
 				end
 			end
-			base + ene + 1
+			base + ene + 2
 		else # mine
-			(@incoming_enemy_i - @ships - @incoming_mine_i - @growth)
+			0
 		end
+#		log "\tships to take #{cow} -|- #{self.to_s} -|- dist = #{dist}"
+		cow
 	end
+	
 	
 end
 
@@ -164,7 +238,7 @@ class Fleet
 
   
   def to_s
-    "Fleet #{@fid}: Owner: #{@owner} Ships: #{@ships} Source: #{@source} Destination: #{@destination} TotalTurns: #{@total_turns} RemainingTurns: #{@remaining_turns}\n"
+    "Fleet #{@fid}: Owner: #{@owner} Ships: #{@ships} Source: #{@source} Destination: #{@destination} TotalTurns: #{@total_turns} RemainingTurns: #{@remaining_turns}"
   end
 end
 

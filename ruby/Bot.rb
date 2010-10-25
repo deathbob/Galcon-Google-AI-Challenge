@@ -10,6 +10,7 @@ class Bot
 		@really_ahead = 0
     @orders = []
 		@mode = mode
+		@sim_planets = []
   end
   
   def calc_my_ships
@@ -78,14 +79,55 @@ class Bot
       if x.mine?
         @planets[x.destination].incoming_mine_i += x.ships
         @planets[x.destination].incoming_mine << x #= @planets[x.destination].incoming_mine + x.ships
+        @planets[x.destination].incoming_mine_j[x.remaining_turns] += x.ships 
       elsif x.enemy?
         @planets[x.destination].incoming_enemy_i += x.ships
         @planets[x.destination].incoming_enemy << x #= @planets[x.destination].incoming_enemy + x.ships
+        @planets[x.destination].incoming_enemy_j[x.remaining_turns] += x.ships
       end
     end
   end
     
+
+	def simulate
+		@sim_planets = @planets
+		@sim_planets.each do |p|
+			mj = p.incoming_mine_j[1]
+			ej = p.incoming_enemy_j[1]
+			if p.neutral?
+				pj = p.ships
+				tom = [pj, mj, ej].sort
+				net = tom[2] - tom[1]
+				p.ships = net
+				if tom[2] == pj
+					p.owner = 0
+				elsif tom[2] == ej
+					p.owner = 2
+				else 
+					p.owner = 1
+				end
+			elsif p.mine? # planet started as mine
+				p.ships += p.growth
+				p.ships += mj
+				p.ships -= ej
+				if p.ships < 0
+					p.owner = 2
+					p.ships = p.ships.abs
+				end
+			else # started as theirs (enemy)
+				p.ships += p.growth
+				p.ships += ej
+				p.ships -= mj
+				if p.ships < 0
+					p.owner = 1
+					p.ships = p.ships.abs
+				end
+			end
+		end
+	end
   
+##################################################################
+### DO TURN #######
   def do_turn(pw)
     @turn = @turn + 1
     @planet_wars = pw
@@ -94,9 +136,11 @@ class Bot
 		if @mode == 'sleep'
 		else
 #			snake_style
-			snake_style_two
-#			worm
 			#	crazy_style
+#			worm
+#			snake_style_two
+#			snake_style_three
+			tiger_style
 		end
     finish_turn
   end
@@ -112,13 +156,20 @@ class Bot
     troubled, saviors = @my_planets.partition{|x| x.in_trouble?}
 		troubled = troubled.sort{|a, b| b.growth <=> a.growth}
     troubled.each do |x|
+
+#			log "\t#{x.to_s} needs help"
+			ren = x.reinforcements_needed					
 			saviors = saviors.sort{|a, b| a.distance(x) <=> b.distance(x)}
       saviors.each do |y|
-        if x.reinforcements_needed < y.reinforcements_available
-          issue_order(y, x, x.reinforcements_needed)
+#				log "\tREN #{ren}"
+        if ren < y.reinforcements_available
+          issue_order(y, x, ren)
+					break # don't send anybody else because we're all good now. 
         else
-					if y.reinforcements_available > 3
-						issue_order(y, x, y.reinforcements_available - 1)
+					if y.reinforcements_available > 0
+						yra = y.reinforcements_available
+						issue_order(y, x, yra)
+						ren -= yra
 					end
         end
       end
@@ -132,7 +183,13 @@ class Bot
       (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
 		end
 		dist = @my_origin.distance(@enemy_origin)
-		ships_to_risk = (p.ships - ((1.0 / dist) * p.ships )).floor	
+		log("\tDist between me and enemy origin #{dist}")
+		if dist < 10
+			ships_to_risk = 40
+		else
+			ships_to_risk = (p.ships - ((1.0 / (dist / 5)) * p.ships )).floor				
+		end
+		log "\tShips to risk #{ships_to_risk}"
 		p.ships = ships_to_risk
 		first_turn_attack(@not_my_planets, p)
 	end
@@ -147,7 +204,17 @@ class Bot
 		end
 		attack_with_reserves(@not_my_planets, p)
 	end
-	
+
+	def round_robin_four(p)
+#		log("\t round robin")
+		@not_my_planets = @not_my_planets.sort do |a, b|
+      ad = p.distance(a)
+      bd = p.distance(b)
+#      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
+		end
+		stream_with_reserves(@not_my_planets, p)
+	end
 	
 	def round_robin_two(p)
 #		@not_my_planets = @not_my_planets.sort{ |a, b| (a.ships_to_take(p).to_f / a.growth) <=> (b.ships_to_take(p).to_f / b.growth }
@@ -158,7 +225,23 @@ class Bot
 		end
 		attack_with_reserves(@not_my_planets, p)
 	end
-	
+
+	def round_robin_three(p)
+		if p.doomed?
+#			log "\t***DOOMED***"
+			targ = most_desireable(p)
+			issue_order(p, targ, p.ships)
+			return
+		end
+		@not_my_planets = @not_my_planets.sort do |a, b| 
+			bs = b.ships_to_take(p)
+			bs = 100 if bs == 0
+			as = a.ships_to_take(p)
+			as = 100 if as == 0
+      (b.growth.to_f / (bs + (10 * p.distance(b)))) <=> (a.growth.to_f / (as + (10 * p.distance(a))))
+		end
+		attack_with_reserves(@not_my_planets, p)
+	end
 	
 	def mass_assault(p)
 #		log("\t mass_assault")
@@ -191,11 +274,42 @@ class Bot
 	def attack_with_reserves(planet_array, attacking_planet)
 		planet_array.each do |planet|
 			ships_needed = planet.ships_to_take(attacking_planet)
+			next unless ships_needed > 0
 			ria = attacking_planet.reinforcements_available			
-			if ria > ships_needed
+			if (ria > ships_needed) 
 				issue_order(attacking_planet, planet, ships_needed) 
 			else
-				issue_order(attacking_planet, planet, ria) if ria > 4
+				issue_order(attacking_planet, planet, ria / 2) if ria > 2
+			end
+		end
+	end
+	
+	def stream_with_reserves(planet_array, attacking_planet)
+		planet_array.each do |planet|
+
+			ships_needed = planet.ships_to_take(attacking_planet)
+			next unless ships_needed > 0
+			ria = attacking_planet.reinforcements_available
+			next unless ria > 0
+			
+			closest = @my_planets.closest(planet)
+			if (attacking_planet == closest)
+				# if the attacking planet is the closest planet to the target
+				# do nothing
+			elsif (attacking_planet.distance(planet) < attacking_planet.distance(closest))
+				# if the given attacking planet is closer to the target than it is to the closest planet to the target
+				# do nothing, attack as planned
+			else
+				# If i own a planet closer to the target than the current attacking_planet
+				# change target to the closest planet / move troops to the closest planet
+				planet = closest if closest
+			end
+			
+			if (ria >= ships_needed) 
+				issue_order(attacking_planet, planet, ships_needed) 
+			elsif ria > 4
+				
+#				issue_order(attacking_planet, planet, ria) 
 			end
 		end
 	end
@@ -208,6 +322,18 @@ class Bot
 				issue_order(attacking_planet, planet, ships_needed) 
 			end
 #			break if attacking_planet.ships <= 0
+		end
+	end
+	
+	def snake_style_three
+		if @turn == 1
+			targ = most_desireable(@my_origin)
+			issue_order(@my_origin, targ, targ.ships_to_take(@my_origin))
+		else
+			issue_reinforcements
+			@my_planets.each do |p|
+				round_robin_three(p)
+			end
 		end
 	end
 	
@@ -257,6 +383,20 @@ class Bot
 		end
   end
 
+	def tiger_style
+		issue_reinforcements
+		@my_planets.each do |p|
+			if @turn == 1
+				first_turn(p)
+			end
+			round_robin_four(p)
+		end
+		##############################################################################################
+		# need to add some logic to reinforcements to only send if i can make it in time
+		# need to add some logic to take strategic planets in between my planets and their ultimate goal. 
+		# need to stream fleets to front lines?  That way i can attack more directly and support vulnerable planets at the same time. 
+	end
+
 	def worm
 		issue_reinforcements
 		c = closest_to_me_and_enemy_origin
@@ -275,7 +415,7 @@ class Bot
 		end
 		
 		def focus_fire_two(p, target)
-			tom = p.reinforcements_available			
+			tom = p.reinforcements_available(target)			
 			# log("\t\tissuing order")
 			# log("\t\t #{p.pid}, #{target.pid}, #{tom}")
 			issue_order(p, target, tom ) 
@@ -342,7 +482,7 @@ class Bot
 	# Problem is I'm attacking neutral planets with too many ships, i could get more growth by attacking two less populated ships with slightly smaller growth(slightly further away)
   
   def most_desireable(planet)
-    @not_my_planets.min{|a, b|
+    @not_my_planets.max{|a, b|
       ad = planet.distance(a)
       bd = planet.distance(b)
       (a.growth.to_f / ((ad * ad) + a.ships)) <=> (b.growth.to_f / ((bd * bd) + b.ships))
@@ -434,7 +574,7 @@ class Bot
     to.incoming_mine_i += num
     from.ships -= num
         
-		log "\tORDER UP #{order}"
+#		log "\tORDER UP #{order}"
     @orders << order
     true
   end

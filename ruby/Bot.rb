@@ -177,6 +177,7 @@ class Bot
   end
 
 	def first_turn(p)
+		@not_my_planets = @not_my_planets.delete_if{|x| x.distance(@enemy_origin) < x.distance(@my_origin)}
 		@not_my_planets = @not_my_planets.sort do |a, b| 
       ad = p.distance(a)
       bd = p.distance(b)			
@@ -185,12 +186,13 @@ class Bot
 		dist = @my_origin.distance(@enemy_origin)
 		log("\tDist between me and enemy origin #{dist}")
 		if dist < 10
-			ships_to_risk = 40
+			# this needs to be tested more. 
+			p.ships = 49
 		else
-			ships_to_risk = (p.ships - ((1.0 / (dist / 5)) * p.ships )).floor				
+			ships_to_risk = (p.ships - ((1.0 / (dist / 4)) * p.ships )).floor				
 		end
 		log "\tShips to risk #{ships_to_risk}"
-		p.ships = ships_to_risk
+#		p.ships = ships_to_risk
 		first_turn_attack(@not_my_planets, p)
 	end
   
@@ -205,16 +207,6 @@ class Bot
 		attack_with_reserves(@not_my_planets, p)
 	end
 
-	def round_robin_four(p)
-#		log("\t round robin")
-		@not_my_planets = @not_my_planets.sort do |a, b|
-      ad = p.distance(a)
-      bd = p.distance(b)
-#      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
-      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
-		end
-		stream_with_reserves(@not_my_planets, p)
-	end
 	
 	def round_robin_two(p)
 #		@not_my_planets = @not_my_planets.sort{ |a, b| (a.ships_to_take(p).to_f / a.growth) <=> (b.ships_to_take(p).to_f / b.growth }
@@ -238,10 +230,26 @@ class Bot
 			bs = 100 if bs == 0
 			as = a.ships_to_take(p)
 			as = 100 if as == 0
-      (b.growth.to_f / (bs + (10 * p.distance(b)))) <=> (a.growth.to_f / (as + (10 * p.distance(a))))
+			bd = p.distance(b)
+			ad = p.distance(a)
+#      (b.growth.to_f / (bs + (10 * p.distance(b)))) <=> (a.growth.to_f / (as + (10 * p.distance(a))))
+      (b.growth.to_f / (bs + (bd * bd))) <=> (a.growth.to_f / (as + (ad * ad)))
 		end
 		attack_with_reserves(@not_my_planets, p)
 	end
+	
+	def round_robin_four(p)
+#		log("\t round robin")
+		@not_my_planets = @not_my_planets.sort do |a, b|
+      ad = p.distance(a)
+      bd = p.distance(b)
+#      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
+#      (b.growth.to_f / ((2 * bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((2 * ad * ad) + a.ships_to_take(p)))
+		end
+		stream_with_reserves(@not_my_planets, p)
+	end
+	
 	
 	def mass_assault(p)
 #		log("\t mass_assault")
@@ -309,7 +317,7 @@ class Bot
 				issue_order(attacking_planet, planet, ships_needed) 
 			elsif ria > 4
 				
-#				issue_order(attacking_planet, planet, ria) 
+				issue_order(attacking_planet, planet, ria) 
 			end
 		end
 	end

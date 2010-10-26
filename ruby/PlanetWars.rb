@@ -83,7 +83,7 @@ class Planet
   
   def reinforcements_needed(p = nil)
 		return 0 unless @incoming_enemy.size > 0
-		if p
+		cow = if p
 			dist = distance(p) + 1
 			ene = @incoming_enemy.inject(0){|memo, x|
 				memo += (x.remaining_turns <= dist) ? x.ships : 0
@@ -91,9 +91,26 @@ class Planet
 			mine = @incoming_mine.inject(0){|memo, x|
 				memo += (x.remaining_turns <= dist) ? x.ships : 0
 			}
-			cow = ene - (@ships + mine)
+			ene - (@ships + mine)
 		else
-			cow = @incoming_enemy_i - total_power	
+			tom = @incoming_enemy_i - total_power	
+			base = @ships
+			res = 0
+			(1..15).to_a.each do |x|
+				if base > 0
+					base += @growth
+				else
+					base -= @growth
+				end
+				base -= @incoming_enemy_j[x]
+				base += @incoming_mine_j[x]
+				if base < 0
+					res = base.abs
+				end
+			end
+#			log("tom #{tom}, .res #{res}")
+			res + 1
+#			res + (res * 1.1).ceil
 		end
 
 		(cow <= 0) ? 0 : cow
@@ -101,7 +118,7 @@ class Planet
   
   def reinforcements_available(p = nil)
 		if p
-			dist = distance(p)
+			dist = distance(p) + 1
 	    ene = @incoming_enemy.inject(0){|memo, x| 
 				memo += (x.remaining_turns <= dist) ? x.ships : 0
 			}
@@ -142,6 +159,9 @@ class Planet
 			(1..dist).to_a.each do |i|
 				mj = @incoming_mine_j[i]
 				ej = @incoming_enemy_j[i]
+				if mine or enemy
+					pig += @growth
+				end
 				tom = [pig, ej, mj].sort # rank forces
 				if (pig >= mj) && (pig >= ej) # biggest force is neutral, can't go negative, can't switch hands
 					pig -= tom[1]
@@ -158,7 +178,7 @@ class Planet
 					end
 				else # biggest force is enemy
 					if enemy
-						pig += ej
+						pig += ej + 1
 					else # neutral or mine, doesn't matter
 						pig -= ej
 						if pig < 0
@@ -201,7 +221,7 @@ class Planet
 			0
 		end
 #		log "\tships to take #{cow} -|- #{self.to_s} -|- dist = #{dist}"
-		cow
+		cow + (cow * 1.1).ceil
 	end
 	
 	

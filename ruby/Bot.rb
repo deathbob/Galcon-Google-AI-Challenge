@@ -37,7 +37,7 @@ class Bot
 	
 	def log(str, mode = 'a+')
 		$stderr.puts str + "\n"		
-#    File.open("rubybot.log", mode) {|f|  f << str << "\n"}
+#   File.open("rubybot.log", mode) {|f|  f << str << "\n"}
   end
   
   def behind_on_growth
@@ -126,7 +126,8 @@ class Bot
 		end
 	end
   
-##################################################################
+####################################################################################################################
+####################################################################################################################
 ### DO TURN #######
   def do_turn(pw)
     @turn = @turn + 1
@@ -134,13 +135,14 @@ class Bot
     parse_game_state
 
 		if @mode == 'sleep'
+		elsif @mode == 'tiger'
+			tiger_style_two	
 		else
-#			snake_style
-			#	crazy_style
+			tiger_style
+#			crazy_style
 #			worm
 #			snake_style_two
 #			snake_style_three
-			tiger_style
 		end
     finish_turn
   end
@@ -181,12 +183,30 @@ class Bot
 		@not_my_planets = @not_my_planets.sort do |a, b| 
       ad = p.distance(a)
       bd = p.distance(b)			
-      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
+      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
 		end
 		dist = @my_origin.distance(@enemy_origin)
 		log("\tDist between me and enemy origin #{dist}")
 		if dist < 10
-			# this needs to be tested more. 
+			p.ships = 49
+		else
+			ships_to_risk = (p.ships - ((1.0 / (dist / 4)) * p.ships )).floor				
+		end
+		log "\tShips to risk #{ships_to_risk}"
+#		p.ships = ships_to_risk
+		first_turn_attack(@not_my_planets, p)
+	end
+
+	def first_turn_two(p)
+		@not_my_planets = @not_my_planets.delete_if{|x| x.distance(@enemy_origin) < x.distance(@my_origin)}
+		@not_my_planets = @not_my_planets.sort do |a, b| 
+      ad = p.distance(a)
+      bd = p.distance(b)			
+      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+		end
+		dist = @my_origin.distance(@enemy_origin)
+		log("\tDist between me and enemy origin #{dist}")
+		if dist < 10
 			p.ships = 49
 		else
 			ships_to_risk = (p.ships - ((1.0 / (dist / 4)) * p.ships )).floor				
@@ -243,13 +263,29 @@ class Bot
 		@not_my_planets = @not_my_planets.sort do |a, b|
       ad = p.distance(a)
       bd = p.distance(b)
-#      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
-      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
-#      (b.growth.to_f / ((2 * bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((2 * ad * ad) + a.ships_to_take(p)))
+      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
+#   		(b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p))) # This really isn't as good as just ships
 		end
 		stream_with_reserves(@not_my_planets, p)
 	end
+	# Need to build distance table in first turn and return cached distances after that.  
 	
+	def round_robin_five(p)
+		@not_my_planets = @not_my_planets.sort do |a, b|
+      ad = p.distance(a)
+      bd = p.distance(b)
+#   		(b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p))) 
+   		(b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships)) 
+			# (b.growth.to_f / b.ships_to_take(p)) <=> (a.growth.to_f / a.ships_to_take(p)) # not badd		    
+			# ((b.growth.to_f / (bd * bd)) * (1 / ( 1 + b.ships_to_take(p)))) <=> ((a.growth.to_f / (ad * ad)) * ( 1 / ( 1 + a.ships_to_take(p)))) # not as good as four      
+			# (b.growth.to_f / ((2 * bd * bd) + b.ships)) <=> (a.growth.to_f / ((2 * ad * ad) + a.ships)) # better than some, but not as good as b.ships      
+			# (b.growth.to_f / ((2 * bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((2 * ad * ad) + a.ships_to_take(p))) # slightly less terrible      
+			# ((b.growth.to_f / bd) * (1 / ( 1 + b.ships_to_take(p)))) <=> ((a.growth.to_f / (ad)) * ( 1 / ( 1 + a.ships_to_take(p)))) # terrible      
+			# (b.growth.to_f / ((bd) + b.ships)) <=> (a.growth.to_f / ((ad) + a.ships)) # terrible        			
+			# (b.ships_to_take(p)) <=> (a.ships_to_take(p)) # terrible			
+		end
+		stream_with_reserves_two(@not_my_planets, p)		
+	end
 	
 	def mass_assault(p)
 #		log("\t mass_assault")
@@ -314,13 +350,45 @@ class Bot
 			end
 			
 			if (ria >= ships_needed) 
-				issue_order(attacking_planet, planet, ships_needed) 
-			elsif ria > 4
-				
+				issue_order(attacking_planet, planet, ships_needed)  # this is better
+#				issue_order(attacking_planet, planet, ria)
+			elsif ria > 6
+				# Test this (5) then test attacking the closest enemy to what is now the current closest 
+				# Need to turn aggressive at some point.  
 				issue_order(attacking_planet, planet, ria) 
 			end
 		end
 	end
+	
+	def stream_with_reserves_two(planet_array, attacking_planet)
+		planet_array.each do |planet|
+
+			ships_needed = planet.ships_to_take(attacking_planet)
+			next unless ships_needed > 0
+			ria = attacking_planet.reinforcements_available
+			next unless ria > 0
+			
+			closest = @my_planets.closest(planet)
+			if (attacking_planet == closest)
+				# if the attacking planet is the closest planet to the target
+				# do nothing
+			elsif (attacking_planet.distance(planet) < attacking_planet.distance(closest))
+				# if the given attacking planet is closer to the target than it is to the closest planet to the target
+				# do nothing, attack as planned
+			else
+				# If i own a planet closer to the target than the current attacking_planet
+				# change target to the closest planet / move troops to the closest planet
+				planet = closest if closest
+			end
+
+			if (ria >= ships_needed) 			
+#				issue_order(attacking_planet, planet, ria)
+				issue_order(attacking_planet, planet, ships_needed) 
+			elsif ria > 6
+				issue_order(attacking_planet, planet, ria)
+			end
+		end
+	end	
 	
 	def first_turn_attack(planet_array, attacking_planet)
 		planet_array.each do |planet|
@@ -329,7 +397,6 @@ class Bot
 			if attacking_planet.reinforcements_available > ships_needed
 				issue_order(attacking_planet, planet, ships_needed) 
 			end
-#			break if attacking_planet.ships <= 0
 		end
 	end
 	
@@ -403,6 +470,16 @@ class Bot
 		# need to add some logic to reinforcements to only send if i can make it in time
 		# need to add some logic to take strategic planets in between my planets and their ultimate goal. 
 		# need to stream fleets to front lines?  That way i can attack more directly and support vulnerable planets at the same time. 
+	end
+
+	def tiger_style_two
+		issue_reinforcements
+		@my_planets.each do |p|
+			if @turn == 1
+				first_turn_two(p)
+			end
+			round_robin_five(p)
+		end
 	end
 
 	def worm
@@ -581,7 +658,9 @@ class Bot
     
     to.incoming_mine_i += num
     from.ships -= num
-        
+		dist = from.distance(to)
+    to.incoming << Fleet.new("1 #{num} #{from.pid} #{to} #{dist} #{dist}", 1000)
+		to.incoming_mine_j[dist] += num
 #		log "\tORDER UP #{order}"
     @orders << order
     true

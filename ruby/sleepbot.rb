@@ -6,7 +6,7 @@ require './bot.rb'
 #File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
 
 map_data = []
-sleepbot = Bot.new('sleep')
+sleepbot = Bot.new('tiger')
 while true
   current_line = gets
   next unless current_line

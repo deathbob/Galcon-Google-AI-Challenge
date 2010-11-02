@@ -51,7 +51,7 @@ class Planet
   def in_trouble?
 		if @incoming_enemy_i > 0
 			pig = @ships
-			(1..10).to_a.each do |x|
+			(0..10).to_a.each do |x|
 				pig += @incoming_mine_j[x] - @incoming_enemy_j[x]
 				return true if pig < 0
 			end
@@ -93,10 +93,10 @@ class Planet
 			}
 			ene - (@ships + mine)
 		else
-			tom = @incoming_enemy_i - total_power	
+#			tom = @incoming_enemy_i - total_power	
 			base = @ships
 			res = 0
-			(1..15).to_a.each do |x|
+			(0..15).to_a.each do |x|
 				if base > 0
 					base += @growth
 				else
@@ -156,7 +156,7 @@ class Planet
 			mine = false
 			enemy = false
 			pig = @ships			
-			(1..dist).to_a.each do |i|
+			(0..dist).to_a.each do |i|
 				mj = @incoming_mine_j[i]
 				ej = @incoming_enemy_j[i]
 				if mine or enemy

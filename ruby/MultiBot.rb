@@ -2,15 +2,12 @@
 
 require './planetwars.rb'
 require './bot.rb'
-require './tiger_bot.rb'
+require './sleep_bot.rb'
 require './crime_bot.rb'
-
 #File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
 
 map_data = []
-#mybot = Bot.new('dog')
-mybot = TigerBot.new
-#mybot = CrimeBot.new
+mybot = CrimeBot.new
 while true
   current_line = gets
   next unless current_line
@@ -22,4 +19,3 @@ while true
     map_data << current_line
   end
 end
-

@@ -151,77 +151,42 @@ class Planet
 	end
 	
 	def ships_to_take(planet)
-		dist = self.distance(planet) + 1
-		cow = if neutral?
-			mine = false
-			enemy = false
-			pig = @ships			
-			(0..dist).to_a.each do |i|
-				mj = @incoming_mine_j[i]
-				ej = @incoming_enemy_j[i]
-				if mine or enemy
-					pig += @growth
-				end
-				tom = [pig, ej, mj].sort # rank forces
-				if (pig >= mj) && (pig >= ej) # biggest force is neutral, can't go negative, can't switch hands
-					pig -= tom[1]
-				elsif (mj >= pig) && (mj >= ej) # biggest force is mine
-					if mine
-						pig += mj
-					else #neutral or enemy, doesn't matter
-						pig -= mj
-						if pig < 0
-							mine = true
-							enemy = false
-							pig = pig.abs
-						end
-					end
+		dist = self.distance(planet) + 2
+		base = @ships
+		state = @owner
+		(0..dist).to_a.each do |i|
+			mj, ej = @incoming_mine_j[i], @incoming_enemy_j[i]
+#			log("\t\tships to take (#{self.pid}) before #{i}: #{base}, mj #{mj}, ej #{ej}")	
+			case state
+			when 0 # neutral
+				tom = [base, ej, mj].sort # rank forces
+				if (base >= mj) && (base >= ej) # biggest force is neutral, can't go negative, can't switch hands
+					base -= tom[1]
+				elsif (mj >= base) && (mj >= ej) # biggest force is mine
+					base -= mj
+					state = 1			if base < 0
 				else # biggest force is enemy
-					if enemy
-						pig += ej + 1
-					else # neutral or mine, doesn't matter
-						pig -= ej
-						if pig < 0
-							mine = false
-							enemy = true
-							pig = pig.abs
-						end
-					end
+					base -= ej
+					state = 2			if base < 0
 				end
-
+			when 1 # mine
+				base += @growth
+				base += mj
+				base -= ej
+				state = 2				if base < 0
+			when 2 # enemy owned
+				base += @growth
+				base -= mj				
+				base += ej
+				state = 1				if base < 0
 			end
-			pig + 1
-			# base = @ships
-			# ene = 0
-			# me = 0
-			# if @incoming_enemy.size > 0
-			# 	ene = @incoming_enemy.inject(0){|memo, x| memo += (x.remaining_turns <= dist) ? x.ships : 0	}
-			# end
-			# if @incoming_mine.size > 0
-			# 	me = @incoming_mine.inject(0){|memo, x| memo += (x.remaining_turns <= dist) ? x.ships : 0	}
-			# end
-			# base + ene - me + 1
-		elsif enemy?
-			base = @ships + (@growth * dist) 
-			ene = 0
-			if @incoming_enemy.size > 0
-				ene = @incoming.inject(0) do |memo, x| 
-					val = if x.enemy? && (x.remaining_turns <= dist)
- 						x.ships
-					elsif x.mine? && (x.remaining_turns <= dist)
-						-x.ships
-					else
-						0
-					end
-					memo += val
-				end
-			end
-			base + ene + 2
-		else # mine
-			0
+			base = base.abs
 		end
-#		log "\tships to take #{cow} -|- #{self.to_s} -|- dist = #{dist}"
-		cow + (cow * 1.1).ceil
+		if state == 1
+			return 0
+		else
+ 			return base + 2
+		end
 	end
 	
 	

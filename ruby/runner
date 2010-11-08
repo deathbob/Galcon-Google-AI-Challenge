@@ -30,8 +30,8 @@
 #bots = %w{ MyBot ninth_bot }
 #bots = %w{ MyBot tenth_bot }
 #bots = %w{ rubybot MyBot }
-#bots = %w{ sleepbot.rb MyBot.rb }
-bots = %w{ MyBot.rb sleepbot.rb MyBot.rb }
+#bots = %w{ MultiBot.rb MyBot.rb }
+bots = %w{ MyBot.rb MultiBot.rb MyBot.rb }
 tricks = [0,0]
 1.upto(100) do |x|
 #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/BullyBot.jar" "./MyBot" &> poop.out`
@@ -66,5 +66,5 @@ java -jar tools/PlayGame.jar maps/map2.txt 1000 1000 log.txt "java -jar example_
 ruby bot
 java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MyBot" "./rubybot.rb" | java -jar tools/ShowGame.jar
 java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MyBot_cpp" "./MyBot.rb" | java -jar tools/ShowGame.jar
-java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./sleepbot.rb" "./MyBot.rb" | java -jar tools/ShowGame.jar
+java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MultiBot.rb" "./MyBot.rb" | java -jar tools/ShowGame.jar
 =end

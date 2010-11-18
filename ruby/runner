@@ -67,4 +67,5 @@ ruby bot
 java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MyBot" "./rubybot.rb" | java -jar tools/ShowGame.jar
 java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MyBot_cpp" "./MyBot.rb" | java -jar tools/ShowGame.jar
 java -jar tools/PlayGame.jar maps/map5.txt 1000 1000 log.txt "./MultiBot.rb" "./MyBot.rb" | java -jar tools/ShowGame.jar
+java -jar tools/PlayGame.jar maps/map1.txt 200 200 log.txt "./MultiBot.rb" "./MyBot.rb" | java -jar tools/ShowGame.jar
 =end

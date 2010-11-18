@@ -17,7 +17,7 @@ class PlanetWars
 end
 
 class Planet
-
+	DIST = 20
   attr_accessor :x, :y, :owner, :ships, :growth, :pid, :incoming_mine, :incoming_enemy, 
 								:incoming, :incoming_mine_i, :incoming_enemy_i, :incoming_mine_j, :incoming_enemy_j
   def initialize(str, id)
@@ -49,94 +49,58 @@ class Planet
   end
   
   def in_trouble?
-		if @incoming_enemy_i > 0
-			pig = @ships
-			(0..10).to_a.each do |x|
-				pig += @incoming_mine_j[x] - @incoming_enemy_j[x]
-				return true if pig < 0
-			end
-		end
-		false
+		reinforcements_needed > 0
   end
 
-	def doomed?
-		we = @incoming_mine_j[1] 
-		they = @incoming_enemy_j[1]
-		if (@ships + we - they) < 0
-			true
-		else
-			false
-		end
-	end
+	# def doomed?
+	# 	we = @incoming_mine_j[1] 
+	# 	they = @incoming_enemy_j[1]
+	# 	if (@ships + we - they) < 0
+	# 		true
+	# 	else
+	# 		false
+	# 	end
+	# end
   
-  def is_as_good_as_mine
-    if mine? #me
-      (@ships + @incoming_mine_i) > @incoming_enemy_i
-    else # enemy owned
-      (@ships + @incoming_enemy_i + (@growth * 3)) <  @incoming_mine_i
-    end
-  end
+  # def is_as_good_as_mine
+  #   if mine? #me
+  #     (@ships + @incoming_mine_i) > @incoming_enemy_i
+  #   else # enemy owned
+  #     (@ships + @incoming_enemy_i + (@growth * 3)) <  @incoming_mine_i
+  #   end
+  # end
 
 	def total_power
 		@ships + @growth
 	end
   
-  def reinforcements_needed(p = nil)
-		return 0 unless @incoming_enemy.size > 0
-		cow = if p
-			dist = distance(p) + 1
-			ene = @incoming_enemy.inject(0){|memo, x|
-				memo += (x.remaining_turns <= dist) ? x.ships : 0
-			}
-			mine = @incoming_mine.inject(0){|memo, x|
-				memo += (x.remaining_turns <= dist) ? x.ships : 0
-			}
-			ene - (@ships + mine)
-		else
-#			tom = @incoming_enemy_i - total_power	
-			base = @ships
-			res = 0
-			(0..15).to_a.each do |x|
-				if base > 0
-					base += @growth
-				else
-					base -= @growth
-				end
-				base -= @incoming_enemy_j[x]
-				base += @incoming_mine_j[x]
-				if base < 0
-					res = base.abs
-				end
-			end
-#			log("tom #{tom}, .res #{res}")
-			res + 1
-#			res + (res * 1.1).ceil
-		end
 
-		(cow <= 0) ? 0 : cow
+  def reinforcements_needed(p = nil)
+#		return 0 unless @incoming_enemy.size > 0
+#		dist = p ? distance(p) : 15
+		dist = 15
+		res = 0
+		base = @ships
+		(0..dist).each do |i|
+			base += base > 0 ? @growth : -@growth
+			base -= @incoming_enemy_j[i]
+			base += @incoming_mine_j[i]
+		end
+		return base < 0 ? base.abs : 0
   end
   
-  def reinforcements_available(p = nil)
-		if p
-			dist = distance(p) + 1
-	    ene = @incoming_enemy.inject(0){|memo, x| 
-				memo += (x.remaining_turns <= dist) ? x.ships : 0
-			}
-			mine = @incoming_enemy.inject(0){|memo, x|
-				memo += (x.remaining_turns <= dist) ? x.ships : 0
-			}
-			cow = @ships + mine - ene
-		else
-    	cow = @ships - @incoming_enemy_i
-		end
 
-#		log("\t#{self.to_s}\treinforcements available #{cow} ")
+
+  def reinforcements_available(p = nil)
+		ene = (0..DIST).to_a.inject(0){|memo, x| memo += @incoming_enemy_j[x]}
+   	cow = @ships - ene
+#		log("\t#{self}\treinforcements available (#{cow})")
     (cow <= 0) ? 0 : cow
   end
 
-	def would_be_in_trouble(s)
-		(total_power - s) <= @incoming_enemy_i
-	end
+	# def would_be_in_trouble(s)
+	# 	(total_power - s) <= @incoming_enemy_i
+	# end
   
 	def enemy?
 		@owner == 2
@@ -151,7 +115,7 @@ class Planet
 	end
 	
 	def ships_to_take(planet)
-		dist = self.distance(planet) + 2
+		dist = self.distance(planet) 
 		base = @ships
 		state = @owner
 		(0..dist).to_a.each do |i|
@@ -185,10 +149,9 @@ class Planet
 		if state == 1
 			return 0
 		else
- 			return base + 2
+ 			return base + 1
 		end
 	end
-	
 	
 end
 

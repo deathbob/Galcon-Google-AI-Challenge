@@ -43,7 +43,7 @@ class CrimeBot < Bot
 			ships_to_risk = (p.ships - ((1.0 / (dist / 4)) * p.ships )).floor				
 		end
 		log "\tShips to risk #{ships_to_risk}"
-		p.ships = ships_to_risk
+#		p.ships = ships_to_risk
 		first_turn_attack(tmp, p)
 	end  
 	
@@ -62,7 +62,7 @@ class CrimeBot < Bot
 		@not_my_planets = @not_my_planets.sort do |a, b|
       ad = p.distance(a)
       bd = p.distance(b)
-      (b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p)))
+      (b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
 #   		(b.growth.to_f / ((bd * bd) + b.ships_to_take(p))) <=> (a.growth.to_f / ((ad * ad) + a.ships_to_take(p))) # This really isn't as good as just ships
 		end
 		stream_with_reserves(@not_my_planets, p)
@@ -90,7 +90,7 @@ class CrimeBot < Bot
 			if (ria >= ships_needed) 
 				issue_order(attacking_planet, planet, ships_needed)  # this is better
 #				issue_order(attacking_planet, planet, ria)
-			elsif ria > 6#attacking_planet.growth
+			elsif ria > attacking_planet.growth
 				# Test this (5) then test attacking the closest enemy to what is now the current closest 
 				# Need to turn aggressive at some point.  
 				issue_order(attacking_planet, planet, ria) 

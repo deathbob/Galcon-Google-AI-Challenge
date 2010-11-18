@@ -12,14 +12,17 @@ class TigerBot < Bot
     troubled, saviors = @my_planets.partition{|x| x.in_trouble?}
 		troubled = troubled.sort{|a, b| b.growth <=> a.growth}
     troubled.each do |x|
+
+#			ren = x.reinforcements_needed
 			saviors = saviors.sort{|a, b| distance(a, x) <=> distance(b, x)}
       saviors.each do |y|
 				ren = x.reinforcements_needed(y)
+				log("\tReinforcements needed from #{y} \n\t\t\tto #{x} -|- #{ren}")
         if ren <= y.reinforcements_available
           issue_order(y, x, ren)
 					break # don't send anybody else because we're all good now. 
         else
-					if y.reinforcements_available > 1						
+					if y.reinforcements_available > 1
 						yra = y.reinforcements_available #/ 2
 						issue_order(y, x, yra)
 						ren -= yra
@@ -82,14 +85,6 @@ class TigerBot < Bot
 	
 	
 	def rounder_one
-		if @my_planets.size == 1
-			tom = @my_planets.first
-			dist = distance(tom, @enemy_origin)
-			log("\tDist between me and enemy origin #{dist}")
-			ships_to_risk = [(dist * tom.growth), tom.ships].min
-			log "\tShips to risk (#{ships_to_risk})"
-			tom.ships = ships_to_risk
-		end
 		zap = @my_planets.closest(@enemy_origin)
 		return if zap.nil?
 		tmp = @not_my_planets.delete_if{|x| distance(x, @enemy_origin) < distance(x, zap)}
@@ -98,51 +93,31 @@ class TigerBot < Bot
 			bd = distance(zap, b) #p.distance(b)
 #			(b.growth.to_f / ((bd * bd) + b.ships)) <=> (a.growth.to_f / ((ad * ad) + a.ships))
 #			(b.growth.to_f / ((bd) + b.ships_to_take(@my_origin))) <=> (a.growth.to_f / ((ad) + a.ships_to_take(@my_origin)))			
-			a.ships_to_take(zap).to_f / a.growth  <=> b.ships_to_take(zap).to_f / b.growth
+			a.ships_to_take(zap) <=> b.ships_to_take(zap)
 		end
 		stream_with_reserves_new(tmp)
 	end
 	
 	def stream_with_reserves_new(planet_array)
-		log "\tPlanet_array.size #{planet_array.size}"
 		@my_planets.each do |x|
 			planet_array.each do |planet|
-# 				if planet.enemy? 
-# #					tom = @enemy_planets.closest(x)
-# 					tom = @not_my_planets.closest(x)					
-# 					if planet != tom
-# 						planet = tom
-# 					end
-# 				end
+				if planet.enemy? 
+#					tom = @enemy_planets.closest(x)
+					tom = @not_my_planets.closest(x)					
+					if planet != tom
+						planet = tom
+					end
+				end
+				
+				
 				ships_needed = planet.ships_to_take(x)
 				next if ships_needed < 1
 				ria = x.reinforcements_available
 				break if ria < 1
-				# if ria < ships_needed
-				# 	next if @turn.even?
-				# 	tom = @not_my_planets.closest(x)					
-				# 	planet = tom					if planet != tom
-				# end
 				issue_order(x, planet, [x.reinforcements_available, ships_needed].min)
-			end
-			if x.reinforcements_available
-				issue_order(x, @enemy_planets.first, x.reinforcements_available)
 			end
 		end
 	end
-
-		def stream_with_reserves_three(planet_array)
-			@my_planets.each do |x|
-				planet_array.each do |planet|
-					ria = x.reinforcements_available
-					break if ria < 1
-					issue_order(x, planet, x.reinforcements_available)
-				end
-			end
-		end
-
-
-
 
 	def stream_with_reserves(planet_array, attacking_planet)
 		planet_array.each do |planet|

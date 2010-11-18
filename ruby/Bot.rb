@@ -2,7 +2,7 @@ class Bot
   attr_accessor :planet_wars, :orders, :my_planets, :enemy_planets, :neutral_planets, 
                 :my_fleets, :enemy_fleets, :planets, :fleets, :turn, :enemy_origin, :my_origin,
                 :my_growth_rate, :their_growth_rate, :my_ships, :their_ships, :enemy_targets, :really_ahead,
-								:mode
+								:mode, :distances
   
 
   def initialize(mode = nil)
@@ -35,14 +35,17 @@ class Bot
     @their_growth_rate = @enemy_planets.inject(0){|memo, x| memo + x.growth}
   end
 	
-	def log(str, mode = 'a+')
-#		$stderr.puts str + "\n"		
-#   File.open("rubybot.log", mode) {|f|  f << str << "\n"}
+	def log(str, mode = 'a+', options = {})
+		if options[:file]
+			File.open("rubybot.log", mode) {|f|  f << str << "\n"}
+		else
+			$stderr.puts str + "\n"
+		end
   end
   
   def log_planets(planet = nil)
     @planets.each do |x|
-      ps = planet ? "distance #{planet.distance(x)}" : "no planet given"
+      ps = planet ? "distance #{distance(planet, x)}" : "no planet given"
       log("id #{x.pid}, growth #{x.growth}, ships #{x.ships}, #{ps}")
     end
   end
@@ -67,6 +70,7 @@ class Bot
     if @turn == 1
       @enemy_origin = @enemy_planets.first
       @my_origin = @my_planets.first
+			build_distances_table
     end
 		
     set_incoming
@@ -75,10 +79,24 @@ class Bot
 		calc_my_ships
 		calc_their_ships
 		 log("turn #{@turn}")
-		 log("\tmy growth rate #{my_growth_rate}  their growth rate #{their_growth_rate}")		
-		 log("\tmy ships  #{@my_ships}  their ships #{@their_ships}")
+		 log("\tgr #{my_growth_rate} vs. #{their_growth_rate}")		
+		 log("\tships #{@my_ships} vs. #{@their_ships}")
 
   end
+
+	def build_distances_table
+		@distances = Array.new(@planets.size){Array.new(@planets.size)}
+		@planets.each do |p|
+			@planets.each do |q|
+				@distances[p.pid][q.pid] = p.distance(q)
+			end
+		end
+#		log(@distances.inspect, 'w+', :file => true)
+	end
+	
+	def distance(p1, p2)
+		@distances[p1.pid][p2.pid]
+	end
   
   def set_incoming
     @fleets.each do |x|
@@ -125,10 +143,10 @@ class Bot
 			log "\tERROR from == to"
 			return
 		end
-		if to.growth == 0
-			log "\tERROR to.growth == 0"
-			return
-		end
+		# if to.growth == 0
+		# 	log "\tERROR to.growth == 0"
+		# 	return
+		# end
 		unless from.mine?
 			log '\tERROR from is not mine'
 			return
@@ -138,7 +156,7 @@ class Bot
 
     to.incoming_mine_i += num
     from.ships -= num
-		dist = from.distance(to)
+		dist = distance(from, to)
     to.incoming << Fleet.new("1 #{num} #{from.pid} #{to} #{dist} #{dist}", 1000)
 
 		to.incoming_mine_j[dist] += num

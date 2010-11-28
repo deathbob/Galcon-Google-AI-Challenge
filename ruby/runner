@@ -31,11 +31,11 @@
 #bots = %w{ MyBot tenth_bot }
 #bots = %w{ rubybot MyBot }
 #bots = %w{ MultiBot.rb MyBot.rb }
-bots = %w{ MyBot.rb MultiBot.rb MyBot.rb }
+bots = %w{ MyBot.rb MultiBot.rb }
 tricks = [0,0]
 1.upto(100) do |x|
 #    `java -jar tools/PlayGame.jar maps/map#{x}.txt 1000 1000 log.txt "java -jar example_bots/BullyBot.jar" "./MyBot" &> poop.out`
-    `java -jar tools/PlayGame.jar maps/map#{x}.txt 201 201 log.txt "./#{bots[0]}" "./#{bots[1]}" &> poop.out`    
+    `java -jar tools/PlayGame.jar maps/map#{x}.txt 200 200 log.txt "./#{bots[0]}" "./#{bots[1]}" &> poop.out`    
     result = %x{cat poop.out | grep Player}
     if result.match(/Player 1/)
 #      puts "#{bots[0]} Beat #{bots[1]}'s Ass On map#{x}\n"

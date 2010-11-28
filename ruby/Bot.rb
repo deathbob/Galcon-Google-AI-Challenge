@@ -2,7 +2,7 @@ class Bot
   attr_accessor :planet_wars, :orders, :my_planets, :enemy_planets, :neutral_planets, 
                 :my_fleets, :enemy_fleets, :planets, :fleets, :turn, :enemy_origin, :my_origin,
                 :my_growth_rate, :their_growth_rate, :my_ships, :their_ships, :enemy_targets, :really_ahead,
-								:mode, :distances
+								:mode, :distances, :my_targets
   
 
   def initialize(mode = nil)
@@ -66,6 +66,7 @@ class Bot
     @enemy_fleets = @planet_wars.fleets.collect{|x| x if x.owner == 2}.compact
 
 		@enemy_targets = @enemy_fleets.collect{|f| f.destination}.uniq
+		@my_targets = @my_fleets.collect{|f| @planets[f.destination]}.uniq
 
     if @turn == 1
       @enemy_origin = @enemy_planets.first
@@ -78,9 +79,9 @@ class Bot
 		calc_their_growth_rate
 		calc_my_ships
 		calc_their_ships
-		 log("turn #{@turn}")
-		 log("\tgr #{my_growth_rate} vs. #{their_growth_rate}")		
-		 log("\tships #{@my_ships} vs. #{@their_ships}")
+		log("turn #{@turn}")
+		log("\tgr #{my_growth_rate} vs. #{their_growth_rate}")		
+		log("\tships #{@my_ships} vs. #{@their_ships}")
 
   end
 
@@ -132,7 +133,7 @@ class Bot
 
   def issue_order(from, to, num)
 		unless num > 0 and from.ships >= num	
-			log "\tERROR num #{num} > 0    OR   from.ships #{from.ships} < num #{num}"
+#			log "\tERROR num #{num} > 0    OR   from.ships #{from.ships} < num #{num}"
 			return
 		end
 		unless from && to
@@ -160,7 +161,7 @@ class Bot
     to.incoming << Fleet.new("1 #{num} #{from.pid} #{to} #{dist} #{dist}", 1000)
 
 		to.incoming_mine_j[dist] += num
-#		log "\t\tORDER UP #{order}"
+		log "\t\tORDER UP #{order}"
     @orders << order
     true
   end

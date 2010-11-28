@@ -19,7 +19,8 @@ end
 class Planet
 	DIST = 20
   attr_accessor :x, :y, :owner, :ships, :growth, :pid, :incoming_mine, :incoming_enemy, 
-								:incoming, :incoming_mine_i, :incoming_enemy_i, :incoming_mine_j, :incoming_enemy_j
+								:incoming, :incoming_mine_i, :incoming_enemy_i, :incoming_mine_j, :incoming_enemy_j,
+								:edges_out, :edges_in
   def initialize(str, id)
     cow = str.split
     @x = cow[1].to_f
@@ -36,6 +37,9 @@ class Planet
     @pid = id
 		@net_inc = {}
 		@incoming = []
+		@edges_out = []
+		@edges_in = []
+		@result
   end
   
   def to_s
@@ -52,23 +56,6 @@ class Planet
 		reinforcements_needed > 0
   end
 
-	# def doomed?
-	# 	we = @incoming_mine_j[1] 
-	# 	they = @incoming_enemy_j[1]
-	# 	if (@ships + we - they) < 0
-	# 		true
-	# 	else
-	# 		false
-	# 	end
-	# end
-  
-  # def is_as_good_as_mine
-  #   if mine? #me
-  #     (@ships + @incoming_mine_i) > @incoming_enemy_i
-  #   else # enemy owned
-  #     (@ships + @incoming_enemy_i + (@growth * 3)) <  @incoming_mine_i
-  #   end
-  # end
 
 	def total_power
 		@ships + @growth
@@ -76,31 +63,38 @@ class Planet
   
 
   def reinforcements_needed(p = nil)
-#		return 0 unless @incoming_enemy.size > 0
-#		dist = p ? distance(p) : 15
-		dist = 15
 		res = 0
 		base = @ships
-		(0..dist).each do |i|
-			base += base > 0 ? @growth : -@growth
-			base -= @incoming_enemy_j[i]
+		(0..DIST).each do |i|
+			(base += base > 0 ? @growth : -@growth) unless @owner == 0#i == 0
+			base -= (@incoming_enemy_j[i] )
 			base += @incoming_mine_j[i]
 		end
 		return base < 0 ? base.abs : 0
   end
-  
-
 
   def reinforcements_available(p = nil)
-		ene = (0..DIST).to_a.inject(0){|memo, x| memo += @incoming_enemy_j[x]}
-   	cow = @ships - ene
-#		log("\t#{self}\treinforcements available (#{cow})")
+		ene = (0..15).to_a.inject(0){|memo, x| memo += @incoming_enemy_j[x]}
+		cow = @ships - ene
     (cow <= 0) ? 0 : cow
   end
-
-	# def would_be_in_trouble(s)
-	# 	(total_power - s) <= @incoming_enemy_i
-	# end
+	
+	def value(p)
+		cow = 0
+		pig = p.ships
+		dist = distance(p)
+		(0..DIST).each do |i|
+			if i < dist
+				next
+			end
+			if pig > @ships
+				cow += @growth
+			else
+				pig += p.growth
+			end
+		end
+		cow
+	end
   
 	def enemy?
 		@owner == 2
@@ -115,7 +109,7 @@ class Planet
 	end
 	
 	def ships_to_take(planet)
-		dist = self.distance(planet) 
+		dist = self.distance(planet)
 		base = @ships
 		state = @owner
 		(0..dist).to_a.each do |i|
@@ -126,12 +120,18 @@ class Planet
 				tom = [base, ej, mj].sort # rank forces
 				if (base >= mj) && (base >= ej) # biggest force is neutral, can't go negative, can't switch hands
 					base -= tom[1]
-				elsif (mj >= base) && (mj >= ej) # biggest force is mine
-					base -= mj
-					state = 1			if base < 0
-				else # biggest force is enemy
+				elsif (ej >= base) && (ej >= mj) # biggest force is enemy (pesimistic version)
 					base -= ej
 					state = 2			if base < 0
+				else # biggest force is mine
+					base -= mj
+					state = 1			if base < 0
+				# elsif (mj >= base) && (mj >= ej) # biggest force is mine
+				# 	base -= mj
+				# 	state = 1			if base < 0
+				# else # biggest force is enemy
+				# 	base -= ej
+				# 	state = 2			if base < 0
 				end
 			when 1 # mine
 				base += @growth

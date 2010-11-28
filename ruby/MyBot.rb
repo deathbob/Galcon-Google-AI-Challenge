@@ -3,7 +3,6 @@
 require './planetwars.rb'
 require './bot.rb'
 require './tiger_bot.rb'
-#require './crime_bot.rb'
 
 #File.open("rubybot.log", 'w+') {|f|  f << "Game On\n"}
 

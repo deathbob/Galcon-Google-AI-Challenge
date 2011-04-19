@@ -8,17 +8,19 @@ class TigerBot < Bot
   
   def issue_reinforcements
 		log("\tReinforcements, begin -----------------------------------------------")	
-    troubled, saviors = (@my_planets + @my_targets).partition{|x| x.in_trouble?}
+#    troubled, saviors = (@my_planets + @my_targets).partition{|x| x.in_trouble?}
+    junk, saviors = (@my_planets).partition{|x| x.in_trouble?}
+    troubled, junk = (@my_planets + @my_targets).partition{|x| x.in_trouble?}
 		troubled = troubled.sort{|a, b| b.growth <=> a.growth}
     troubled.each do |x|
-			saviors = (saviors - @my_targets).sort{|a, b| distance(a, x) <=> distance(b, x)}
+			ren = x.reinforcements_needed			
+			order_q = []			
       saviors.each do |y|
-				ren = x.reinforcements_needed(y)
-				order_q = []
-        if ren <= y.reinforcements_available
+        if ren < y.reinforcements_available
 					log("\tReinforcements, have enough, #{ren} needed for #{x.pid}, #{y.pid} has #{y.reinforcements_available}")	
-          issue_order(y, x, ren)
-					break # don't send anybody else because we're all good now. 
+          issue_order(y, x, ren + 1)
+					ren = 0
+#					break # don't send anybody else because we're all good now. 
         else
 					if y.reinforcements_available > 1						
 						yra = y.reinforcements_available #/ 2
@@ -28,15 +30,13 @@ class TigerBot < Bot
 						ren -= yra
 					end
         end
-				#flush queued orders unless ren is 0
-				if ren < 1
-					# do nothing (effect is order q is flushed)
-				else
-					order_q.each do |qo|
-						issue_order(qo[0], qo[1], qo[2])
-					end
+      end # ends saviors loop
+			if ren < 10
+				order_q.each do |qo|
+					issue_order(qo[0], qo[1], qo[2])
 				end
-      end
+			end
+
     end
 		log("\tReinforcements, END -----------------------------------------------")	
   end
@@ -83,11 +83,9 @@ class TigerBot < Bot
 					log("\t\t #{attacking_planet.pid} has #{ria} ria; ships needed to take CURRENT FOCUS #{@current_focus.pid} = #{@current_focus.ships_to_take(attacking_planet)}")					
 					issue_order(attacking_planet, @current_focus, ria) 
 				else
-					# move ships to center
-					center = @my_planets.closest(@enemy_origin)
-					if center && (center != attacking_planet)
-						log("\tmoving ships to center #{center.pid}")	
-						issue_order(attacking_planet, center ,ria)
+					if @center && (@center != attacking_planet)
+						log("\tmoving ships to center #{@center.pid}")	
+						issue_order(attacking_planet, @center, ria)
 					else
 						break
 					end
@@ -101,11 +99,53 @@ class TigerBot < Bot
 	def tiger_style
 		issue_reinforcements
 		@my_planets = @my_planets.sort{|a,b| b.growth <=> a.growth}
-		@current_focus = most_desirable(@my_planets.first)
+		set_focus		
+		set_center
+
+#		@current_focus = most_desirable(@my_planets.first)
 		log("\tCurrent Focus #{@current_focus.pid}") if @current_focus
 		@my_planets.each do |p|
 			round_robin_four(p)
 		end
+	end
+	
+	# def set_focus
+	# 	av_x, av_y = 0.0, 0.0
+	# 	@not_my_planets.each do |mp|
+	#       av_x += mp.x
+	#  			av_y += mp.y
+	#     end
+	# 	av_x = av_x / @not_my_planets.size
+	# 	av_y = av_y / @not_my_planets.size
+	# 	@current_focus = @not_my_planets.min do |a, b|
+	# 		((a.x - av_x).abs + (a.y - av_y).abs) <=> ((b.x - av_x).abs + (b.y - av_y).abs)
+	# 	end
+	# end
+	def set_focus
+		av_x, av_y = 0.0, 0.0
+		@enemy_planets.each do |mp|
+	      av_x += mp.x
+	 			av_y += mp.y
+	    end
+		av_x = av_x / @enemy_planets.size
+		av_y = av_y / @enemy_planets.size
+		@current_focus = @enemy_planets.min do |a, b|
+			((a.x - av_x).abs + (a.y - av_y).abs) <=> ((b.x - av_x).abs + (b.y - av_y).abs)
+		end
+	end
+	
+	def set_center
+		@center = @my_planets.closest(@current_focus)
+		# av_x, av_y = 0.0, 0.0
+		# @my_planets.each do |mp|
+		#       av_x += mp.x
+		#  			av_y += mp.y
+		#     end
+		# av_x = av_x / @my_planets.size
+		# av_y = av_y / @my_planets.size
+		# @center = @my_planets.min do |a, b|
+		# 	((a.x - av_x).abs + (a.y - av_y).abs) <=> ((b.x - av_x).abs + (b.y - av_y).abs)
+		# end
 	end
 
 	def most_desirable(p)
@@ -115,7 +155,7 @@ class TigerBot < Bot
 			bd = distance(p, b) 
 #			((a.growth * a.growth) - ad) <=> ((b.growth * b.growth) - bd)
 #			((a.growth) - ad) <=> ((b.growth) - bd)			 # this won a game.  
-			(a.growth - a.ships_to_take(p)) <=> b.growth - b.ships_to_take(p)
+			(a.growth - a.ships_to_take(p) - ad) <=> (b.growth - b.ships_to_take(p) - bd)
 		end
 	end  
   

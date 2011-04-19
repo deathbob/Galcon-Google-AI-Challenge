@@ -2,7 +2,7 @@ class Bot
   attr_accessor :planet_wars, :orders, :my_planets, :enemy_planets, :neutral_planets, 
                 :my_fleets, :enemy_fleets, :planets, :fleets, :turn, :enemy_origin, :my_origin,
                 :my_growth_rate, :their_growth_rate, :my_ships, :their_ships, :enemy_targets, :really_ahead,
-								:mode, :distances, :my_targets
+								:mode, :distances, :my_targets, :center
   
 
   def initialize(mode = nil)
@@ -160,7 +160,7 @@ class Bot
 		dist = distance(from, to)
     to.incoming << Fleet.new("1 #{num} #{from.pid} #{to} #{dist} #{dist}", 1000)
 
-		to.incoming_mine_j[dist] += num
+		to.incoming_mine_j[dist + 1] += num
 		log "\t\tORDER UP #{order}"
     @orders << order
     true

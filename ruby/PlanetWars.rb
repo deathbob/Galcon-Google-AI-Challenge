@@ -66,15 +66,15 @@ class Planet
 		res = 0
 		base = @ships
 		(0..DIST).each do |i|
-			(base += base > 0 ? @growth : -@growth) unless @owner == 0#i == 0
-			base -= (@incoming_enemy_j[i] )
+			(base += base > 0 ? @growth : -@growth) unless (@owner == 0) || (i == 0)
+			base -= @incoming_enemy_j[i]
 			base += @incoming_mine_j[i]
 		end
 		return base < 0 ? base.abs : 0
   end
 
   def reinforcements_available(p = nil)
-		ene = (0..15).to_a.inject(0){|memo, x| memo += @incoming_enemy_j[x]}
+		ene = (0..10).to_a.inject(0){|memo, x| memo += @incoming_enemy_j[x]}
 		cow = @ships - ene
     (cow <= 0) ? 0 : cow
   end
@@ -120,18 +120,20 @@ class Planet
 				tom = [base, ej, mj].sort # rank forces
 				if (base >= mj) && (base >= ej) # biggest force is neutral, can't go negative, can't switch hands
 					base -= tom[1]
-				elsif (ej >= base) && (ej >= mj) # biggest force is enemy (pesimistic version)
-					base -= ej
-					state = 2			if base < 0
-				else # biggest force is mine
+				elsif (mj == ej)
 					base -= mj
-					state = 1			if base < 0
-				# elsif (mj >= base) && (mj >= ej) # biggest force is mine
-				# 	base -= mj
-				# 	state = 1			if base < 0
-				# else # biggest force is enemy
+				# elsif (ej >= base) && (ej >= mj) # biggest force is enemy (pesimistic version)
 				# 	base -= ej
 				# 	state = 2			if base < 0
+				# else # biggest force is mine
+				# 	base -= mj
+				# 	state = 1			if base < 0
+				elsif (mj >= base) && (mj >= ej) # biggest force is mine
+					base -= mj
+					state = 1			if base < 0
+				else # biggest force is enemy
+					base -= ej
+					state = 2			if base < 0
 				end
 			when 1 # mine
 				base += @growth
